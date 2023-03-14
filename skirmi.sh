@@ -4,7 +4,6 @@
 
 gw2matches="https://api.guildwars2.com/v2/wvw/matches"
 # gw2matches_all="$gw2matches?ids=all"
-
 gw2mists="https://api.gw2mists.com/leaderboard/player/v2"
 
 #######################################
@@ -25,10 +24,10 @@ function mk_week() {
 #   None
 #######################################
 function dl_mists_eu() {
-  now="$(TZ='UTC' date +'%Y-%m-%dT%H:%M:%SZ')"
+  now=$(TZ='UTC' date +'%Y-%m-%dT%H:%M:%SZ')
   output="./$last_fri/$now.2.json"
   echo "Downloading gw2mists Leaderboard Player Europe"
-  output_gw2mists=$(curl --silent "$gw2mists" \
+  curl --silent "$gw2mists" \
   | jq '.[]
   # | select(.worldId > 2000)
   | select(.kills > 0)
@@ -75,8 +74,8 @@ function dl_mists_eu() {
   .guildPublished,
   .guildWorldId,
   .guildFlag,
-  .dummy)' > "$output")
-  if [[ $output_gw2mists ]]
+  .dummy)' > "$output"
+  if [[ $output ]]
   then
     echo "Created $output"
   else
@@ -91,13 +90,13 @@ function dl_mists_eu() {
 #   None
 #######################################
 function dl_gw2_eu() {
+  now=$(TZ="UTC" date +"%Y-%m-%dT%H:%M:%SZ")
   for tier in {1..5}; do
     echo "Downloading guildwars2 wvw match 2-$tier"
-    now=$(TZ="UTC" date +"%Y-%m-%dT%H:%M:%SZ")
     output="./$last_fri/$now.2-$tier.json"
-    output_gw2matches=$(wget --quiet --output-document=- "$gw2matches/2-$tier" \
-    | jq '. | del(.skirmishes[0:-1])' > "$output")
-    if [[ $output_gw2matches ]]
+    wget --quiet --output-document=- "$gw2matches/2-$tier" \
+    | jq '. | del(.skirmishes[0:-1])' > "$output"
+    if [[ $output ]]
     then
         echo "Created $output"
     else
@@ -113,7 +112,7 @@ done
 #   None
 #######################################
 function scouter() {
-  echo scout
+  echo "scout"
 }
 
 #######################################
@@ -122,15 +121,18 @@ function scouter() {
 #   None
 #######################################
 function impossible() {
-  echo impossible
+  echo "impossible"
 }
 
 function pyscore() {
-  cd "$last_fri" || exit
-  latest_ag=$(find "./*2-3*" | sort | tail -1)
-  cp "./$latest_ag" "./data.json"
-  python3 "skirmi.py"
-  cd ".."
+  latest_ag=$(find "./$last_fri" -name "*2-3*" | sort | tail -1)
+  if [[ $latest_ag ]]
+  then
+    cp "$latest_ag" "./data.json"
+    python3 "./skirmi.py"
+  else
+    return
+  fi
 }
 
 echo "["
@@ -144,4 +146,5 @@ echo "dl_gw2_eu() {"
 dl_gw2_eu
 echo "}"
 echo "]"
-# pyscore
+pyscore > "./score.txt"
+cat "./score.txt"

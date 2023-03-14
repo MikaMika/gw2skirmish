@@ -1,31 +1,31 @@
 """Module read and parse the data.json file."""
 import json
 
-with open('data.json', encoding='utf-8') as f:
+with open('./data.json', encoding='utf-8') as f:
     data = json.load(f)
 
-""" Example of Display
-Skirmish: 41 / 84 ( 43 left )
-    Red:   156 VP
-    Green: 184 VP
-    Blue:  152 VP
-1st Victory Ratio: 74 % (Green)
-    Difference: 28 VP (+30 VPd req.)
-    Difficulty: 34%/66%
-2nd Victory Ratio: 40 % (Red)
-    Difference: 4 VP (+41 VPd req.)
-    Difficulty: 48%/52%
-3rd Victory Ratio: 35 % (Blue)"""
+# Example of Display
+# Skirmish: 41 / 84 ( 43 left )
+#     Red:   156 VP
+#     Green: 184 VP
+#     Blue:  152 VP
+# 1st Victory Ratio: 74 % (Green)
+#     Difference: 28 VP (+30 VPd req.)
+#     Difficulty: 34%/66%
+# 2nd Victory Ratio: 40 % (Red)
+#     Difference: 4 VP (+41 VPd req.)
+#     Difficulty: 48%/52%
+# 3rd Victory Ratio: 35 % (Blue)
 
-#red = data['victory_points']['red']
-#green = data['victory_points']['green']
-#blue = data['victory_points']['blue']
-#score = [red, green, blue]
+red = data['victory_points']['red']
+green = data['victory_points']['green']
+blue = data['victory_points']['blue']
+score = [red, green, blue]
 
 # Alternative?
-score = []
-for i in data["victory_points"]:
-    score.append(data["victory_points"][i])
+# score = []
+# for i in data["victory_points"]:
+#    score.append(data["victory_points"][i])
 
 score.sort()
 frst = score.pop()
@@ -37,7 +37,8 @@ skirmish_done = int((frst + scnd + thrd) / (3 + 4 + 5))
 skirmish_remaining = SKIRMISH_TOTAL - skirmish_done
 vp_remaining = skirmish_remaining * 2
 
-print("Skirmish:", skirmish_done, "/", SKIRMISH_TOTAL, "(", skirmish_remaining, "left )")
+print("Skirmish:", skirmish_done, "/", SKIRMISH_TOTAL,
+      "(", skirmish_remaining, "left )")
 print("Red:", red, "VP")
 print("Green:", green, "VP")
 print("Blue:", blue, "VP")

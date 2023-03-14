@@ -1,0 +1,1323 @@
+{
+  "id": "2-2",
+  "start_time": "2023-03-10T18:00:00Z",
+  "end_time": "2023-03-17T17:58:00Z",
+  "scores": {
+    "red": 225661,
+    "blue": 285118,
+    "green": 299305
+  },
+  "worlds": {
+    "red": 2007,
+    "blue": 2203,
+    "green": 2001
+  },
+  "all_worlds": {
+    "red": [
+      2102,
+      2007
+    ],
+    "blue": [
+      2204,
+      2203
+    ],
+    "green": [
+      2004,
+      2001
+    ]
+  },
+  "deaths": {
+    "red": 27545,
+    "blue": 34252,
+    "green": 28468
+  },
+  "kills": {
+    "red": 29860,
+    "blue": 24579,
+    "green": 33422
+  },
+  "victory_points": {
+    "red": 166,
+    "blue": 199,
+    "green": 211
+  },
+  "skirmishes": [
+    {
+      "id": 49,
+      "scores": {
+        "red": 1020,
+        "blue": 1802,
+        "green": 2006
+      },
+      "map_scores": [
+        {
+          "type": "Center",
+          "scores": {
+            "red": 465,
+            "blue": 582,
+            "green": 1034
+          }
+        },
+        {
+          "type": "RedHome",
+          "scores": {
+            "red": 245,
+            "blue": 393,
+            "green": 63
+          }
+        },
+        {
+          "type": "BlueHome",
+          "scores": {
+            "red": 89,
+            "blue": 580,
+            "green": 175
+          }
+        },
+        {
+          "type": "GreenHome",
+          "scores": {
+            "red": 221,
+            "blue": 247,
+            "green": 734
+          }
+        }
+      ]
+    }
+  ],
+  "maps": [
+    {
+      "id": 38,
+      "type": "Center",
+      "scores": {
+        "red": 96087,
+        "blue": 95607,
+        "green": 138096
+      },
+      "bonuses": [],
+      "objectives": [
+        {
+          "id": "38-131",
+          "type": "Spawn",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T16:06:00Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "38-20",
+          "type": "Tower",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T06:31:03Z",
+          "claimed_by": "48B067A2-21A7-4858-8007-4ECA99798EBF",
+          "claimed_at": "2023-03-14T06:35:05Z",
+          "points_tick": 10,
+          "points_capture": 10,
+          "yaks_delivered": 140,
+          "guild_upgrades": [
+            583,
+            147,
+            483,
+            513,
+            590,
+            306
+          ]
+        },
+        {
+          "id": "38-10",
+          "type": "Camp",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T18:27:40Z",
+          "claimed_by": "06591F7D-DA92-E611-80D3-E4115BE8BBE8",
+          "claimed_at": "2023-03-14T18:27:43Z",
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 1,
+          "guild_upgrades": []
+        },
+        {
+          "id": "38-9",
+          "type": "Castle",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T16:49:12Z",
+          "claimed_by": "C575FB38-2E53-403C-86F7-EB8B713D7583",
+          "claimed_at": "2023-03-14T16:49:16Z",
+          "points_tick": 24,
+          "points_capture": 24,
+          "yaks_delivered": 68,
+          "guild_upgrades": [
+            183,
+            147,
+            559,
+            298,
+            590,
+            389
+          ]
+        },
+        {
+          "id": "38-4",
+          "type": "Camp",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T17:26:06Z",
+          "claimed_by": "F464A0E0-9460-4F54-8735-5A748287DFC8",
+          "claimed_at": "2023-03-14T17:29:38Z",
+          "points_tick": 4,
+          "points_capture": 4,
+          "yaks_delivered": 128,
+          "guild_upgrades": [
+            562
+          ]
+        },
+        {
+          "id": "38-6",
+          "type": "Camp",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T18:02:48Z",
+          "claimed_by": "013DC168-05E9-E811-81A8-E8B6963692B8",
+          "claimed_at": "2023-03-14T18:07:50Z",
+          "points_tick": 3,
+          "points_capture": 3,
+          "yaks_delivered": 28,
+          "guild_upgrades": []
+        },
+        {
+          "id": "38-124",
+          "type": "Spawn",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T16:06:00Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "38-11",
+          "type": "Tower",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T01:15:35Z",
+          "claimed_by": "4BE33EA7-97E0-E411-925A-AC162DAE5AD5",
+          "claimed_at": "2023-03-14T09:12:32Z",
+          "points_tick": 10,
+          "points_capture": 10,
+          "yaks_delivered": 140,
+          "guild_upgrades": [
+            583,
+            147,
+            483,
+            513,
+            590,
+            306
+          ]
+        },
+        {
+          "id": "38-12",
+          "type": "Tower",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T09:10:12Z",
+          "claimed_by": "61F73BB2-C952-EB11-81A9-971484D88F04",
+          "claimed_at": "2023-03-14T09:24:35Z",
+          "points_tick": 10,
+          "points_capture": 10,
+          "yaks_delivered": 140,
+          "guild_upgrades": [
+            583,
+            147,
+            483,
+            513,
+            590,
+            306
+          ]
+        },
+        {
+          "id": "38-5",
+          "type": "Camp",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:27:32Z",
+          "claimed_by": "9C3F11D7-F3D4-E411-A32A-E4115BDFA895",
+          "claimed_at": "2023-03-14T18:28:07Z",
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 0,
+          "guild_upgrades": []
+        },
+        {
+          "id": "38-16",
+          "type": "Tower",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T17:26:31Z",
+          "claimed_by": "1B34A971-C780-4FE0-B6E7-6C5950E04C68",
+          "claimed_at": "2023-03-14T17:27:06Z",
+          "points_tick": 6,
+          "points_capture": 6,
+          "yaks_delivered": 45,
+          "guild_upgrades": []
+        },
+        {
+          "id": "38-8",
+          "type": "Camp",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T18:28:37Z",
+          "claimed_by": null,
+          "claimed_at": null,
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 0,
+          "guild_upgrades": []
+        },
+        {
+          "id": "38-1",
+          "type": "Keep",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T05:09:22Z",
+          "claimed_by": "52E59078-0AF4-E411-925A-AC162DAE5AD5",
+          "claimed_at": "2023-03-14T05:21:45Z",
+          "points_tick": 20,
+          "points_capture": 20,
+          "yaks_delivered": 140,
+          "guild_upgrades": [
+            418,
+            147,
+            483,
+            513,
+            590,
+            306
+          ]
+        },
+        {
+          "id": "38-123",
+          "type": "Mercenary",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T17:23:31Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "38-22",
+          "type": "Tower",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T12:23:34Z",
+          "claimed_by": "3B2F73B6-BA78-4553-AEB0-623E75CDAA32",
+          "claimed_at": "2023-03-14T12:33:17Z",
+          "points_tick": 8,
+          "points_capture": 8,
+          "yaks_delivered": 78,
+          "guild_upgrades": [
+            583,
+            147,
+            559,
+            513,
+            590,
+            306
+          ]
+        },
+        {
+          "id": "38-126",
+          "type": "Mercenary",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T16:14:43Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "38-17",
+          "type": "Tower",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T17:51:55Z",
+          "claimed_by": "2D3A72C4-6487-EB11-81A8-B942C6BB2B96",
+          "claimed_at": "2023-03-14T17:52:23Z",
+          "points_tick": 4,
+          "points_capture": 4,
+          "yaks_delivered": 11,
+          "guild_upgrades": []
+        },
+        {
+          "id": "38-14",
+          "type": "Tower",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T08:38:38Z",
+          "claimed_by": "01D0B003-68CB-E411-925A-AC162DAE5AD5",
+          "claimed_at": "2023-03-14T10:10:28Z",
+          "points_tick": 10,
+          "points_capture": 10,
+          "yaks_delivered": 140,
+          "guild_upgrades": [
+            583,
+            147,
+            483,
+            513,
+            590,
+            306
+          ]
+        },
+        {
+          "id": "38-125",
+          "type": "Mercenary",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T18:16:06Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "38-19",
+          "type": "Tower",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:26:17Z",
+          "claimed_by": "2B0740DE-538E-E611-80D3-E83935B5B448",
+          "claimed_at": "2023-03-14T18:26:20Z",
+          "points_tick": 4,
+          "points_capture": 4,
+          "yaks_delivered": 0,
+          "guild_upgrades": []
+        },
+        {
+          "id": "38-3",
+          "type": "Keep",
+          "owner": "Green",
+          "last_flipped": "2023-03-12T03:58:02Z",
+          "claimed_by": "0BF06DF5-2633-E711-80D3-E4115BD7186D",
+          "claimed_at": "2023-03-12T18:01:30Z",
+          "points_tick": 20,
+          "points_capture": 20,
+          "yaks_delivered": 140,
+          "guild_upgrades": [
+            418,
+            147,
+            483,
+            513,
+            590,
+            389
+          ]
+        },
+        {
+          "id": "38-130",
+          "type": "Spawn",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T16:06:00Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "38-21",
+          "type": "Tower",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:22:53Z",
+          "claimed_by": null,
+          "claimed_at": null,
+          "points_tick": 4,
+          "points_capture": 4,
+          "yaks_delivered": 3,
+          "guild_upgrades": []
+        },
+        {
+          "id": "38-18",
+          "type": "Tower",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T18:05:27Z",
+          "claimed_by": "41DDD105-36E2-E811-81A8-CDE2AC1EED30",
+          "claimed_at": "2023-03-14T18:05:47Z",
+          "points_tick": 4,
+          "points_capture": 4,
+          "yaks_delivered": 8,
+          "guild_upgrades": []
+        },
+        {
+          "id": "38-2",
+          "type": "Keep",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T13:29:33Z",
+          "claimed_by": "2291EBE1-B34A-4C5A-9D4C-4A2DDA504433",
+          "claimed_at": "2023-03-14T13:33:30Z",
+          "points_tick": 20,
+          "points_capture": 20,
+          "yaks_delivered": 140,
+          "guild_upgrades": [
+            418,
+            147,
+            559,
+            178,
+            590,
+            389
+          ]
+        },
+        {
+          "id": "38-7",
+          "type": "Camp",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:27:20Z",
+          "claimed_by": null,
+          "claimed_at": null,
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 1,
+          "guild_upgrades": []
+        },
+        {
+          "id": "38-13",
+          "type": "Tower",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T17:22:40Z",
+          "claimed_by": "E6FBE22C-B139-E711-80DA-101F7433AF15",
+          "claimed_at": "2023-03-14T17:23:06Z",
+          "points_tick": 6,
+          "points_capture": 6,
+          "yaks_delivered": 34,
+          "guild_upgrades": [
+            583,
+            329,
+            559,
+            513,
+            590,
+            389
+          ]
+        },
+        {
+          "id": "38-15",
+          "type": "Tower",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T15:31:44Z",
+          "claimed_by": "76F8E9C0-071D-440D-A4AE-50C81C078A4A",
+          "claimed_at": "2023-03-14T15:35:27Z",
+          "points_tick": 8,
+          "points_capture": 8,
+          "yaks_delivered": 68,
+          "guild_upgrades": [
+            583,
+            147,
+            483,
+            513,
+            590,
+            389
+          ]
+        }
+      ],
+      "deaths": {
+        "red": 12762,
+        "blue": 12915,
+        "green": 13406
+      },
+      "kills": {
+        "red": 13244,
+        "blue": 8221,
+        "green": 17130
+      }
+    },
+    {
+      "id": 1099,
+      "type": "RedHome",
+      "scores": {
+        "red": 76736,
+        "blue": 46917,
+        "green": 24389
+      },
+      "bonuses": [
+        {
+          "type": "Bloodlust",
+          "owner": "Blue"
+        }
+      ],
+      "objectives": [
+        {
+          "id": "1099-116",
+          "type": "Camp",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:24:49Z",
+          "claimed_by": "F96AFAB4-1D5C-47D4-BF35-42D7B51E73B5",
+          "claimed_at": "2023-03-14T18:24:58Z",
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 0,
+          "guild_upgrades": []
+        },
+        {
+          "id": "1099-118",
+          "type": "Ruins",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:23:42Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "1099-114",
+          "type": "Keep",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T17:16:59Z",
+          "claimed_by": "6E758294-B414-EC11-81B7-C3B1C0E42B51",
+          "claimed_at": "2023-03-14T17:45:00Z",
+          "points_tick": 12,
+          "points_capture": 12,
+          "yaks_delivered": 49,
+          "guild_upgrades": [
+            483,
+            306
+          ]
+        },
+        {
+          "id": "1099-107",
+          "type": "Spawn",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T16:06:19Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "1099-99",
+          "type": "Camp",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:26:35Z",
+          "claimed_by": "2F23D369-8729-E511-AEFB-AC162DC05865",
+          "claimed_at": "2023-03-14T18:26:55Z",
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 0,
+          "guild_upgrades": []
+        },
+        {
+          "id": "1099-113",
+          "type": "Keep",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:19:09Z",
+          "claimed_by": "8DD2A2C6-669E-4C20-92AA-51436A90DE88",
+          "claimed_at": "2023-03-14T18:27:57Z",
+          "points_tick": 8,
+          "points_capture": 8,
+          "yaks_delivered": 1,
+          "guild_upgrades": []
+        },
+        {
+          "id": "1099-119",
+          "type": "Ruins",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:19:07Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "1099-115",
+          "type": "Camp",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T18:23:24Z",
+          "claimed_by": "200D37BB-65F4-48C5-B334-0AD5235A54EE",
+          "claimed_at": "2023-03-14T18:23:27Z",
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 1,
+          "guild_upgrades": []
+        },
+        {
+          "id": "1099-110",
+          "type": "Tower",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:21:14Z",
+          "claimed_by": "E9CEC0FC-9359-4F22-B4FD-39278AB10CAE",
+          "claimed_at": "2023-03-14T18:21:22Z",
+          "points_tick": 4,
+          "points_capture": 4,
+          "yaks_delivered": 0,
+          "guild_upgrades": []
+        },
+        {
+          "id": "1099-106",
+          "type": "Keep",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T13:24:25Z",
+          "claimed_by": "52E59078-0AF4-E411-925A-AC162DAE5AD5",
+          "claimed_at": "2023-03-14T13:58:09Z",
+          "points_tick": 16,
+          "points_capture": 16,
+          "yaks_delivered": 133,
+          "guild_upgrades": [
+            418,
+            147,
+            483,
+            178,
+            399,
+            306
+          ]
+        },
+        {
+          "id": "1099-122",
+          "type": "Ruins",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:20:30Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "1099-105",
+          "type": "Tower",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T15:06:25Z",
+          "claimed_by": "D301067E-69E8-E511-80D3-E4115BD7186D",
+          "claimed_at": "2023-03-14T15:40:47Z",
+          "points_tick": 8,
+          "points_capture": 8,
+          "yaks_delivered": 85,
+          "guild_upgrades": [
+            583,
+            147,
+            483,
+            513,
+            306
+          ]
+        },
+        {
+          "id": "1099-102",
+          "type": "Tower",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T18:27:49Z",
+          "claimed_by": null,
+          "claimed_at": null,
+          "points_tick": 4,
+          "points_capture": 4,
+          "yaks_delivered": 0,
+          "guild_upgrades": []
+        },
+        {
+          "id": "1099-117",
+          "type": "Spawn",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T16:06:19Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "1099-120",
+          "type": "Ruins",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:22:38Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "1099-109",
+          "type": "Camp",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:24:00Z",
+          "claimed_by": "0CF09357-FB85-4E67-A535-CA24FE4B188D",
+          "claimed_at": "2023-03-14T18:24:05Z",
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 4,
+          "guild_upgrades": []
+        },
+        {
+          "id": "1099-101",
+          "type": "Camp",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T18:24:52Z",
+          "claimed_by": "05216032-28C6-4E97-B9ED-DA44E2CF3B97",
+          "claimed_at": "2023-03-14T18:24:55Z",
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 0,
+          "guild_upgrades": []
+        },
+        {
+          "id": "1099-121",
+          "type": "Ruins",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:19:19Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "1099-104",
+          "type": "Tower",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:08:10Z",
+          "claimed_by": "99F852E8-96F3-E511-80D3-AC162DC085C0",
+          "claimed_at": "2023-03-14T18:08:20Z",
+          "points_tick": 4,
+          "points_capture": 4,
+          "yaks_delivered": 3,
+          "guild_upgrades": []
+        },
+        {
+          "id": "1099-108",
+          "type": "Spawn",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T16:06:19Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "1099-100",
+          "type": "Camp",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T17:26:00Z",
+          "claimed_by": "136A4F40-E91D-4E44-8E61-D88A6177DFB7",
+          "claimed_at": "2023-03-14T17:27:27Z",
+          "points_tick": 4,
+          "points_capture": 4,
+          "yaks_delivered": 80,
+          "guild_upgrades": [
+            562
+          ]
+        }
+      ],
+      "deaths": {
+        "red": 4813,
+        "blue": 6165,
+        "green": 2040
+      },
+      "kills": {
+        "red": 6030,
+        "blue": 4687,
+        "green": 1404
+      }
+    },
+    {
+      "id": 96,
+      "type": "BlueHome",
+      "scores": {
+        "red": 25153,
+        "blue": 106326,
+        "green": 34643
+      },
+      "bonuses": [
+        {
+          "type": "Bloodlust",
+          "owner": "Blue"
+        }
+      ],
+      "objectives": [
+        {
+          "id": "96-53",
+          "type": "Camp",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:24:20Z",
+          "claimed_by": "84905A16-E2F6-4FED-99D3-1AC40FADA2B7",
+          "claimed_at": "2023-03-14T18:24:23Z",
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 0,
+          "guild_upgrades": []
+        },
+        {
+          "id": "96-40",
+          "type": "Tower",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T12:50:20Z",
+          "claimed_by": "EEBAF715-BDC4-4C46-9D9F-1B80EFD20DF0",
+          "claimed_at": "2023-03-14T13:36:58Z",
+          "points_tick": 8,
+          "points_capture": 8,
+          "yaks_delivered": 101,
+          "guild_upgrades": [
+            583,
+            147,
+            559,
+            513,
+            590,
+            389
+          ]
+        },
+        {
+          "id": "96-35",
+          "type": "Tower",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:19:35Z",
+          "claimed_by": null,
+          "claimed_at": null,
+          "points_tick": 4,
+          "points_capture": 4,
+          "yaks_delivered": 0,
+          "guild_upgrades": []
+        },
+        {
+          "id": "96-36",
+          "type": "Tower",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T18:10:39Z",
+          "claimed_by": "AD4F8047-E782-48D2-9A72-950F2A257781",
+          "claimed_at": "2023-03-14T18:11:36Z",
+          "points_tick": 4,
+          "points_capture": 4,
+          "yaks_delivered": 8,
+          "guild_upgrades": []
+        },
+        {
+          "id": "96-33",
+          "type": "Keep",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T13:56:24Z",
+          "claimed_by": "2B0740DE-538E-E611-80D3-E83935B5B448",
+          "claimed_at": "2023-03-14T14:00:40Z",
+          "points_tick": 16,
+          "points_capture": 16,
+          "yaks_delivered": 115,
+          "guild_upgrades": [
+            418,
+            147,
+            483,
+            178,
+            590,
+            389
+          ]
+        },
+        {
+          "id": "96-111",
+          "type": "Spawn",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T16:06:09Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "96-64",
+          "type": "Ruins",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:23:52Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "96-39",
+          "type": "Camp",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T18:25:30Z",
+          "claimed_by": "DF38C225-C7C7-4CF7-9955-020FBA5B6C3C",
+          "claimed_at": "2023-03-14T18:25:39Z",
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 0,
+          "guild_upgrades": []
+        },
+        {
+          "id": "96-52",
+          "type": "Camp",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:28:41Z",
+          "claimed_by": null,
+          "claimed_at": null,
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 0,
+          "guild_upgrades": []
+        },
+        {
+          "id": "96-66",
+          "type": "Ruins",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:25:39Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "96-112",
+          "type": "Spawn",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T16:06:09Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "96-34",
+          "type": "Camp",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:23:58Z",
+          "claimed_by": "1058201C-CEF5-E811-81A9-DB10BE9C31A5",
+          "claimed_at": "2023-03-14T18:24:01Z",
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 0,
+          "guild_upgrades": []
+        },
+        {
+          "id": "96-32",
+          "type": "Keep",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T16:25:54Z",
+          "claimed_by": "4E0BFF81-26FF-473F-9E08-69B35A19D26B",
+          "claimed_at": "2023-03-14T16:26:02Z",
+          "points_tick": 8,
+          "points_capture": 8,
+          "yaks_delivered": 19,
+          "guild_upgrades": [
+            418,
+            147,
+            559,
+            178,
+            590,
+            389
+          ]
+        },
+        {
+          "id": "96-62",
+          "type": "Ruins",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T18:27:51Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "96-51",
+          "type": "Camp",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:05:55Z",
+          "claimed_by": null,
+          "claimed_at": null,
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 6,
+          "guild_upgrades": []
+        },
+        {
+          "id": "96-37",
+          "type": "Keep",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T13:12:36Z",
+          "claimed_by": "2291EBE1-B34A-4C5A-9D4C-4A2DDA504433",
+          "claimed_at": "2023-03-14T13:16:38Z",
+          "points_tick": 20,
+          "points_capture": 20,
+          "yaks_delivered": 140,
+          "guild_upgrades": [
+            418,
+            147,
+            559,
+            178,
+            590,
+            389
+          ]
+        },
+        {
+          "id": "96-103",
+          "type": "Spawn",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T16:06:09Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "96-65",
+          "type": "Ruins",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:21:47Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "96-38",
+          "type": "Tower",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T12:05:19Z",
+          "claimed_by": "697424FD-5FE5-E311-88E3-AC162DC0E835",
+          "claimed_at": "2023-03-14T12:16:50Z",
+          "points_tick": 8,
+          "points_capture": 8,
+          "yaks_delivered": 131,
+          "guild_upgrades": [
+            183,
+            329,
+            559,
+            513,
+            590,
+            306
+          ]
+        },
+        {
+          "id": "96-50",
+          "type": "Camp",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:25:29Z",
+          "claimed_by": "353B8D1A-2935-4992-810C-99DFCBC17D42",
+          "claimed_at": "2023-03-14T18:25:46Z",
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 0,
+          "guild_upgrades": []
+        },
+        {
+          "id": "96-63",
+          "type": "Ruins",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:25:03Z",
+          "points_tick": 0,
+          "points_capture": 0
+        }
+      ],
+      "deaths": {
+        "red": 4905,
+        "blue": 7280,
+        "green": 5575
+      },
+      "kills": {
+        "red": 6006,
+        "blue": 5167,
+        "green": 6053
+      }
+    },
+    {
+      "id": 95,
+      "type": "GreenHome",
+      "scores": {
+        "red": 27685,
+        "blue": 36268,
+        "green": 102177
+      },
+      "bonuses": [
+        {
+          "type": "Bloodlust",
+          "owner": "Green"
+        }
+      ],
+      "objectives": [
+        {
+          "id": "95-53",
+          "type": "Camp",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:17:18Z",
+          "claimed_by": "5DA0C013-7415-4A8B-AF05-A7AA860041F9",
+          "claimed_at": "2023-03-14T18:17:53Z",
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 10,
+          "guild_upgrades": [
+            383,
+            562
+          ]
+        },
+        {
+          "id": "95-40",
+          "type": "Tower",
+          "owner": "Green",
+          "last_flipped": "2023-03-12T11:11:39Z",
+          "claimed_by": "F744FD21-B438-4299-B5B8-1BF80E265D61",
+          "claimed_at": "2023-03-12T19:34:21Z",
+          "points_tick": 10,
+          "points_capture": 10,
+          "yaks_delivered": 140,
+          "guild_upgrades": [
+            583,
+            147,
+            483,
+            513,
+            590,
+            306
+          ]
+        },
+        {
+          "id": "95-35",
+          "type": "Tower",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:14:37Z",
+          "claimed_by": "136A4F40-E91D-4E44-8E61-D88A6177DFB7",
+          "claimed_at": "2023-03-14T18:28:02Z",
+          "points_tick": 4,
+          "points_capture": 4,
+          "yaks_delivered": 5,
+          "guild_upgrades": []
+        },
+        {
+          "id": "95-36",
+          "type": "Tower",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T18:21:24Z",
+          "claimed_by": null,
+          "claimed_at": null,
+          "points_tick": 4,
+          "points_capture": 4,
+          "yaks_delivered": 4,
+          "guild_upgrades": []
+        },
+        {
+          "id": "95-33",
+          "type": "Keep",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:10:38Z",
+          "claimed_by": "D2E57B4B-C309-E811-81A1-02909F6AA9AA",
+          "claimed_at": "2023-03-14T18:11:04Z",
+          "points_tick": 8,
+          "points_capture": 8,
+          "yaks_delivered": 7,
+          "guild_upgrades": [
+            306
+          ]
+        },
+        {
+          "id": "95-111",
+          "type": "Spawn",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T16:06:08Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "95-64",
+          "type": "Ruins",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T17:44:16Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "95-39",
+          "type": "Camp",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T18:24:52Z",
+          "claimed_by": null,
+          "claimed_at": null,
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 0,
+          "guild_upgrades": []
+        },
+        {
+          "id": "95-52",
+          "type": "Camp",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:19:24Z",
+          "claimed_by": null,
+          "claimed_at": null,
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 1,
+          "guild_upgrades": []
+        },
+        {
+          "id": "95-66",
+          "type": "Ruins",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T17:56:40Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "95-112",
+          "type": "Spawn",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T16:06:08Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "95-34",
+          "type": "Camp",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T18:26:27Z",
+          "claimed_by": null,
+          "claimed_at": null,
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 0,
+          "guild_upgrades": []
+        },
+        {
+          "id": "95-32",
+          "type": "Keep",
+          "owner": "Green",
+          "last_flipped": "2023-03-13T22:10:38Z",
+          "claimed_by": "C575FB38-2E53-403C-86F7-EB8B713D7583",
+          "claimed_at": "2023-03-13T22:14:53Z",
+          "points_tick": 20,
+          "points_capture": 20,
+          "yaks_delivered": 140,
+          "guild_upgrades": [
+            418,
+            329,
+            483,
+            178,
+            590,
+            389
+          ]
+        },
+        {
+          "id": "95-62",
+          "type": "Ruins",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T18:01:10Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "95-51",
+          "type": "Camp",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T18:27:26Z",
+          "claimed_by": null,
+          "claimed_at": null,
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 0,
+          "guild_upgrades": []
+        },
+        {
+          "id": "95-37",
+          "type": "Keep",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T01:02:20Z",
+          "claimed_by": "1D0CC6C7-59C1-EB11-81A8-F161567B2263",
+          "claimed_at": "2023-03-14T01:06:49Z",
+          "points_tick": 20,
+          "points_capture": 20,
+          "yaks_delivered": 140,
+          "guild_upgrades": [
+            418,
+            147,
+            483,
+            178,
+            590,
+            389
+          ]
+        },
+        {
+          "id": "95-103",
+          "type": "Spawn",
+          "owner": "Red",
+          "last_flipped": "2023-03-14T16:06:08Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "95-65",
+          "type": "Ruins",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T17:23:08Z",
+          "points_tick": 0,
+          "points_capture": 0
+        },
+        {
+          "id": "95-38",
+          "type": "Tower",
+          "owner": "Blue",
+          "last_flipped": "2023-03-14T18:26:20Z",
+          "claimed_by": null,
+          "claimed_at": null,
+          "points_tick": 4,
+          "points_capture": 4,
+          "yaks_delivered": 0,
+          "guild_upgrades": []
+        },
+        {
+          "id": "95-50",
+          "type": "Camp",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T18:28:45Z",
+          "claimed_by": null,
+          "claimed_at": null,
+          "points_tick": 2,
+          "points_capture": 2,
+          "yaks_delivered": 0,
+          "guild_upgrades": []
+        },
+        {
+          "id": "95-63",
+          "type": "Ruins",
+          "owner": "Green",
+          "last_flipped": "2023-03-14T18:19:49Z",
+          "points_tick": 0,
+          "points_capture": 0
+        }
+      ],
+      "deaths": {
+        "red": 5065,
+        "blue": 7892,
+        "green": 7447
+      },
+      "kills": {
+        "red": 4580,
+        "blue": 6504,
+        "green": 8835
+      }
+    }
+  ]
+}
