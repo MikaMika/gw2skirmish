@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #
 # Download WvW matches stats and sort it in a weekly folder.
 
@@ -11,10 +11,10 @@ gw2mists="https://api.gw2mists.com/leaderboard/player/v2"
 # Arguments:
 #   None
 #######################################
-function mk_week() {
+mk_week() {
   last_fri=$(TZ='UTC' date --date='last Friday 18:00' +'%Y-%m-%d')
   echo "Current match: $last_fri"
-  mkdir --parents "$last_fri"
+  mkdir --parents "./$last_fri"
   echo "Folder created: ./$last_fri/"
 }
 
@@ -23,10 +23,10 @@ function mk_week() {
 # Arguments:
 #   None
 #######################################
-function dl_mists_eu() {
+dl_mists() {
   now=$(TZ='UTC' date +'%Y-%m-%dT%H:%M:%SZ')
-  output="./$last_fri/$now.2.json"
-  echo "Downloading gw2mists Leaderboard Player Europe"
+  output="./$last_fri/$now.json"
+  echo "Downloading gw2mists Leaderboard Player"
   curl --silent "$gw2mists" \
   | jq '.[]
   # | select(.worldId > 2000)
@@ -75,7 +75,7 @@ function dl_mists_eu() {
   .guildWorldId,
   .guildFlag,
   .dummy)' > "$output"
-  if [[ $output ]]
+  if [ "$output" ]
   then
     echo "Created $output"
   else
@@ -89,21 +89,20 @@ function dl_mists_eu() {
 # Arguments:
 #   None
 #######################################
-function dl_gw2_eu() {
-  now=$(TZ="UTC" date +"%Y-%m-%dT%H:%M:%SZ")
-  for tier in {1..5}; do
-    echo "Downloading guildwars2 wvw match 2-$tier"
-    output="./$last_fri/$now.2-$tier.json"
-    wget --quiet --output-document=- "$gw2matches/2-$tier" \
-    | jq '. | del(.skirmishes[0:-1])' > "$output"
-    if [[ $output ]]
-    then
-        echo "Created $output"
-    else
-        echo "Error"
-        rm "$output"
-    fi
-done
+dl_gw2() {
+  now=$(TZ='UTC' date +'%Y-%m-%dT%H:%M:%SZ')
+  echo "Downloading guildwars2 all wvw matches"
+  output="./$last_fri/$now.json"
+  wget --quiet --output-document=- "$gw2matches?ids=all" \
+  | jq '.' > "$output"
+  # | jq '. | del(.skirmishes[0:-1])' > "$output"
+  if [ "$output" ]
+  then
+      echo "Created $output"
+  else
+      echo "Error"
+      rm "$output"
+  fi
 }
 
 #######################################
@@ -111,7 +110,7 @@ done
 # Arguments:
 #   None
 #######################################
-function scouter() {
+scouter() {
   echo "scout"
 }
 
@@ -120,15 +119,15 @@ function scouter() {
 # Arguments:
 #   None
 #######################################
-function impossible() {
+impossible() {
   echo "impossible"
 }
 
-function pyscore() {
-  latest_ag=$(find "./$last_fri" -name "*2-3*" | sort | tail -1)
-  if [[ $latest_ag ]]
+pyscore() {
+  latest_scores=$(find './$last_fri' -name '*Z.json' | sort | tail -1)
+  if [ "$latest_scores" ]
   then
-    cp "$latest_ag" "./data.json"
+    cp "$latest_scores" "./data.json"
     python3 "./skirmi.py"
   else
     return
@@ -138,12 +137,12 @@ function pyscore() {
 echo "["
 mk_week
 echo ""
-echo "dl_mists_eu() {"
-dl_mists_eu
+echo "dl_mists() {"
+dl_mists
 echo "}"
 echo ""
-echo "dl_gw2_eu() {"
-dl_gw2_eu
+echo "dl_gw2() {"
+dl_gw2
 echo "}"
 echo "]"
 pyscore > "./score.txt"

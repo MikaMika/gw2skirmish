@@ -1,19 +1,19 @@
-Skirmish: 47 / 84 ( 37 left )
-Red: 175 VP
-Green: 212 VP
-Blue: 177 VP
+Skirmish: 69 / 84 ( 15 left )
+Red: 266 VP
+Green: 301 VP
+Blue: 261 VP
 
-1st Victory Ratio: 75 %
+1st Victory Ratio: 68.11 %
 VP difference with 2nd: 35
-Will require 19 VP for a tie, and one more to secure position
-Difficulty: 27 %
+Will require -2 VP for a tie, and one more to secure position
+Difficulty: -3.33 %
 
-2nd Victory Ratio: 38 %
-VP difference with 3rd: 2
-Will require 36 VP for a tie, and one more to secure position
-Difficulty: 50 %
+2nd Victory Ratio: 42.75 %
+VP difference with 3rd: 5
+Will require 12 VP for a tie, and one more to secure position
+Difficulty: 43.33 %
 
-3rd Victory Ratio: 36 %
-VP difference with 1st: -37
-Will require more than 55 VP to catch up with 1st
-Difficulty: 75 %
+3rd Victory Ratio: 39.13 %
+VP difference with 1st: -40
+Will require more than 35 VP to catch up with 1st
+Difficulty: 120.0 %
