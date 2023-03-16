@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+#kdrPositive {
+  height: 100px;
+  width: 50px;
+  background-color: green;
+}
+#kdrPositiveHighlight {
+  height: 0%;
+  background-color: lime;
+}
+#kdrNegative {
+  height: 100px;
+  width: 50px;
+  background-color: red;
+}
+#kdrNegativeHighlight {
+  height: 100%;
+  background-color: maroon;
+}
+</style>
+</head>
+<body>
+
+<p>
+  Play with me!
+  <input id="kdrPercent" type="range" min="1" max="100" value="50" onmouseup="kdrRefresh()">
+</p>
+<div id='kdrBar'>
+  <div id='kdrNegative'>
+    <div id='kdrNegativeHighlight'></div>
+  </div>
+  <div id='kdrPositive'>
+    <div id='kdrPositiveHighlight'></div>
+  </div>
+</div>
+
+<script>
+  function kdrRefresh() {
+    var kdrPercent = document.getElementById("kdrPercent").value/100;
+    if (kdrPercent > 0.5) {
+      var kdrNegativePercent = 100
+      var kdrPositivePercent = ((kdrPercent*100) - 50) * 2
+    } else {
+      var kdrNegativePercent = (kdrPercent*100) * 2
+      var kdrPositivePercent = 0
+    }
+
+    var kdrPositiveHighlight = document.getElementById("kdrPositiveHighlight");
+    var kdrNegativeHighlight = document.getElementById("kdrNegativeHighlight");
+    kdrPositiveHighlight.style.height = kdrPositivePercent + "%";
+    kdrNegativeHighlight.style.height = kdrNegativePercent + "%";
+  }
+</script>
+
+</body>
+</html>
