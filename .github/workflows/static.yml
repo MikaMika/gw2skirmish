@@ -3,10 +3,9 @@ name: Deploy static content to Pages
 
 on:
   # Runs on pushes targeting the default branch
-#   push:
-#     branches: ["main"]
-  schedule:
-  - cron: "1/15 * * * *"
+  push:
+    branches: ["main"]
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -30,12 +29,6 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Bash for GitHub Actions
-        # You may pin to the exact commit or the version.
-        # uses: jcblw/bash@7bad2d963d87fdb2276647306e579de3df2c6000
-        uses: jcblw/bash@1.0.0
-        with:
-          path: 'make_html.sh'
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup Pages
@@ -44,7 +37,7 @@ jobs:
         uses: actions/upload-pages-artifact@v1
         with:
           # Upload entire repository
-          path: 'index.html'
+          path: '.'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
