@@ -10,6 +10,7 @@
           color: black;
           font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
           font-size: 14px;
+          margin-bottom: 300px;
         }
         a:link {
           color: #3498db;
@@ -30,6 +31,7 @@
           color: #ddd;
           font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
           font-size: 14px;
+          margin-bottom: 300px;
         }
         a:link {
           color: #b3b3de;
@@ -49,419 +51,601 @@
 
 <body class="main">
 <h1 id="#">gw2skirmish</h1>
+<p>Last updated: 2023-04-01T03:24:38+00:00</p>
+<div id='matches'>
 <h2>matches</h2>
 <ul>
-<li><a href='#1-1'>1-1</a></li>
-<li><a href='#1-2'>1-2</a></li>
-<li><a href='#1-3'>1-3</a></li>
-<li><a href='#1-4'>1-4</a></li>
-<li><a href='#2-1'>2-1</a></li>
-<li><a href='#2-2'>2-2</a></li>
-<li><a href='#2-3'>2-3</a></li>
-<li><a href='#2-4'>2-4</a></li>
-<li><a href='#2-5'>2-5</a></li>
+<li><a href='#2-1'>2-1</a>
+<li><a href='#2-2'>2-2</a>
+<li><a href='#2-3'>2-3</a>
+<li><a href='#2-4'>2-4</a>
+<li><a href='#2-5'>2-5</a>
+<li><a href='#1-1'>1-1</a>
+<li><a href='#1-2'>1-2</a>
+<li><a href='#1-3'>1-3</a>
+<li><a href='#1-4'>1-4</a>
 </ul>
+</div>
+<div id='worlds'>
 <h2>worlds</h2>
-<h3>north america</h3>
+<div class='region' id='north-america'>
+<h3>north america 🇺🇸</h3>
 <ul>
-<li><a href='#1001'>1001 - Anvil Rock</a></li>
-<li><a href='#1002'>1002 - Borlis Pass</a></li>
-<li><a href='#1003'>1003 - Yak's Bend</a></li>
-<li><a href='#1004'>1004 - Henge of Denravi</a></li>
-<li><a href='#1005'>1005 - Maguuma</a></li>
-<li><a href='#1006'>1006 - Sorrow's Furnace</a></li>
-<li><a href='#1007'>1007 - Gate of Madness</a></li>
-<li><a href='#1008'>1008 - Jade Quarry</a></li>
-<li><a href='#1009'>1009 - Fort Aspenwood</a></li>
-<li><a href='#1010'>1010 - Ehmry Bay</a></li>
-<li><a href='#1011'>1011 - Stormbluff Isle</a></li>
-<li><a href='#1012'>1012 - Darkhaven</a></li>
-<li><a href='#1013'>1013 - Sanctum of Rall</a></li>
-<li><a href='#1014'>1014 - Crystal Desert</a></li>
-<li><a href='#1015'>1015 - Isle of Janthir</a></li>
-<li><a href='#1016'>1016 - Sea of Sorrows</a></li>
-<li><a href='#1017'>1017 - Tarnished Coast</a></li>
-<li><a href='#1018'>1018 - Northern Shiverpeaks</a></li>
-<li><a href='#1019'>1019 - Blackgate</a></li>
-<li><a href='#1020'>1020 - Ferguson's Crossing</a></li>
-<li><a href='#1021'>1021 - Dragonbrand</a></li>
-<li><a href='#1022'>1022 - Kaineng</a></li>
-<li><a href='#1023'>1023 - Devona's Rest</a></li>
-<li><a href='#1024'>1024 - Eredon Terrace</a></li>
+<li><a href='#1001'>1001 🟩 Anvil Rock</a>
+<li><a href='#1002'>1002 🟩 Borlis Pass</a>
+<li><a href='#1003'>1003 🟩 Yak's Bend</a>
+<li><a href='#1004'>1004 🟨 Henge of Denravi</a>
+<li><a href='#1005'>1005 🟥 Maguuma</a>
+<li><a href='#1006'>1006 🟩 Sorrow's Furnace</a>
+<li><a href='#1007'>1007 🟥 Gate of Madness</a>
+<li><a href='#1008'>1008 🟧 Jade Quarry</a>
+<li><a href='#1009'>1009 🟧 Fort Aspenwood</a>
+<li><a href='#1010'>1010 🟩 Ehmry Bay</a>
+<li><a href='#1011'>1011 🟧 Stormbluff Isle</a>
+<li><a href='#1012'>1012 🟧 Darkhaven</a>
+<li><a href='#1013'>1013 🟨 Sanctum of Rall</a>
+<li><a href='#1014'>1014 🟩 Crystal Desert</a>
+<li><a href='#1015'>1015 🟩 Isle of Janthir</a>
+<li><a href='#1016'>1016 🟨 Sea of Sorrows</a>
+<li><a href='#1017'>1017 🟧 Tarnished Coast</a>
+<li><a href='#1018'>1018 🟨 Northern Shiverpeaks</a>
+<li><a href='#1019'>1019 🟥 Blackgate</a>
+<li><a href='#1020'>1020 🟩 Ferguson's Crossing</a>
+<li><a href='#1021'>1021 🟧 Dragonbrand</a>
+<li><a href='#1022'>1022 🟩 Kaineng</a>
+<li><a href='#1023'>1023 🟩 Devona's Rest</a>
+<li><a href='#1024'>1024 🟩 Eredon Terrace</a>
 </ul>
-<h3>europe</h3>
+</div>
+<div class='region' id='europe'>
+<h3>europe 🇪🇺</h3>
 <ul>
-<li>english</li>
+<li>english 🇬🇧
 <ul>
-<li><a href='#2001'>2001 - Fissure of Woe</a></li>
-<li><a href='#2002'>2002 - Desolation</a></li>
-<li><a href='#2003'>2003 - Gandara</a></li>
-<li><a href='#2004'>2004 - Blacktide</a></li>
-<li><a href='#2005'>2005 - Ring of Fire</a></li>
-<li><a href='#2006'>2006 - Underworld</a></li>
-<li><a href='#2007'>2007 - Far Shiverpeaks</a></li>
-<li><a href='#2008'>2008 - Whiteside Ridge</a></li>
-<li><a href='#2009'>2009 - Ruins of Surmia</a></li>
-<li><a href='#2010'>2010 - Seafarer's Rest</a></li>
-<li><a href='#2011'>2011 - Vabbi</a></li>
-<li><a href='#2012'>2012 - Piken Square</a></li>
-<li><a href='#2013'>2013 - Aurora Glade</a></li>
-<li><a href='#2014'>2014 - Gunnar's Hold</a></li>
+<li><a href='#2001'>2001 🟨 Fissure of Woe</a>
+<li><a href='#2002'>2002 🟥 Desolation</a>
+<li><a href='#2003'>2003 🟧 Gandara</a>
+<li><a href='#2004'>2004 🟨 Blacktide</a>
+<li><a href='#2005'>2005 🟨 Ring of Fire</a>
+<li><a href='#2006'>2006 🟧 Underworld</a>
+<li><a href='#2007'>2007 🟥 Far Shiverpeaks</a>
+<li><a href='#2008'>2008 🟧 Whiteside Ridge</a>
+<li><a href='#2009'>2009 🟨 Ruins of Surmia</a>
+<li><a href='#2010'>2010 🟨 Seafarer's Rest</a>
+<li><a href='#2011'>2011 🟨 Vabbi</a>
+<li><a href='#2012'>2012 🟥 Piken Square</a>
+<li><a href='#2013'>2013 🟧 Aurora Glade</a>
+<li><a href='#2014'>2014 🟨 Gunnar's Hold</a>
 </ul>
-<li>french</li>
+<li>french 🇫🇷
 <ul>
-<li><a href='#2101'>2101 - Jade Sea [FR]</a></li>
-<li><a href='#2102'>2102 - Fort Ranik [FR]</a></li>
-<li><a href='#2103'>2103 - Augury Rock [FR]</a></li>
-<li><a href='#2104'>2104 - Vizunah Square [FR]</a></li>
-<li><a href='#2105'>2105 - Arborstone [FR]</a></li>
+<li><a href='#2101'>2101 🟩 Jade Sea [FR]</a>
+<li><a href='#2102'>2102 🟩 Fort Ranik [FR]</a>
+<li><a href='#2103'>2103 🟧 Augury Rock [FR]</a>
+<li><a href='#2104'>2104 🟨 Vizunah Square [FR]</a>
+<li><a href='#2105'>2105 🟩 Arborstone [FR]</a>
 </ul>
-<li>german</li>
+<li>german 🇩🇪
 <ul>
-<li><a href='#2201'>2201 - Kodash [DE]</a></li>
-<li><a href='#2202'>2202 - Riverside [DE]</a></li>
-<li><a href='#2203'>2203 - Elona Reach [DE]</a></li>
-<li><a href='#2204'>2204 - Abaddon's Mouth [DE]</a></li>
-<li><a href='#2205'>2205 - Drakkar Lake [DE]</a></li>
-<li><a href='#2206'>2206 - Miller's Sound [DE]</a></li>
-<li><a href='#2207'>2207 - Dzagonur [DE]</a></li>
+<li><a href='#2201'>2201 🟩 Kodash [DE]</a>
+<li><a href='#2202'>2202 🟨 Riverside [DE]</a>
+<li><a href='#2203'>2203 🟧 Elona Reach [DE]</a>
+<li><a href='#2204'>2204 🟨 Abaddon's Mouth [DE]</a>
+<li><a href='#2205'>2205 🟥 Drakkar Lake [DE]</a>
+<li><a href='#2206'>2206 🟩 Miller's Sound [DE]</a>
+<li><a href='#2207'>2207 🟩 Dzagonur [DE]</a>
 </ul>
-<li>spanish</li>
+<li>spanish 🇪🇸
 <ul>
-<li><a href='#2301'>2301 - Baruch Bay [SP]</a></li>
+<li><a href='#2301'>2301 🟧 Baruch Bay [SP]</a>
 </ul>
 </ul>
+</div>
+</div>
+<div id='results'>
 <h2>results</h2>
-<h3 id='1-1'>1-1</h3>
-<p class='red' style='color:red;' id='1023'>1023 - Devona's Rest</p>
-<p class='red' style='color:red;' id='1019'>1019 - Blackgate</p>
-24907 kills / 36139 deaths = 68 kdr*100 (34%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 0%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 68%; height: 100%;'>
-</div>
-</div>
-</div>
-</div>
-<p class='blue' style='color:blue;' id='1020'>1020 - Ferguson's Crossing</p>
-<p class='blue' style='color:blue;' id='1015'>1015 - Isle of Janthir</p>
-21407 kills / 32422 deaths = 66 kdr*100 (33%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 0%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 66%; height: 100%;'>
-</div>
-</div>
-</div>
-</div>
-<p class='green' style='color:green;' id='1022'>1022 - Kaineng</p>
-<p class='green' style='color:green;' id='1005'>1005 - Maguuma</p>
-47729 kills / 28757 deaths = 165 kdr*100 (70%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 70%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
-</div>
-</div>
-</div>
-</div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p><a href='#'>top</a></p>
-<h3 id='1-2'>1-2</h3>
-<p class='red' style='color:red;' id='1012'>1012 - Darkhaven</p>
-<p class='red' style='color:red;' id='1021'>1021 - Dragonbrand</p>
-43525 kills / 47278 deaths = 92 kdr*100 (46%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 0%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 92%; height: 100%;'>
-</div>
-</div>
-</div>
-</div>
-<p class='blue' style='color:blue;' id='1016'>1016 - Sea of Sorrows</p>
-<p class='blue' style='color:blue;' id='1007'>1007 - Gate of Madness</p>
-41803 kills / 47906 deaths = 87 kdr*100 (43%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 0%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 86%; height: 100%;'>
-</div>
-</div>
-</div>
-</div>
-<p class='green' style='color:green;' id='1002'>1002 - Borlis Pass</p>
-<p class='green' style='color:green;' id='1018'>1018 - Northern Shiverpeaks</p>
-39028 kills / 33659 deaths = 115 kdr*100 (57%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 57%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
-</div>
-</div>
-</div>
-</div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p><a href='#'>top</a></p>
-<h3 id='1-3'>1-3</h3>
-<p class='red' style='color:red;' id='1024'>1024 - Eredon Terrace</p>
-<p class='red' style='color:red;' id='1009'>1009 - Fort Aspenwood</p>
-43368 kills / 39073 deaths = 110 kdr*100 (55%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 55%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
-</div>
-</div>
-</div>
-</div>
-<p class='blue' style='color:blue;' id='1006'>1006 - Sorrow's Furnace</p>
-<p class='blue' style='color:blue;' id='1008'>1008 - Jade Quarry</p>
-33896 kills / 39638 deaths = 85 kdr*100 (42%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 0%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 84%; height: 100%;'>
-</div>
-</div>
-</div>
-</div>
-<p class='green' style='color:green;' id='1001'>1001 - Anvil Rock</p>
-<p class='green' style='color:green;' id='1017'>1017 - Tarnished Coast</p>
-38024 kills / 40368 deaths = 94 kdr*100 (47%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 0%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 94%; height: 100%;'>
-</div>
-</div>
-</div>
-</div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p><a href='#'>top</a></p>
-<h3 id='1-4'>1-4</h3>
-<p class='red' style='color:red;' id='1003'>1003 - Yak's Bend</p>
-<p class='red' style='color:red;' id='1013'>1013 - Sanctum of Rall</p>
-29659 kills / 31582 deaths = 93 kdr*100 (46%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 0%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 92%; height: 100%;'>
-</div>
-</div>
-</div>
-</div>
-<p class='blue' style='color:blue;' id='1010'>1010 - Ehmry Bay</p>
-<p class='blue' style='color:blue;' id='1011'>1011 - Stormbluff Isle</p>
-39202 kills / 38290 deaths = 102 kdr*100 (51%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 51%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
-</div>
-</div>
-</div>
-</div>
-<p class='green' style='color:green;' id='1014'>1014 - Crystal Desert</p>
-<p class='green' style='color:green;' id='1004'>1004 - Henge of Denravi</p>
-34568 kills / 36918 deaths = 93 kdr*100 (46%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 0%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 92%; height: 100%;'>
-</div>
-</div>
-</div>
-</div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p><a href='#'>top</a></p>
+<div class='match'>
 <h3 id='2-1'>2-1</h3>
-<p class='red' style='color:red;' id='2011'>2011 - Vabbi</p>
-<p class='red' style='color:red;' id='2006'>2006 - Underworld</p>
-1816 kills / 1409 deaths = 128 kdr*100 (61%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 61%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
+<p>
+<span class='red' style='color:red;' id='2011'>2011 🟨 Vabbi</span><br>
+<span class='red' style='color:red;' id='2006'>2006 🟧 Underworld</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 62%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
 </div>
 </div>
 </div>
-</div>
-<p class='blue' style='color:blue;' id='2207'>2207 - Dzagonur [DE]</p>
-<p class='blue' style='color:blue;' id='2203'>2203 - Elona Reach [DE]</p>
-1910 kills / 1507 deaths = 126 kdr*100 (61%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 61%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
-</div>
-</div>
-</div>
-</div>
-<p class='green' style='color:green;' id='2101'>2101 - Jade Sea [FR]</p>
-<p class='green' style='color:green;' id='2012'>2012 - Piken Square</p>
-759 kills / 1735 deaths = 43 kdr*100 (21%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 0%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 42%; height: 100%;'>
+</div> 4384 kills / 3366 deaths (1.30)
+<p>
+<span class='blue' style='color:blue;' id='2207'>2207 🟩 Dzagonur [DE]</span><br>
+<span class='blue' style='color:blue;' id='2203'>2203 🟧 Elona Reach [DE]</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 53%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
 </div>
 </div>
 </div>
+</div> 3813 kills / 3613 deaths (1.05)
+<p>
+<span class='green' style='color:green;' id='2101'>2101 🟩 Jade Sea [FR]</span><br>
+<span class='green' style='color:green;' id='2012'>2012 🟥 Piken Square</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 0%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 56%; height: 100%;'>
 </div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+</div>
+</div> 2043 kills / 3625 deaths (.56)
+<p>🔴 18 VP<br>
+🔵 15 VP<br>
+🟢 15 VP<br>
+Skirmish: 4/84 (80 left, max 160 VPd)</p>
+<p>1st Victory Ratio: 75%<br>
+VP difference with 2nd: 3<br>
+Will require +78 VP over opponent for a tie, and one more to secure position<br>
+Difficulty: 49%</p>
+<p>2nd Victory Ratio: 37%<br>
+VP difference with 3rd: 0<br>
+Will require +80 VP over opponent for a tie, and one more to secure position<br>
+Difficulty: 50%</p>
+<p>3rd Victory Ratio: 37%<br>
+VP difference with 1st: -3<br>
+Will require +81 VP to catch up with 1st<br>
+Difficulty: 51%</p>
 <p><a href='#'>top</a></p>
+</div>
+<div class='match'>
 <h3 id='2-2'>2-2</h3>
-<p class='red' style='color:red;' id='2105'>2105 - Arborstone [FR]</p>
-<p class='red' style='color:red;' id='2008'>2008 - Whiteside Ridge</p>
-1988 kills / 1126 deaths = 176 kdr*100 (72%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 72%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
+<p>
+<span class='red' style='color:red;' id='2105'>2105 🟩 Arborstone [FR]</span><br>
+<span class='red' style='color:red;' id='2008'>2008 🟧 Whiteside Ridge</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 66%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
 </div>
 </div>
 </div>
-</div>
-<p class='blue' style='color:blue;' id='2002'>2002 - Desolation</p>
-895 kills / 1230 deaths = 72 kdr*100 (36%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 0%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 72%; height: 100%;'>
-</div>
-</div>
-</div>
-</div>
-<p class='green' style='color:green;' id='2010'>2010 - Seafarer's Rest</p>
-<p class='green' style='color:green;' id='2104'>2104 - Vizunah Square [FR]</p>
-1094 kills / 1723 deaths = 63 kdr*100 (31%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 0%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 62%; height: 100%;'>
+</div> 3926 kills / 2738 deaths (1.43)
+<p>
+<span class='blue' style='color:blue;' id='2002'>2002 🟥 Desolation</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 52%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
 </div>
 </div>
 </div>
+</div> 3077 kills / 2973 deaths (1.03)
+<p>
+<span class='green' style='color:green;' id='2010'>2010 🟨 Seafarer's Rest</span><br>
+<span class='green' style='color:green;' id='2104'>2104 🟨 Vizunah Square [FR]</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 0%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 62%; height: 100%;'>
 </div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+</div>
+</div> 2682 kills / 4255 deaths (.63)
+<p>🔴 16 VP<br>
+🔵 17 VP<br>
+🟢 15 VP<br>
+Skirmish: 4/84 (80 left, max 160 VPd)</p>
+<p>1st Victory Ratio: 62%<br>
+VP difference with 2nd: 1<br>
+Will require +79 VP over opponent for a tie, and one more to secure position<br>
+Difficulty: 50%</p>
+<p>2nd Victory Ratio: 50%<br>
+VP difference with 3rd: 1<br>
+Will require +79 VP over opponent for a tie, and one more to secure position<br>
+Difficulty: 50%</p>
+<p>3rd Victory Ratio: 37%<br>
+VP difference with 1st: -2<br>
+Will require +81 VP to catch up with 1st<br>
+Difficulty: 51%</p>
 <p><a href='#'>top</a></p>
+</div>
+<div class='match'>
 <h3 id='2-3'>2-3</h3>
-<p class='red' style='color:red;' id='2201'>2201 - Kodash [DE]</p>
-<p class='red' style='color:red;' id='2013'>2013 - Aurora Glade</p>
-1452 kills / 1618 deaths = 89 kdr*100 (44%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 0%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 88%; height: 100%;'>
+<p>
+<span class='red' style='color:red;' id='2201'>2201 🟩 Kodash [DE]</span><br>
+<span class='red' style='color:red;' id='2013'>2013 🟧 Aurora Glade</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 0%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 84%; height: 100%;'>
 </div>
 </div>
 </div>
-</div>
-<p class='blue' style='color:blue;' id='2205'>2205 - Drakkar Lake [DE]</p>
-1287 kills / 1388 deaths = 92 kdr*100 (46%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 0%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 92%; height: 100%;'>
-</div>
-</div>
-</div>
-</div>
-<p class='green' style='color:green;' id='2204'>2204 - Abaddon's Mouth [DE]</p>
-<p class='green' style='color:green;' id='2003'>2003 - Gandara</p>
-1573 kills / 1461 deaths = 107 kdr*100 (54%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 54%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
+</div> 3158 kills / 3683 deaths (.85)
+<p>
+<span class='blue' style='color:blue;' id='2205'>2205 🟥 Drakkar Lake [DE]</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 0%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 70%; height: 100%;'>
 </div>
 </div>
 </div>
+</div> 2185 kills / 3097 deaths (.70)
+<p>
+<span class='green' style='color:green;' id='2204'>2204 🟨 Abaddon's Mouth [DE]</span><br>
+<span class='green' style='color:green;' id='2003'>2003 🟧 Gandara</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 61%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
 </div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+</div>
+</div> 4638 kills / 3647 deaths (1.27)
+<p>🔴 16 VP<br>
+🔵 14 VP<br>
+🟢 18 VP<br>
+Skirmish: 4/84 (80 left, max 160 VPd)</p>
+<p>1st Victory Ratio: 75%<br>
+VP difference with 2nd: 2<br>
+Will require +79 VP over opponent for a tie, and one more to secure position<br>
+Difficulty: 50%</p>
+<p>2nd Victory Ratio: 50%<br>
+VP difference with 3rd: 2<br>
+Will require +79 VP over opponent for a tie, and one more to secure position<br>
+Difficulty: 50%</p>
+<p>3rd Victory Ratio: 25%<br>
+VP difference with 1st: -4<br>
+Will require +82 VP to catch up with 1st<br>
+Difficulty: 51%</p>
 <p><a href='#'>top</a></p>
+</div>
+<div class='match'>
 <h3 id='2-4'>2-4</h3>
-<p class='red' style='color:red;' id='2301'>2301 - Baruch Bay [SP]</p>
-1079 kills / 1435 deaths = 75 kdr*100 (37%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 0%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 74%; height: 100%;'>
+<p>
+<span class='red' style='color:red;' id='2301'>2301 🟧 Baruch Bay [SP]</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 0%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 76%; height: 100%;'>
 </div>
 </div>
 </div>
-</div>
-<p class='blue' style='color:blue;' id='2206'>2206 - Miller's Sound [DE]</p>
-<p class='blue' style='color:blue;' id='2007'>2007 - Far Shiverpeaks</p>
-2147 kills / 1357 deaths = 158 kdr*100 (69%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 69%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
-</div>
-</div>
-</div>
-</div>
-<p class='green' style='color:green;' id='2014'>2014 - Gunnar's Hold</p>
-<p class='green' style='color:green;' id='2005'>2005 - Ring of Fire</p>
-1334 kills / 1920 deaths = 69 kdr*100 (34%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 0%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 68%; height: 100%;'>
+</div> 3082 kills / 3969 deaths (.77)
+<p>
+<span class='blue' style='color:blue;' id='2206'>2206 🟩 Miller's Sound [DE]</span><br>
+<span class='blue' style='color:blue;' id='2007'>2007 🟥 Far Shiverpeaks</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 68%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
 </div>
 </div>
 </div>
+</div> 5013 kills / 3203 deaths (1.56)
+<p>
+<span class='green' style='color:green;' id='2014'>2014 🟨 Gunnar's Hold</span><br>
+<span class='green' style='color:green;' id='2005'>2005 🟨 Ring of Fire</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 0%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 72%; height: 100%;'>
 </div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+</div>
+</div> 3630 kills / 4923 deaths (.73)
+<p>🔴 16 VP<br>
+🔵 14 VP<br>
+🟢 18 VP<br>
+Skirmish: 4/84 (80 left, max 160 VPd)</p>
+<p>1st Victory Ratio: 75%<br>
+VP difference with 2nd: 2<br>
+Will require +79 VP over opponent for a tie, and one more to secure position<br>
+Difficulty: 50%</p>
+<p>2nd Victory Ratio: 50%<br>
+VP difference with 3rd: 2<br>
+Will require +79 VP over opponent for a tie, and one more to secure position<br>
+Difficulty: 50%</p>
+<p>3rd Victory Ratio: 25%<br>
+VP difference with 1st: -4<br>
+Will require +82 VP to catch up with 1st<br>
+Difficulty: 51%</p>
 <p><a href='#'>top</a></p>
+</div>
+<div class='match'>
 <h3 id='2-5'>2-5</h3>
-<p class='red' style='color:red;' id='2102'>2102 - Fort Ranik [FR]</p>
-<p class='red' style='color:red;' id='2103'>2103 - Augury Rock [FR]</p>
-1364 kills / 1159 deaths = 117 kdr*100 (58%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 58%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
+<p>
+<span class='red' style='color:red;' id='2102'>2102 🟩 Fort Ranik [FR]</span><br>
+<span class='red' style='color:red;' id='2103'>2103 🟧 Augury Rock [FR]</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 0%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 84%; height: 100%;'>
 </div>
 </div>
 </div>
-</div>
-<p class='blue' style='color:blue;' id='2004'>2004 - Blacktide</p>
-<p class='blue' style='color:blue;' id='2202'>2202 - Riverside [DE]</p>
-878 kills / 1796 deaths = 48 kdr*100 (24%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 0%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 48%; height: 100%;'>
-</div>
-</div>
-</div>
-</div>
-<p class='green' style='color:green;' id='2009'>2009 - Ruins of Surmia</p>
-<p class='green' style='color:green;' id='2001'>2001 - Fissure of Woe</p>
-1579 kills / 964 deaths = 163 kdr*100 (70%)
-<div id='green' style='background-color: green; height: 10px; width: 100px;'>
-<div id='lime' style='background-color: lime; width: 70%; height: 100%;'>
-<div id='red' style='background-color: red; width: 50px; height: 100%;'>
-<div id='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
+</div> 3201 kills / 3783 deaths (.84)
+<p>
+<span class='blue' style='color:blue;' id='2004'>2004 🟨 Blacktide</span><br>
+<span class='blue' style='color:blue;' id='2202'>2202 🟨 Riverside [DE]</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 0%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 46%; height: 100%;'>
 </div>
 </div>
 </div>
+</div> 2178 kills / 4700 deaths (.46)
+<p>
+<span class='green' style='color:green;' id='2009'>2009 🟨 Ruins of Surmia</span><br>
+<span class='green' style='color:green;' id='2001'>2001 🟨 Fissure of Woe</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 77%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
 </div>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+</div>
+</div>
+</div> 5305 kills / 2487 deaths (2.13)
+<p>🔴 13 VP<br>
+🔵 15 VP<br>
+🟢 20 VP<br>
+Skirmish: 4/84 (80 left, max 160 VPd)</p>
+<p>1st Victory Ratio: 100%<br>
+VP difference with 2nd: 5<br>
+Will require +77 VP over opponent for a tie, and one more to secure position<br>
+Difficulty: 48%</p>
+<p>2nd Victory Ratio: 37%<br>
+VP difference with 3rd: 2<br>
+Will require +79 VP over opponent for a tie, and one more to secure position<br>
+Difficulty: 50%</p>
+<p>3rd Victory Ratio: 12%<br>
+VP difference with 1st: -7<br>
+Will require +83 VP to catch up with 1st<br>
+Difficulty: 52%</p>
 <p><a href='#'>top</a></p>
+</div>
+<div class='match'>
+<h3 id='1-1'>1-1</h3>
+<p>
+<span class='red' style='color:red;' id='1014'>1014 🟩 Crystal Desert</span><br>
+<span class='red' style='color:red;' id='1004'>1004 🟨 Henge of Denravi</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 0%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 54%; height: 100%;'>
+</div>
+</div>
+</div>
+</div> 691 kills / 1270 deaths (.54)
+<p>
+<span class='blue' style='color:blue;' id='1001'>1001 🟩 Anvil Rock</span><br>
+<span class='blue' style='color:blue;' id='1017'>1017 🟧 Tarnished Coast</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 0%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 80%; height: 100%;'>
+</div>
+</div>
+</div>
+</div> 1034 kills / 1290 deaths (.80)
+<p>
+<span class='green' style='color:green;' id='1023'>1023 🟩 Devona's Rest</span><br>
+<span class='green' style='color:green;' id='1005'>1005 🟥 Maguuma</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 71%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
+</div>
+</div>
+</div>
+</div> 1735 kills / 1003 deaths (1.72)
+<p>🔴 0 VP<br>
+🔵 0 VP<br>
+🟢 0 VP<br>
+Skirmish: 0/84 (84 left, max 168 VPd)</p>
+<p>1st Victory Ratio: 0%<br>
+VP difference with 2nd: 0<br>
+Will require +84 VP over opponent for a tie, and one more to secure position<br>
+Difficulty: 50%</p>
+<p>2nd Victory Ratio: 0%<br>
+VP difference with 3rd: 0<br>
+Will require +84 VP over opponent for a tie, and one more to secure position<br>
+Difficulty: 50%</p>
+<p>3rd Victory Ratio: 0%<br>
+VP difference with 1st: 0<br>
+Will require +84 VP to catch up with 1st<br>
+Difficulty: 50%</p>
+<p><a href='#'>top</a></p>
+</div>
+<div class='match'>
+<h3 id='1-2'>1-2</h3>
+<p>
+<span class='red' style='color:red;' id='1022'>1022 🟩 Kaineng</span><br>
+<span class='red' style='color:red;' id='1019'>1019 🟥 Blackgate</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 0%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 68%; height: 100%;'>
+</div>
+</div>
+</div>
+</div> 948 kills / 1358 deaths (.69)
+<p>
+<span class='blue' style='color:blue;' id='1024'>1024 🟩 Eredon Terrace</span><br>
+<span class='blue' style='color:blue;' id='1018'>1018 🟨 Northern Shiverpeaks</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 68%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
+</div>
+</div>
+</div>
+</div> 1592 kills / 1045 deaths (1.52)
+<p>
+<span class='green' style='color:green;' id='1003'>1003 🟩 Yak's Bend</span><br>
+<span class='green' style='color:green;' id='1008'>1008 🟧 Jade Quarry</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 0%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 76%; height: 100%;'>
+</div>
+</div>
+</div>
+</div> 805 kills / 1052 deaths (.76)
+<p>🔴 0 VP<br>
+🔵 0 VP<br>
+🟢 0 VP<br>
+Skirmish: 0/84 (84 left, max 168 VPd)</p>
+<p>1st Victory Ratio: 0%<br>
+VP difference with 2nd: 0<br>
+Will require +84 VP over opponent for a tie, and one more to secure position<br>
+Difficulty: 50%</p>
+<p>2nd Victory Ratio: 0%<br>
+VP difference with 3rd: 0<br>
+Will require +84 VP over opponent for a tie, and one more to secure position<br>
+Difficulty: 50%</p>
+<p>3rd Victory Ratio: 0%<br>
+VP difference with 1st: 0<br>
+Will require +84 VP to catch up with 1st<br>
+Difficulty: 50%</p>
+<p><a href='#'>top</a></p>
+</div>
+<div class='match'>
+<h3 id='1-3'>1-3</h3>
+<p>
+<span class='red' style='color:red;' id='1015'>1015 🟩 Isle of Janthir</span><br>
+<span class='red' style='color:red;' id='1007'>1007 🟥 Gate of Madness</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 0%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 96%; height: 100%;'>
+</div>
+</div>
+</div>
+</div> 1123 kills / 1160 deaths (.96)
+<p>
+<span class='blue' style='color:blue;' id='1002'>1002 🟩 Borlis Pass</span><br>
+<span class='blue' style='color:blue;' id='1021'>1021 🟧 Dragonbrand</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 0%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 34%; height: 100%;'>
+</div>
+</div>
+</div>
+</div> 458 kills / 1280 deaths (.35)
+<p>
+<span class='green' style='color:green;' id='1006'>1006 🟩 Sorrow's Furnace</span><br>
+<span class='green' style='color:green;' id='1012'>1012 🟧 Darkhaven</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 74%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
+</div>
+</div>
+</div>
+</div> 1606 kills / 852 deaths (1.88)
+<p>🔴 0 VP<br>
+🔵 0 VP<br>
+🟢 0 VP<br>
+Skirmish: 0/84 (84 left, max 168 VPd)</p>
+<p>1st Victory Ratio: 0%<br>
+VP difference with 2nd: 0<br>
+Will require +84 VP over opponent for a tie, and one more to secure position<br>
+Difficulty: 50%</p>
+<p>2nd Victory Ratio: 0%<br>
+VP difference with 3rd: 0<br>
+Will require +84 VP over opponent for a tie, and one more to secure position<br>
+Difficulty: 50%</p>
+<p>3rd Victory Ratio: 0%<br>
+VP difference with 1st: 0<br>
+Will require +84 VP to catch up with 1st<br>
+Difficulty: 50%</p>
+<p><a href='#'>top</a></p>
+</div>
+<div class='match'>
+<h3 id='1-4'>1-4</h3>
+<p>
+<span class='red' style='color:red;' id='1016'>1016 🟨 Sea of Sorrows</span><br>
+<span class='red' style='color:red;' id='1013'>1013 🟨 Sanctum of Rall</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 0%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 84%; height: 100%;'>
+</div>
+</div>
+</div>
+</div> 686 kills / 797 deaths (.85)
+<p>
+<span class='blue' style='color:blue;' id='1010'>1010 🟩 Ehmry Bay</span><br>
+<span class='blue' style='color:blue;' id='1011'>1011 🟧 Stormbluff Isle</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 53%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 100%; height: 100%;'>
+</div>
+</div>
+</div>
+</div> 862 kills / 810 deaths (1.06)
+<p>
+<span class='green' style='color:green;' id='1020'>1020 🟩 Ferguson's Crossing</span><br>
+<span class='green' style='color:green;' id='1009'>1009 🟧 Fort Aspenwood</span><br>
+</p>
+<div class='green' style='display:inline-block; border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
+<div class='lime' style='background-color: lime; width: 0%; height: 100%;'>
+<div class='red' style='background-color: red; width: 50px; height: 100%;'>
+<div class='maroon' style='background-color: maroon; width: 98%; height: 100%;'>
+</div>
+</div>
+</div>
+</div> 903 kills / 903 deaths (.99)
+<p>🔴 0 VP<br>
+🔵 0 VP<br>
+🟢 0 VP<br>
+Skirmish: 0/84 (84 left, max 168 VPd)</p>
+<p>1st Victory Ratio: 0%<br>
+VP difference with 2nd: 0<br>
+Will require +84 VP over opponent for a tie, and one more to secure position<br>
+Difficulty: 50%</p>
+<p>2nd Victory Ratio: 0%<br>
+VP difference with 3rd: 0<br>
+Will require +84 VP over opponent for a tie, and one more to secure position<br>
+Difficulty: 50%</p>
+<p>3rd Victory Ratio: 0%<br>
+VP difference with 1st: 0<br>
+Will require +84 VP to catch up with 1st<br>
+Difficulty: 50%</p>
+<p><a href='#'>top</a></p>
+</div>
+</div>
 </body>
 
 </html>
