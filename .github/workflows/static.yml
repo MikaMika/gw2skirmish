@@ -39,8 +39,7 @@ jobs:
           # make file runnable, might not be necessary
           chmod +x "./make_html.sh"
           # run script
-          run:  bash "./make_html.sh"
-          shell: bash
+          bash "./make_html.sh"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
