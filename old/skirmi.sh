@@ -24,7 +24,7 @@ mk_week() {
 #   None
 #######################################
 dl_mists() {
-  now=$(TZ='UTC' date +'%Y-%m-%dT%H:%M:%SZ')
+  now=$(TZ='UTC' date +'%Y-%m-%dT%H%M%SZ')
   output="./$last_fri/$now.json"
   echo "Downloading gw2mists Leaderboard Player"
   curl --silent "$gw2mists" \
@@ -90,7 +90,7 @@ dl_mists() {
 #   None
 #######################################
 dl_gw2() {
-  now=$(TZ='UTC' date +'%Y-%m-%dT%H:%M:%SZ')
+  now=$(TZ='UTC' date +'%Y-%m-%dT%H%M%SZ')
   echo "Downloading guildwars2 all wvw matches"
   output="./$last_fri/$now.json"
   wget --quiet --output-document=- "$gw2matches?ids=all" \
