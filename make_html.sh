@@ -163,11 +163,13 @@ match_info() {
     done
     echo "Victory Points: $frst<br>"
     echo "Victory Ratio: $frst_victory_ratio%<br>"
+    echo "Prediction: $(( frst+(skirmish_remaining*3)+(vp_remaining*frst_victory_ratio/100)+1 ))<br>"
+    echo "<br>"
     echo ":$frst_color:🥇 vs :$scnd_color:🥈: $frst_vp_difference<br>"
     echo "Homestretch: $frst_tie<br>"
     echo "Difficulty: $frst_difficulty% - $(( 100 - frst_difficulty ))%<br>"
     echo "Certitude: $(( 2 * (50 - frst_difficulty) ))%<br>"
-    echo "Prediction: $(( frst+(skirmish_remaining*3)+(vp_remaining*frst_victory_ratio/100)+1 ))</p>"
+    echo "</p>"
 
     [ $vp_max = $vp_min ] && scnd_victory_ratio=0 \
     || scnd_victory_ratio=$(( 100 * (scnd - vp_min) / (vp_max - vp_min) ))
@@ -186,11 +188,13 @@ match_info() {
     done
     echo "Victory Points: $scnd<br>"
     echo "Victory Ratio: $scnd_victory_ratio%<br>"
+    echo "Prediction: $(( scnd+(skirmish_remaining*3)+(vp_remaining*scnd_victory_ratio/100)+1 ))<br>"
+    echo "<br>"
     echo ":$scnd_color:🥈 vs :$thrd_color:🥉: $scnd_vp_difference<br>"
     echo "Homestretch: $scnd_tie<br>"
     echo "Difficulty: $scnd_difficulty% - $(( 100 - scnd_difficulty ))%<br>"
     echo "Certitude: $(( 2 * (50 - scnd_difficulty) ))%<br>"
-    echo "Prediction: $(( scnd+(skirmish_remaining*3)+(vp_remaining*scnd_victory_ratio/100)+1 ))</p>"
+    echo "</p>"
 
     [ $vp_max = $vp_min ] && thrd_victory_ratio=0 \
     || thrd_victory_ratio=$(( 100 * (thrd - vp_min) / (vp_max - vp_min) ))
@@ -209,11 +213,13 @@ match_info() {
     done
     echo "Victory Points: $thrd<br>"
     echo "Victory Ratio: $thrd_victory_ratio%<br>"
+    echo "Prediction: $(( thrd+(skirmish_remaining*3)+(vp_remaining*thrd_victory_ratio/100)+1 ))<br>"
+    echo "<br>"
     echo ":$thrd_color:🥉 vs :$frst_color:🥇: $thrd_vp_difference<br>"
     echo "Homestretch: $thrd_tie<br>"
     echo "Difficulty: $thrd_difficulty% - $(( 100 - thrd_difficulty ))%<br>"
     echo "Certitude: $(( 2 * (thrd_difficulty-50) ))%<br>"
-    echo "Prediction: $(( thrd+(skirmish_remaining*3)+(vp_remaining*thrd_victory_ratio/100)+1 ))</p>"
+    echo "</p>"
 
     echo "</div>"
     echo "<p><a href='#'>⬆️Return to top</a></p>"
