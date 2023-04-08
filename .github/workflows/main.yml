@@ -8,6 +8,9 @@ jobs:
     name: deploy to staging
     runs-on: ubuntu-latest
     steps:
-      - name: Run build script
-        run:  bash ${GITHUB_WORKSPACE}/make_html.sh
-        shell: bash
+      - run: |
+          # make file runnable, might not be necessary
+          chmod +x "./make_html.sh"
+          # 
+          run:  bash "./make_html.sh"
+          shell: bash
