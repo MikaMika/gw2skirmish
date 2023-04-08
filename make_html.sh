@@ -305,7 +305,6 @@ make_index() {
 }
 
 # exec
-start=`date +%s`
 [ -f "worlds.json" ] || dl_worlds
 [ -f "matches.json" ] || dl_matches
 make_index \
@@ -318,6 +317,3 @@ make_index \
 | sed s/:green:/🟢/g > index.html
 rm worlds.json
 rm matches.json
-#end=`date +%s`
-#runtime=$((end-start))
-#notify-send "index.html done in $runtime seconds"
