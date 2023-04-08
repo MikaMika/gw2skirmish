@@ -58,8 +58,9 @@ make_list_worlds() {
 li_world() {
     echo "<ul>"
     for world_id in ${1}; do
-        world_name=$(jq -r ".[]|select(.id==$world_id).name" worlds.json)
-        world_pop=$(jq -r ".[]|select(.id==$world_id).population" worlds.json)
+        world_json=$(jq ".[] | select(.id == $world_id)" worlds.json)
+        world_name=$(echo "$world_json" | jq -r ".name")
+        world_pop=$(echo "$world_json" | jq -r ".population")
         echo "<li><a href='#$world_id'>$world_id :$world_pop: $world_name</a>"
 #        echo "<li><a href='#$world_id'>$world_id $world_name</a>"
     done
@@ -155,8 +156,9 @@ match_info() {
     echo "<p>"
     for world_id in $(jq ".[$match].all_worlds.${frst_color}[]" matches.json)
     do
-      world_name=$(jq -r ".[]|select(.id==$world_id).name" worlds.json)
-      world_pop=$(jq -r ".[]|select(.id==$world_id).population" worlds.json)
+      world_json=$(jq ".[] | select(.id == $world_id)" worlds.json)
+      world_name=$(echo "$world_json" | jq -r ".name")
+      world_pop=$(echo "$world_json" | jq -r ".population")
       echo "<b class='$frst_color' id='$world_id'>:$world_pop: $world_name</b><br>"
     done
     echo "Victory Points: $frst<br>"
@@ -177,8 +179,9 @@ match_info() {
     echo "<p>"
     for world_id in $(jq ".[$match].all_worlds.${scnd_color}[]" matches.json)
     do
-      world_name=$(jq -r ".[]|select(.id==$world_id).name" worlds.json)
-      world_pop=$(jq -r ".[]|select(.id==$world_id).population" worlds.json)
+      world_json=$(jq ".[] | select(.id == $world_id)" worlds.json)
+      world_name=$(echo "$world_json" | jq -r ".name")
+      world_pop=$(echo "$world_json" | jq -r ".population")
       echo "<b class='$scnd_color' id='$world_id'>:$world_pop: $world_name</b><br>"
     done
     echo "Victory Points: $scnd<br>"
@@ -199,8 +202,9 @@ match_info() {
     echo "<p>"
     for world_id in $(jq ".[$match].all_worlds.${thrd_color}[]" matches.json)
     do
-      world_name=$(jq -r ".[]|select(.id==$world_id).name" worlds.json)
-      world_pop=$(jq -r ".[]|select(.id==$world_id).population" worlds.json)
+      world_json=$(jq ".[] | select(.id == $world_id)" worlds.json)
+      world_name=$(echo "$world_json" | jq -r ".name")
+      world_pop=$(echo "$world_json" | jq -r ".population")
       echo "<b class='$thrd_color' id='$world_id'>:$world_pop: $world_name</b><br>"
     done
     echo "Victory Points: $thrd<br>"
