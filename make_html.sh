@@ -312,8 +312,8 @@ make_index \
 | sed s/:red:/🔴/g \
 | sed s/:blue:/🔵/g \
 | sed s/:green:/🟢/g > index.html
-#rm worlds.json
-#rm matches.json
-end=`date +%s`
-runtime=$((end-start))
-notify-send "index.html done in $runtime seconds"
+rm worlds.json
+rm matches.json
+#end=`date +%s`
+#runtime=$((end-start))
+#notify-send "index.html done in $runtime seconds"
