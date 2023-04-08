@@ -9,5 +9,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Run build script
-        run: ./make_html.sh
+        run: ./.github/scripts/build.sh
         shell: bash
