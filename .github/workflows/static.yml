@@ -38,7 +38,7 @@ jobs:
       - run: |
           # make file runnable, might not be necessary
           chmod +x "./make_html.sh"
-          # 
+          # run script
           run:  bash "./make_html.sh"
           shell: bash
       - name: Upload artifact
