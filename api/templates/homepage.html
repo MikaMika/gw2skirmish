@@ -112,14 +112,14 @@
     </nav>
     <main>
       <div id="results">
-        <h2>results // TODO: compute results (pending)</h2>
+        <h2>results</h2>
         {% for match in matches %}
         <article class="match">
           <h3 id="{{match.id}}">{{match.id}}</h3>
           <p>
             Skirmishes completed: {{match.skirmishes|length}}/84<br />
             Skirmishes left: {{84 - match.skirmishes|length}}<br />
-            Max earnable VP difference: 
+            Max earnable VP difference: {{match['results']['max_earnable_vp']}}
           </p>
           <div
             class="rbg"
@@ -129,41 +129,53 @@
               align-items: flex-end;
             "
           >
-
-            
-
             <p>
-              <b class="green" id="{{match['all_worlds']['green'][0]}}">{{world_title(worlds_by_id[match['all_worlds']['green'][0]])}}</b><br />
-              <b class="green" id="{{match['all_worlds']['green'][1]}}">{{world_title(worlds_by_id[match['all_worlds']['green'][1]]|default("N/A"))}}</b><br />
-              Victory Points: <br />
-              Victory Ratio: <br />
-              🟢🥇 vs 🔴🥈: <br />
-              Homestretch: <br />
-              Difficulty: % - %<br />
-              Certitude: %<br />
-              Prediction: 
+              <b class="green" id="{{match['all_worlds']['green'][0]}}"
+                >{{world_title(worlds_by_id[match['all_worlds']['green'][0]])}}</b
+              ><br />
+              <b class="green" id="{{match['all_worlds']['green'][1]}}"
+                >{{world_title(worlds_by_id[match['all_worlds']['green'][1]]|default("N/A"))}}</b
+              ><br />
+              Victory Points: {{match['results']['first_vp']}}<br />
+              Victory Ratio: {{match['results']['first_vp_ratio']}}<br />
+              Prediction: {{match['results']['first_prediction']}}<br /><br />
+              🟢🥇 vs 🔴🥈: {{match['results']['first_point_diff']}}<br />
+              Homestretch: {{match['results']['first_tie']}}<br />
+              Difficulty: {{match['results']['first_difficulty']}}% -
+              {{match['results']['second_difficulty_max']}}%<br />
+              Certitude: {{match['results']['first_certitude']}}%<br />
             </p>
             <p>
-              <b class="red" id="{{match['all_worlds']['red'][0]}}">{{world_title(worlds_by_id[match['all_worlds']['red'][0]])}}</b><br />
-              <b class="red" id="{{match['all_worlds']['green'][1]}}">{{world_title(worlds_by_id[match['all_worlds']['red'][1]]|default("N/A"))}}</b><br />
-              Victory Points: <br />
-              Victory Ratio: %<br />
-              🔴🥈 vs 🔵🥉: <br />
-              Homestretch: <br />
-              Difficulty: % - %<br />
-              Certitude: %<br />
-              Prediction: 
+              <b class="red" id="{{match['all_worlds']['red'][0]}}"
+                >{{world_title(worlds_by_id[match['all_worlds']['red'][0]])}}</b
+              ><br />
+              <b class="red" id="{{match['all_worlds']['green'][1]}}"
+                >{{world_title(worlds_by_id[match['all_worlds']['red'][1]]|default("N/A"))}}</b
+              ><br />
+              Victory Points: {{match['results']['second_vp']}}<br />
+              Victory Ratio: {{match['results']['second_vp_ratio']}}%<br />
+              Prediction: {{match['results']['second_prediction']}}<br /><br />
+              🔴🥈 vs 🔵🥉: {{match['results']['second_point_diff']}}<br />
+              Homestretch: {{match['results']['second_tie']}}<br />
+              Difficulty: {{match['results']['second_difficulty']}}% -
+              {{match['results']['second_difficulty_max']}}%<br />
+              Certitude: {{match['results']['second_certitude']}}%<br />
             </p>
             <p>
-              <b class="blue" id="{{match['all_worlds']['blue'][0]}}">{{world_title(worlds_by_id[match['all_worlds']['blue'][0]])}}</b><br />
-              <b class="blue" id="{{match['all_worlds']['blue'][1]}}">{{world_title(worlds_by_id[match['all_worlds']['blue'][1]]|default("N/A"))}}</b><br />
-              Victory Points: <br />
-              Victory Ratio: %<br />
-              🔵🥉 vs 🟢🥇: <br />
-              Homestretch: <br />
-              Difficulty: % - %<br />
-              Certitude: %<br />
-              Prediction: 
+              <b class="blue" id="{{match['all_worlds']['blue'][0]}}"
+                >{{world_title(worlds_by_id[match['all_worlds']['blue'][0]])}}</b
+              ><br />
+              <b class="blue" id="{{match['all_worlds']['blue'][1]}}"
+                >{{world_title(worlds_by_id[match['all_worlds']['blue'][1]]|default("N/A"))}}</b
+              ><br />
+              Victory Points: {{match['results']['third_vp']}}<br />
+              Victory Ratio: {{match['results']['third_vp_ratio']}}%<br />
+              Prediction: {{match['results']['third_prediction']}}<br /><br />
+              🔵🥉 vs 🟢🥇: {{match['results']['third_point_diff']}}<br />
+              Homestretch: {{match['results']['third_tie']}}<br />
+              Difficulty: {{match['results']['third_difficulty']}}% -
+              {{match['results']['second_difficulty_max']}}%<br />
+              Certitude: {{match['results']['third_certitude']}}%<br />
             </p>
           </div>
           <p><a href="#">⬆️Return to top</a></p>

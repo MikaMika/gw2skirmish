@@ -1,7 +1,8 @@
 from flask import Flask, render_template
 from datetime import datetime, timezone
 
-from anet import get_matches,get_worlds,get_world_by_id
+from .anet import get_matches,get_worlds,get_world_by_id
+from .match_math import calculate_scores
 
 app = Flask(__name__)
 
@@ -11,6 +12,7 @@ def hello():
     matches = get_matches()
     worlds = get_worlds()
     worlds_by_id = get_world_by_id(worlds)
+    calculate_scores(matches,worlds_by_id)
     now_utc = datetime.now(timezone.utc)
     return render_template('homepage.html', matches=matches,now_utc=now_utc,worlds=worlds,worlds_by_id=worlds_by_id)
 
