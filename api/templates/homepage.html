@@ -1,0 +1,182 @@
+{% from 'macros.html' import world_title %}<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>gw2skirmish</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
+    <style>
+      .red {
+        color: #ee0000;
+      }
+      .blue {
+        color: #6161ff;
+      }
+      .green {
+        color: #008a00;
+      }
+      @media (prefers-color-scheme: dark) {
+        .red {
+          color: #ff7878;
+        }
+        .blue {
+          color: #7878ff;
+        }
+        .green {
+          color: #78ff78;
+        }
+      }
+    </style>
+  </head>
+  <body class="main">
+    <header>
+      <h1 id="#">gw2skirmish</h1>
+      <p>Last updated: <span class="utcToLocal">{{now_utc}}</span></p>
+      <p>
+        <a href="https://github.com/MikaMika/gw2skirmish">Link to GitHub</a>
+      </p>
+    </header>
+    <nav>
+      <div id="matches">
+        <h2>matches</h2>
+        <ul>
+          {% for match in matches %}
+          <li><a href="#{{ match.id }}">{{ match.id }}</a></li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div id="worlds">
+        <h2>worlds</h2>
+        <div class="region" id="north-america">
+          <h3>north america 🇺🇸</h3>
+          <ul>
+            {% for world in worlds %} {% if world.id < 2000 %}
+            <li>
+              <a href="#{{ world.id }}">{{world_title(world)}}</a>
+            </li>
+            {% endif %} {% endfor %}
+          </ul>
+        </div>
+        <div class="region" id="europe">
+          <h3>europe 🇪🇺</h3>
+          <ul>
+            <li>
+              english 🇬🇧
+              <ul>
+                {% for world in worlds %} {% if world.id >= 2000 and world.id <=
+                2100 %}
+                <li>
+                  <a href="#{{ world.id }}">{{world_title(world)}}</a>
+                </li>
+                {% endif %} {% endfor %}
+              </ul>
+            </li>
+
+            <li>
+              french 🇫🇷
+              <ul>
+                {% for world in worlds %} {% if world.id >= 2100 and world.id <=
+                2200 %}
+                <li>
+                  <a href="#{{ world.id }}">{{world_title(world)}}</a>
+                </li>
+                {% endif %} {% endfor %}
+              </ul>
+            </li>
+
+            <li>
+              german 🇩🇪
+              <ul>
+                {% for world in worlds %} {% if world.id >= 2200 and world.id <=
+                2300 %}
+                <li>
+                  <a href="#{{ world.id }}">{{world_title(world)}}</a>
+                </li>
+                {% endif %} {% endfor %}
+              </ul>
+            </li>
+
+            <li>
+              spanish 🇪🇸
+              <ul>
+                {% for world in worlds %} {% if world.id >= 2300 and world.id <=
+                2400 %}
+                <li>
+                  <a href="#{{ world.id }}">{{world_title(world)}}</a>
+                </li>
+                {% endif %} {% endfor %}
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <main>
+      <div id="results">
+        <h2>results // TODO: compute results (pending)</h2>
+        {% for match in matches %}
+        <article class="match">
+          <h3 id="{{match.id}}">{{match.id}}</h3>
+          <p>
+            Skirmishes completed: {{match.skirmishes|length}}/84<br />
+            Skirmishes left: {{84 - match.skirmishes|length}}<br />
+            Max earnable VP difference: 
+          </p>
+          <div
+            class="rbg"
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: flex-end;
+            "
+          >
+
+            
+
+            <p>
+              <b class="green" id="{{match['all_worlds']['green'][0]}}">{{world_title(worlds_by_id[match['all_worlds']['green'][0]])}}</b><br />
+              <b class="green" id="{{match['all_worlds']['green'][1]}}">{{world_title(worlds_by_id[match['all_worlds']['green'][1]]|default("N/A"))}}</b><br />
+              Victory Points: <br />
+              Victory Ratio: <br />
+              🟢🥇 vs 🔴🥈: <br />
+              Homestretch: <br />
+              Difficulty: % - %<br />
+              Certitude: %<br />
+              Prediction: 
+            </p>
+            <p>
+              <b class="red" id="{{match['all_worlds']['red'][0]}}">{{world_title(worlds_by_id[match['all_worlds']['red'][0]])}}</b><br />
+              <b class="red" id="{{match['all_worlds']['green'][1]}}">{{world_title(worlds_by_id[match['all_worlds']['red'][1]]|default("N/A"))}}</b><br />
+              Victory Points: <br />
+              Victory Ratio: %<br />
+              🔴🥈 vs 🔵🥉: <br />
+              Homestretch: <br />
+              Difficulty: % - %<br />
+              Certitude: %<br />
+              Prediction: 
+            </p>
+            <p>
+              <b class="blue" id="{{match['all_worlds']['blue'][0]}}">{{world_title(worlds_by_id[match['all_worlds']['blue'][0]])}}</b><br />
+              <b class="blue" id="{{match['all_worlds']['blue'][1]}}">{{world_title(worlds_by_id[match['all_worlds']['blue'][1]]|default("N/A"))}}</b><br />
+              Victory Points: <br />
+              Victory Ratio: %<br />
+              🔵🥉 vs 🟢🥇: <br />
+              Homestretch: <br />
+              Difficulty: % - %<br />
+              Certitude: %<br />
+              Prediction: 
+            </p>
+          </div>
+          <p><a href="#">⬆️Return to top</a></p>
+        </article>
+        {% endfor %}
+      </div>
+    </main>
+    <footer></footer>
+    <script>
+      // convert UTC time to local time for user on browser
+      document.querySelectorAll(".utcToLocal").forEach(function (i) {
+        i.innerText = new Date(i.innerText); //.toLocaleString();
+      });
+    </script>
+  </body>
+</html>

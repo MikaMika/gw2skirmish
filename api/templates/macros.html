@@ -1,0 +1,9 @@
+{% macro world_title(world) %}
+    <span class="{{world.id}}">
+        {{ world.id }} {% if world.population == "Full" %}🟥{% endif
+            %} {% if world.population == "VeryHigh" %}🟧{% endif %} {%
+            if world.population == "High" %}🟨{% endif %} {% if
+            world.population == "Medium" %}🟩{% endif %} {{ world.name
+            }}
+    </span>
+{% endmacro %}
