@@ -2,6 +2,10 @@
 
 Website that displays WvW Skirmish information from Guild Wars 2.
 
+- Bash: https://mikamika.github.io/gw2skirmish/
+- Python: https://gw2skirmish-mikamika.vercel.app/
+- GPT: https://gw2skirmish-mikamika.vercel.app/gpt
+
 ## Features
 
 This is not yet another way to display current WvW Matches information. The aim is to provide unique features not found on other websites.
