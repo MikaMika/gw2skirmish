@@ -1,0 +1,49 @@
+.red {
+    color: #ee0000;
+}
+
+.blue {
+    color: #6161ff;
+}
+
+.green {
+    color: #008a00;
+}
+
+@media (prefers-color-scheme: dark) {
+    .red {
+        color: #ff7878;
+    }
+
+    .blue {
+        color: #7878ff;
+    }
+
+    .green {
+        color: #78ff78;
+    }
+}
+
+
+.menu-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+}
+
+.menu-item {
+    list-style-type: none;
+    margin: 0 15px;
+}
+
+.menu-item a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 18px;
+    transition: color 0.3s;
+}
+
+.menu-item a:hover {
+    color: #f1c40f;
+}
