@@ -95,40 +95,44 @@ def calculate_scores(matches, worlds_by_id):
         )
         third_certitude = 2 * (third_difficulty - 50)
 
-        # save calculated results for the match
-        # format floats to appropriate demical places
-        match["results"] = {}
-        match["results"]["remaining_skirmishes"] = remaining_skirmishes
-        match["results"]["remaining_vp"] = vp_remaining
-        match["results"]["max_earnable_vp"] = max_earnable_vp
-
-        match["results"]["first_vp"] = first_vp
-        match["results"]["first_point_diff"] = first_point_diff
-        match["results"]["first_vp_ratio"] = format(first_vp_ratio,".2f")
-        match["results"]["first_tie"] = format(first_tie,".2f")
-        match["results"]["first_secure"] = first_secure
-        match["results"]["first_difficulty"] = format(first_difficulty,".0f")
-        match["results"]["first_difficulty_max"] = format(100-first_difficulty,".0f")
-        match["results"]["first_prediction"] = format(first_prediction,".0f")
-        match["results"]["first_certitude"] = format(first_certitude,".2f")
+        team_results = [
+            {
+                "colour": first,
+                "victory_points": first_vp,
+                "point_diff": first_point_diff,
+                "vs_team": second,
+                "vp_ratio": format(first_vp_ratio,".2f"),
+                "tie": format(first_tie,".2f"),
+                "secure": first_secure,
+                "difficulty": format(first_difficulty,".0f"),
+                "certitude": format(first_certitude,".0f"),
+                "prediction": format(first_prediction,".0f"),
+            },
+            {
+                "colour": second,
+                "victory_points": second_vp,
+                "point_diff": second_point_diff,
+                "vs_team": third,
+                "vp_ratio": format(second_vp_ratio,".2f"),
+                "tie": format(second_tie,".2f"),
+                "secure": second_secure,
+                "difficulty": format(second_difficulty,".0f"),
+                "certitude": format(second_certitude,".0f"),
+                "prediction": format(second_prediction,".0f"),
+            },
+            {
+                "colour": third,
+                "victory_points": third_vp,
+                "point_diff": third_point_diff,
+                "vs_team": first,
+                "vp_ratio": format(third_vp_ratio,".2f"),
+                "tie": format(third_tie,".2f"),
+                "secure": third_secure,
+                "difficulty": format(third_difficulty,".0f"),
+                "certitude": format(third_certitude,".0f"),
+                "prediction": format(third_prediction,".0f"),
+            }
+        ]
         
+        match['results'] = team_results
 
-        match["results"]["second_vp"] = second_vp
-        match["results"]["second_point_diff"] = second_point_diff
-        match["results"]["second_vp_ratio"] = format(second_vp_ratio,".2f")
-        match["results"]["second_tie"] = format(second_tie,".2f")
-        match["results"]["second_secure"] = second_secure
-        match["results"]["second_difficulty"] = format(second_difficulty,".0f")
-        match["results"]["second_difficulty_max"] = format(100-second_difficulty,".0f")
-        match["results"]["second_prediction"] = format(second_prediction,".0f")
-        match["results"]["second_certitude"] = format(second_certitude,".2f")
-
-        match["results"]["third_vp"] = third_vp
-        match["results"]["third_point_diff"] = third_point_diff
-        match["results"]["third_vp_ratio"] = format(third_vp_ratio,".2f")
-        match["results"]["third_tie"] = format(third_tie,".2f")
-        match["results"]["third_secure"] = third_secure
-        match["results"]["third_difficulty"] = format(third_difficulty,".0f")
-        match["results"]["second_difficulty_max"] = format(100-third_difficulty,".0f")
-        match["results"]["third_prediction"] = format(third_prediction,".0f")
-        match["results"]["third_certitude"] = format(third_certitude,".2f")

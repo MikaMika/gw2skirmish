@@ -108,6 +108,8 @@ def gpt_calculate_match(match):
 
     # End of GPT code (commenting out the prints, adding values below)
 
+    # TODO: point diff should be based on position eg 1vs2, 2vs3, 3vs1 and not colours as GPT was advised, update gpt prompt
+
     # refactoring results add results to match
     green = {
         "colour": "green",
@@ -139,11 +141,13 @@ def gpt_calculate_match(match):
         "difficulty_to_win": format(blue_difficulty, ".2f"),
         "vs_point_diff": format(blue_green_diff, ".0f")
     }
-    match["results"] = [
-        green,
-        red,
-        blue,
-    ]
+    team_results = [red, green, blue]
+
+    # order teamlist by victory_points
+    match['results'] = sorted(team_results, key=lambda x: x["victory_points"], reverse=True)
+    
+    #team_results.sort(key=lambda x: x['victory_points'], reverse=True)
+
     match["certainty"] = format(certainty, ".2f")
     match['max_earnable_vp'] = remaining_skirmishes * 5
     match['min_earnable_vp'] = remaining_skirmishes * 3
