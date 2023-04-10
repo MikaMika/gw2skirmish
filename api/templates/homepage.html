@@ -118,54 +118,35 @@
               align-items: flex-end;
             "
           >
+
+          {% for result in match['results'] %}
             <p>
-              <b class="green" id="{{match['all_worlds']['green'][0]}}"
-                >{{world_title(worlds_by_id[match['all_worlds']['green'][0]])}}</b
+              <b class="{{result['colour']}}" id="{{match['all_worlds'][result['colour']][0]}}"
+                >{{world_title(worlds_by_id[match['all_worlds'][result['colour']][0]])}}</b
               ><br />
-              <b class="green" id="{{match['all_worlds']['green'][1]}}"
-                >{{world_title(worlds_by_id[match['all_worlds']['green'][1]]|default("N/A"))}}</b
+              <b class="{{result['colour']}}" id="{{match['all_worlds'][result['colour']][1]}}"
+                >{{world_title(worlds_by_id[match['all_worlds'][result['colour']][1]]|default("N/A"))}}</b
               ><br />
-              Victory Points: {{match['results']['first_vp']}}<br />
-              Victory Ratio: {{match['results']['first_vp_ratio']}}<br />
-              Prediction: {{match['results']['first_prediction']}}<br /><br />
-              🟢🥇 vs 🔴🥈: {{match['results']['first_point_diff']}}<br />
-              Homestretch: {{match['results']['first_tie']}}<br />
-              Difficulty: {{match['results']['first_difficulty']}}% -
-              {{match['results']['second_difficulty_max']}}%<br />
-              Certitude: {{match['results']['first_certitude']}}%<br />
+              Victory Points: {{result['victory_points']}}<br />
+              Victory Ratio: {{result['vp_ratio']}}<br />
+              Prediction: {{result['prediction']}}<br /><br />
+
+              {% if result['colour'] == 'green' %}🟢{% endif %}
+              {% if result['colour'] == 'red' %}🔴{% endif %}
+              {% if result['colour'] == 'blue' %}🔵{% endif %}
+              🥇 vs 
+              {% if result['vs_team'] == 'green' %}🟢{% endif %}
+              {% if result['vs_team'] == 'red' %}🔴{% endif %}
+              {% if result['vs_team'] == 'blue' %}🔵{% endif %}
+              🥈:
+              {{ result['point_diff'] }}<br />
+              Homestretch: {{result['tie']}}<br />
+              Difficulty: {{result['difficulty']}}% -
+              {{result['point_diff']}}%<br />
+              Certitude: {{result['certitude']}}%<br />
             </p>
-            <p>
-              <b class="red" id="{{match['all_worlds']['red'][0]}}"
-                >{{world_title(worlds_by_id[match['all_worlds']['red'][0]])}}</b
-              ><br />
-              <b class="red" id="{{match['all_worlds']['green'][1]}}"
-                >{{world_title(worlds_by_id[match['all_worlds']['red'][1]]|default("N/A"))}}</b
-              ><br />
-              Victory Points: {{match['results']['second_vp']}}<br />
-              Victory Ratio: {{match['results']['second_vp_ratio']}}%<br />
-              Prediction: {{match['results']['second_prediction']}}<br /><br />
-              🔴🥈 vs 🔵🥉: {{match['results']['second_point_diff']}}<br />
-              Homestretch: {{match['results']['second_tie']}}<br />
-              Difficulty: {{match['results']['second_difficulty']}}% -
-              {{match['results']['second_difficulty_max']}}%<br />
-              Certitude: {{match['results']['second_certitude']}}%<br />
-            </p>
-            <p>
-              <b class="blue" id="{{match['all_worlds']['blue'][0]}}"
-                >{{world_title(worlds_by_id[match['all_worlds']['blue'][0]])}}</b
-              ><br />
-              <b class="blue" id="{{match['all_worlds']['blue'][1]}}"
-                >{{world_title(worlds_by_id[match['all_worlds']['blue'][1]]|default("N/A"))}}</b
-              ><br />
-              Victory Points: {{match['results']['third_vp']}}<br />
-              Victory Ratio: {{match['results']['third_vp_ratio']}}%<br />
-              Prediction: {{match['results']['third_prediction']}}<br /><br />
-              🔵🥉 vs 🟢🥇: {{match['results']['third_point_diff']}}<br />
-              Homestretch: {{match['results']['third_tie']}}<br />
-              Difficulty: {{match['results']['third_difficulty']}}% -
-              {{match['results']['second_difficulty_max']}}%<br />
-              Certitude: {{match['results']['third_certitude']}}%<br />
-            </p>
+            {% endfor %}
+
           </div>
           <p><a href="#">⬆️Return to top</a></p>
         </article>
