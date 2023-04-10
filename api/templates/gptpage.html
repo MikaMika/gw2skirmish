@@ -133,9 +133,14 @@
               Points for First: {{ result['points_needed_first'] }}<br />
               Points for Second: {{ result['points_needed_second'] }}<br />
                       <br />
-              {% if result['colour'] == 'green' %}🟢🥇 vs 🔴🥈:{% endif %}
-              {% if result['colour'] == 'red' %}🔴🥈 vs 🔵🥉:{% endif %}
-              {% if result['colour'] == 'blue' %}🔵🥉 vs 🟢🥇:{% endif %}
+              {% if result['colour'] == 'green' %}🟢{% endif %}
+              {% if result['colour'] == 'red' %}🔴{% endif %}
+              {% if result['colour'] == 'blue' %}🔵{% endif %}
+              🥇 vs 
+              {% if result['point_diff_compared_against'] == 'green' %}🟢{% endif %}
+              {% if result['point_diff_compared_against'] == 'red' %}🔴{% endif %}
+              {% if result['point_diff_compared_against'] == 'blue' %}🔵{% endif %}
+              🥈:
               {{ result['vs_point_diff'] }}<br />
 
               Difficulty: {{ result['difficulty_to_win'] }}<br />
