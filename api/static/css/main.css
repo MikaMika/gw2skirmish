@@ -53,12 +53,12 @@
 }
 
 .menu-item a {
-    color: #fff;
+    color: var(--text);
     text-decoration: none;
     font-size: 18px;
     transition: color 0.3s;
 }
 
 .menu-item a:hover {
-    color: #f1c40f;
+    color: var(--accent);
 }
