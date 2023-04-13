@@ -62,3 +62,17 @@
 .menu-item a:hover {
     color: var(--accent);
 }
+
+.match {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s;
+}
+.match:has(*:target) {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+}
