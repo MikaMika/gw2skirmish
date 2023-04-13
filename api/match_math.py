@@ -121,7 +121,7 @@ def calculate_scores(matches, worlds_by_id):
                 "victory_points": third_vp,
                 "point_diff": third_point_diff,
                 "vs_team": first,
-                "vp_ratio": format(third_vp_ratio,".2f"),
+                "vp_ratio": format(third_vp_ratio,".0f"),
                 "tie": format(third_tie,".2f"),
                 "secure": third_secure,
                 "difficulty": format(third_difficulty,".0f"),
