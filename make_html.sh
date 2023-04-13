@@ -89,136 +89,136 @@ match_info() {
     SKIRMISH_TOTAL=84
     skirmish_done=$(( (vp_red+vp_blue+vp_green) / (3+4+5) ))
     skirmish_remaining=$((SKIRMISH_TOTAL - skirmish_done))
-    vp_remaining=$((skirmish_remaining * 2))
+    vp_diff_remaining=$((skirmish_remaining * 2))
     echo "<p>Skirmishes completed: $skirmish_done/$SKIRMISH_TOTAL<br>"
     echo "Skirmishes left: $skirmish_remaining<br>"
-    echo "Max earnable VP difference: $vp_remaining</p>"
+    echo "Max earnable VP difference: $vp_diff_remaining</p>"
     echo "<div class='rbg'>"
     vp_max=$((skirmish_done * 5))
     vp_min=$((skirmish_done * 3))
 
     if [ "$vp_red" -gt "$vp_blue" ] && [ "$vp_red" -gt "$vp_green" ]
     then
-      frst=$vp_red
-      frst_color="red"
+      first=$vp_red
+      first_color="red"
       if [ "$vp_blue" -gt "$vp_green" ]
       then
-        scnd=$vp_blue
-        scnd_color="blue"
-        thrd=$vp_green
-        thrd_color="green"
+        second=$vp_blue
+        second_color="blue"
+        third=$vp_green
+        third_color="green"
       else
-        scnd=$vp_green
-        scnd_color="green"
-        thrd=$vp_blue
-        thrd_color="blue"
+        second=$vp_green
+        second_color="green"
+        third=$vp_blue
+        third_color="blue"
       fi
     elif [ "$vp_blue" -gt "$vp_red" ] && [ "$vp_blue" -gt "$vp_green" ]
     then
-      frst=$vp_blue
-      frst_color="blue"
+      first=$vp_blue
+      first_color="blue"
       if [ "$vp_red" -gt "$vp_green" ]
       then
-        scnd=$vp_red
-        scnd_color="red"
-        thrd=$vp_green
-        thrd_color="green"
+        second=$vp_red
+        second_color="red"
+        third=$vp_green
+        third_color="green"
       else
-        scnd=$vp_green
-        scnd_color="green"
-        thrd=$vp_red
-        thrd_color="red"
+        second=$vp_green
+        second_color="green"
+        third=$vp_red
+        third_color="red"
       fi
     else
-      frst=$vp_green
-      frst_color="green"
+      first=$vp_green
+      first_color="green"
       if [ "$vp_red" -gt "$vp_blue" ]
       then
-        scnd=$vp_red
-        scnd_color="red"
-        thrd=$vp_blue
-        thrd_color="blue"
+        second=$vp_red
+        second_color="red"
+        third=$vp_blue
+        third_color="blue"
       else
-        scnd=$vp_blue
-        scnd_color="blue"
-        thrd=$vp_red
-        thrd_color="red"
+        second=$vp_blue
+        second_color="blue"
+        third=$vp_red
+        third_color="red"
       fi
     fi
 
-    [ $vp_max = $vp_min ] && frst_victory_ratio=0 \
-    || frst_victory_ratio=$(( 100 * (frst - vp_min) / (vp_max - vp_min) ))
-    frst_vp_difference=$((frst - scnd))
-    frst_tie=$(( (vp_remaining - frst_vp_difference) / 2 ))
-    frst_secure=$((frst_tie + 1))
-    frst_difficulty=$((100 * frst_secure / vp_remaining))
-#    kdr_bar "$frst_color"
+    [ $vp_max = $vp_min ] && first_victory_ratio=0 \
+    || first_victory_ratio=$(( 100 * (first - vp_min) / (vp_max - vp_min) ))
+    first_vp_diff=$((first - second))
+    first_tie=$(( (vp_diff_remaining - first_vp_diff) / 2 ))
+    first_secure=$((first_tie + 1))
+    first_difficulty=$((100 * first_secure / vp_diff_remaining))
+#    kdr_bar "$first_color"
     echo "<p>"
-    for world_id in $(jq ".[$match].all_worlds.${frst_color}[]" matches.json)
+    for world_id in $(jq ".[$match].all_worlds.${first_color}[]" matches.json)
     do
       world_json=$(jq ".[] | select(.id == $world_id)" worlds.json)
       world_name=$(echo "$world_json" | jq -r ".name")
       world_pop=$(echo "$world_json" | jq -r ".population")
-      echo "<b class='team$frst_color' id='$world_id'>:$world_pop: $world_name</b><br>"
+      echo "<b class='team$first_color' id='$world_id'>:$world_pop: $world_name</b><br>"
     done
-    echo "Victory Points: $frst<br>"
-    echo "Victory Ratio: $frst_victory_ratio%<br>"
-    echo "Prediction: $(( frst+(skirmish_remaining*3)+(vp_remaining*frst_victory_ratio/100)+1 ))<br>"
+    echo "Victory Points: $first<br>"
+    echo "Victory Ratio: $first_victory_ratio%<br>"
+    echo "Prediction: $(( first+(skirmish_remaining*3)+(vp_diff_remaining*first_victory_ratio/100)+1 ))<br>"
     echo "<br>"
-    echo ":$frst_color:🥇 vs :$scnd_color:🥈: $frst_vp_difference<br>"
-    echo "Homestretch: $frst_tie<br>"
-    echo "Difficulty: $frst_difficulty% - $(( 100 - frst_difficulty ))%<br>"
-    echo "Certitude: $(( 2 * (50 - frst_difficulty) ))%<br>"
+    echo ":$first_color:🥇 vs :$second_color:🥈: $first_vp_diff<br>"
+    echo "Homestretch: $first_tie<br>"
+    echo "Difficulty: $first_difficulty% - $(( 100 - first_difficulty ))%<br>"
+    echo "Certitude: $(( 2 * (50 - first_difficulty) ))%<br>"
     echo "</p>"
 
-    [ $vp_max = $vp_min ] && scnd_victory_ratio=0 \
-    || scnd_victory_ratio=$(( 100 * (scnd - vp_min) / (vp_max - vp_min) ))
-    scnd_vp_difference=$((scnd - thrd))
-    scnd_tie=$(( (vp_remaining - scnd_vp_difference) / 2 ))
-    scnd_secure=$((scnd_tie + 1))
-    scnd_difficulty=$((100 * scnd_secure / vp_remaining))
-#    kdr_bar "$scnd_color"
+    [ $vp_max = $vp_min ] && second_victory_ratio=0 \
+    || second_victory_ratio=$(( 100 * (second - vp_min) / (vp_max - vp_min) ))
+    second_vp_diff=$((second - third))
+    second_tie=$(( (vp_diff_remaining - second_vp_diff) / 2 ))
+    second_secure=$((second_tie + 1))
+    second_difficulty=$((100 * second_secure / vp_diff_remaining))
+#    kdr_bar "$second_color"
     echo "<p>"
-    for world_id in $(jq ".[$match].all_worlds.${scnd_color}[]" matches.json)
+    for world_id in $(jq ".[$match].all_worlds.${second_color}[]" matches.json)
     do
       world_json=$(jq ".[] | select(.id == $world_id)" worlds.json)
       world_name=$(echo "$world_json" | jq -r ".name")
       world_pop=$(echo "$world_json" | jq -r ".population")
-      echo "<b class='team$scnd_color' id='$world_id'>:$world_pop: $world_name</b><br>"
+      echo "<b class='team$second_color' id='$world_id'>:$world_pop: $world_name</b><br>"
     done
-    echo "Victory Points: $scnd<br>"
-    echo "Victory Ratio: $scnd_victory_ratio%<br>"
-    echo "Prediction: $(( scnd+(skirmish_remaining*3)+(vp_remaining*scnd_victory_ratio/100)+1 ))<br>"
+    echo "Victory Points: $second<br>"
+    echo "Victory Ratio: $second_victory_ratio%<br>"
+    echo "Prediction: $(( second+(skirmish_remaining*3)+(vp_diff_remaining*second_victory_ratio/100)+1 ))<br>"
     echo "<br>"
-    echo ":$scnd_color:🥈 vs :$thrd_color:🥉: $scnd_vp_difference<br>"
-    echo "Homestretch: $scnd_tie<br>"
-    echo "Difficulty: $scnd_difficulty% - $(( 100 - scnd_difficulty ))%<br>"
-    echo "Certitude: $(( 2 * (50 - scnd_difficulty) ))%<br>"
+    echo ":$second_color:🥈 vs :$third_color:🥉: $second_vp_diff<br>"
+    echo "Homestretch: $second_tie<br>"
+    echo "Difficulty: $second_difficulty% - $(( 100 - second_difficulty ))%<br>"
+    echo "Certitude: $(( 2 * (50 - second_difficulty) ))%<br>"
     echo "</p>"
 
-    [ $vp_max = $vp_min ] && thrd_victory_ratio=0 \
-    || thrd_victory_ratio=$(( 100 * (thrd - vp_min) / (vp_max - vp_min) ))
-    thrd_vp_difference=$((thrd - frst))
-    thrd_tie=$(( (vp_remaining - thrd_vp_difference) / 2 ))
-    thrd_secure=$((thrd_tie + 1))
-    thrd_difficulty=$((100 * thrd_secure / vp_remaining))
-#    kdr_bar "$thrd_color"
+    [ $vp_max = $vp_min ] && third_victory_ratio=0 \
+    || third_victory_ratio=$(( 100 * (third - vp_min) / (vp_max - vp_min) ))
+    third_vp_diff=$((third - first))
+    third_tie=$(( (vp_diff_remaining - third_vp_diff) / 2 ))
+    third_secure=$((third_tie + 1))
+    third_difficulty=$((100 * third_secure / vp_diff_remaining))
+#    kdr_bar "$third_color"
     echo "<p>"
-    for world_id in $(jq ".[$match].all_worlds.${thrd_color}[]" matches.json)
+    for world_id in $(jq ".[$match].all_worlds.${third_color}[]" matches.json)
     do
       world_json=$(jq ".[] | select(.id == $world_id)" worlds.json)
       world_name=$(echo "$world_json" | jq -r ".name")
       world_pop=$(echo "$world_json" | jq -r ".population")
-      echo "<b class='team$thrd_color' id='$world_id'>:$world_pop: $world_name</b><br>"
+      echo "<b class='team$third_color' id='$world_id'>:$world_pop: $world_name</b><br>"
     done
-    echo "Victory Points: $thrd<br>"
-    echo "Victory Ratio: $thrd_victory_ratio%<br>"
-    echo "Prediction: $(( thrd+(skirmish_remaining*3)+(vp_remaining*thrd_victory_ratio/100)+1 ))<br>"
+    echo "Victory Points: $third<br>"
+    echo "Victory Ratio: $third_victory_ratio%<br>"
+    echo "Prediction: $(( third+(skirmish_remaining*3)+(vp_diff_remaining*third_victory_ratio/100)+1 ))<br>"
     echo "<br>"
-    echo ":$thrd_color:🥉 vs :$frst_color:🥇: $thrd_vp_difference<br>"
-    echo "Homestretch: $thrd_tie<br>"
-    echo "Difficulty: $thrd_difficulty% - $(( 100 - thrd_difficulty ))%<br>"
-    echo "Certitude: $(( 2 * (thrd_difficulty-50) ))%<br>"
+    echo ":$third_color:🥉 vs :$first_color:🥇: $third_vp_diff<br>"
+    echo "Homestretch: $third_tie<br>"
+    echo "Difficulty: $third_difficulty% - $(( 100 - third_difficulty ))%<br>"
+    echo "Certitude: $(( 2 * (third_difficulty-50) ))%<br>"
     echo "</p>"
 
     echo "</div>"
@@ -277,6 +277,7 @@ make_index() {
 <h1 id="#">gw2skirmish</h1>'
     echo "<p>Last updated: $last_updated</p>"
     echo "<p><a href='https://github.com/MikaMika/gw2skirmish'>Link to GitHub</a></p>"
+    echo "<p><a href='https://gw2skirmish-mikamika.vercel.app'>Link to App Version</a></p>"
     echo "</header>"
     echo "<nav>"
     make_list_matches

@@ -131,14 +131,27 @@
               {% if result['colour'] == 'green' %}🟢{% endif %}
               {% if result['colour'] == 'red' %}🔴{% endif %}
               {% if result['colour'] == 'blue' %}🔵{% endif %}
+              {% if result['colour'] == match['first'] %}🥇{% endif %}
+              {% if result['colour'] == match['second'] %}🥈{% endif %}
+              {% if result['colour'] == match['third'] %}🥉{% endif %}
               vs
               {% if result['vs_team'] == 'green' %}🟢{% endif %}
               {% if result['vs_team'] == 'red' %}🔴{% endif %}
               {% if result['vs_team'] == 'blue' %}🔵{% endif %}
+              {% if result['vs_team'] == match['first'] %}🥇{% endif %}
+              {% if result['vs_team'] == match['second'] %}🥈{% endif %}
+              {% if result['vs_team'] == match['third'] %}🥉{% endif %}
               :
               {{ result['point_diff'] }}<br />
               Homestretch: {{result['tie']}}<br />
-              Difficulty: {{result['difficulty']}}%<br />
+              Difficulty: 
+                {% if (result['difficulty'] | int) <= 0 %}
+                    afk
+                {% elif (result['difficulty']  | int ) >= 100 %}
+                    impossible
+                {% else %}
+                    {{result['difficulty']}}%
+                {% endif %}<br />
               Certitude: {{result['certitude']}}%<br />
             </p>
             {% endfor %}

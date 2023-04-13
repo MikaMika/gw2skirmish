@@ -1,18 +1,20 @@
+"""Calculates values for each color of each match"""
+
 SKIRMISHES_TOTAL = 84
 TOTAL_VP = 84 * (3 + 4 + 5)
-
 
 def calculate_scores(matches, worlds_by_id):
     if matches is None or matches is []:
         return None
 
     for match in matches:
-        vp_red = match["victory_points"]["red"]
-        vp_blue = match["victory_points"]["blue"]
-        vp_green = match["victory_points"]["green"]
-        red_world = worlds_by_id[match["worlds"]["red"]]
-        blue_world = worlds_by_id[match["worlds"]["blue"]]
-        green_world = worlds_by_id[match["worlds"]["green"]]
+        # TODO: unused values, should it be deleted?
+        # vp_red = match["victory_points"]["red"]
+        # vp_blue = match["victory_points"]["blue"]
+        # vp_green = match["victory_points"]["green"]
+        # red_world = worlds_by_id[match["worlds"]["red"]]
+        # blue_world = worlds_by_id[match["worlds"]["blue"]]
+        # green_world = worlds_by_id[match["worlds"]["green"]]
 
         skirmishes_done = len(match["skirmishes"]) - 1
         remaining_skirmishes = SKIRMISHES_TOTAL - skirmishes_done
@@ -45,7 +47,7 @@ def calculate_scores(matches, worlds_by_id):
         )
         first_tie = (max_earnable_vp_diff - first_point_diff) / 2
         first_secure = first_tie + 1
-        first_difficulty = 100 * (first_secure / max_earnable_vp)
+        first_difficulty = 100 * (first_secure / max_earnable_vp_diff)
         first_prediction = (
             first_vp
             + (remaining_skirmishes * 3)
@@ -63,7 +65,7 @@ def calculate_scores(matches, worlds_by_id):
         )
         second_tie = (max_earnable_vp_diff - second_point_diff) / 2
         second_secure = second_tie + 1
-        second_difficulty = 100 * (second_secure / max_earnable_vp)
+        second_difficulty = 100 * (second_secure / max_earnable_vp_diff)
         second_prediction = (
             second_vp
             + (remaining_skirmishes * 3)
@@ -81,7 +83,7 @@ def calculate_scores(matches, worlds_by_id):
         )
         third_tie = (max_earnable_vp_diff - third_point_diff) / 2
         third_secure = third_tie + 1
-        third_difficulty = 100 * (third_secure / max_earnable_vp)
+        third_difficulty = 100 * (third_secure / max_earnable_vp_diff)
         third_prediction = (
             third_vp
             + (remaining_skirmishes * 3)
@@ -127,6 +129,8 @@ def calculate_scores(matches, worlds_by_id):
                 "prediction": format(third_prediction,".0f"),
             }
         ]
-        
-        match['results'] = team_results
 
+        match['results'] = team_results
+        match['first'] = first
+        match['second'] = second
+        match['third'] = third
