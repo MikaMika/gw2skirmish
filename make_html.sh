@@ -15,7 +15,8 @@ dl_worlds() {
 }
 
 make_list_matches() {
-    echo "<a href="#matches"><h2>matches</h2></a>"
+    echo "<a href="#matches">⚔️ Matches</a>"
+    echo "<a href="#worlds">🌐 Worlds</a>"
     echo "<div class='hidden' id='matches'>"
     echo "<ul>"
     MATCHES=$(jq ".|keys[]" matches.json)
@@ -28,29 +29,30 @@ make_list_matches() {
 }
 
 make_list_worlds() {
-    echo "<a href="#worlds"><h2>worlds</h2></a>"
     echo "<div class='hidden' id='worlds'>"
-    echo "<a href="#north-america"><h3>north america 🇺🇸</h3></a>"
-    echo "<div class='hidden' id='north-america'>"
+    echo "<a href="#na">🇺🇸 North America</a>"
+    echo "<a href="#eu">🇪🇺 Europe</a>"
+    echo "<div class='hidden' id='na'>"
     NA=$(jq ".[]|select(.id<2000).id" worlds.json)
     li_world "$NA"
     echo "</div>"
-    echo "<a href="#europe"><h3>europe 🇪🇺</h3></a>"
-    echo "<div class='hidden' id='europe'>"
-    echo "<ul>"
-    echo "<li>english 🇬🇧"
+    echo "<div class='hidden' id='eu'>"
+    EU=$(jq ".[]|select(.id>2000).id" worlds.json)
     EN=$(jq ".[]|select(.id>2000 and .id<2100).id" worlds.json)
-    li_world "$EN"
-    echo "<li>french 🇫🇷"
     FR=$(jq ".[]|select(.id>2100 and .id<2200).id" worlds.json)
-    li_world "$FR"
-    echo "<li>german 🇩🇪"
     DE=$(jq ".[]|select(.id>2200 and .id<2300).id" worlds.json)
-    li_world "$DE"
-    echo "<li>spanish 🇪🇸"
     SP=$(jq ".[]|select(.id>2300 and .id<2400).id" worlds.json)
-    li_world "$SP"
-    echo "</ul>"
+    li_world "$EU"
+    # echo "<ul>"
+    # echo "<li>english 🇬🇧"
+    # li_world "$EN"
+    # echo "<li>french 🇫🇷"
+    # li_world "$FR"
+    # echo "<li>german 🇩🇪"
+    # li_world "$DE"
+    # echo "<li>spanish 🇪🇸"
+    # li_world "$SP"
+    # echo "</ul>"
     echo "</div>"
     echo "</div>"
 }
@@ -69,7 +71,6 @@ li_world() {
 
 make_match() {
   echo "<div class='hidden' id='results'>"
-  echo "<h2>results</h2>"
   MATCHES=$(jq ".|keys[]" matches.json)
   for match in $MATCHES
   do
@@ -83,7 +84,7 @@ match_info() {
     match_id_previous=$(jq -r ".[$match-1].id" matches.json)
     match_id_next=$(jq -r ".[$match-8].id" matches.json) # TODO: - (total amount of matches) + 1 for next
     echo "<article class='hidden' class='match'>"
-    echo "<h3 id='$match_id'>$match_id</h3>"
+    echo "<h2 id='$match_id'>$match_id</h2>"
 
     vp_red=$(jq ".[$match].victory_points.red" matches.json)
     vp_blue=$(jq ".[$match].victory_points.blue" matches.json)
@@ -276,20 +277,24 @@ make_index() {
 </head>
 <body class="main">
 <header>
-<h1 id="#">gw2skirmish</h1>'
-    echo "<p>Last updated: $last_updated</p>"
-    echo "<p><a href='https://github.com/MikaMika/gw2skirmish'>Link to GitHub</a></p>"
-    echo "<p><a href='https://gw2skirmish-mikamika.vercel.app'>Link to App Version</a></p>"
-    echo "</header>"
+<a href="/"><h1 id="#">gw2skirmish</h1></a>
+<p>gw2skirmish displays information about Guild Wars 2 World vs. World matches with unique Homestretch feature.</p>
+<p>Help the project on <a href="https://github.com/MikaMika/gw2skirmish">GitHub</a>.</p>'
     echo "<nav>"
     make_list_matches
     make_list_worlds
     echo "</nav>"
+    echo "</header>"
     echo "<main>"
     make_match
     echo "</main>"
-    echo "<footer>"
-    echo "</footer>"
+    echo "    <footer>
+        <p>Last updated: $last_updated</p>
+        <p><a href='https://gw2skirmish-mikamika.vercel.app'>Alternative app version</a> using <a
+                href='https://flask.palletsprojects.com/en/2.2.x/'>Flask 2</a> on <a
+                href='https://vercel.com/'>Vercel</a></p>
+        <p><a href='https://github.com/MikaMika/'>MikaMika</a> © 2023</p>
+    </footer>"
     echo '</body>
 </html>'
 }
@@ -298,12 +303,18 @@ make_index() {
 [ -f "worlds.json" ] || dl_worlds
 [ -f "matches.json" ] || dl_matches
 make_index \
+| sed s/'>1-'/'>🇺🇸 1-'/g \
+| sed s/'>2-'/'>🇪🇺 2-'/g \
+| sed 's/\[FR\]/🇫🇷/g' \
+| sed 's/\[DE\]/🇩🇪/g' \
+| sed 's/\[SP\]/🇪🇸/g' \
 | sed s/:Full:/🟥/g \
 | sed s/:VeryHigh:/🟧/g \
 | sed s/:High:/🟨/g \
 | sed s/:Medium:/🟩/g \
 | sed s/:red:/🔴/g \
 | sed s/:blue:/🔵/g \
-| sed s/:green:/🟢/g > index.html
+| sed s/:green:/🟢/g \
+> index.html
 rm worlds.json
 rm matches.json
