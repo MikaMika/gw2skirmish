@@ -1,5 +1,5 @@
 SKIRMISHES_TOTAL = 84
-total_vp = 84 * (3 + 4 + 5)
+TOTAL_VP = 84 * (3 + 4 + 5)
 
 
 def calculate_scores(matches, worlds_by_id):
@@ -14,7 +14,7 @@ def calculate_scores(matches, worlds_by_id):
         blue_world = worlds_by_id[match["worlds"]["blue"]]
         green_world = worlds_by_id[match["worlds"]["green"]]
 
-        skirmishes_done = len(match["skirmishes"])
+        skirmishes_done = len(match["skirmishes"]) - 1
         remaining_skirmishes = SKIRMISHES_TOTAL - skirmishes_done
 
         # calculate remaining victory points
