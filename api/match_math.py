@@ -18,10 +18,9 @@ def calculate_scores(matches, worlds_by_id):
         remaining_skirmishes = SKIRMISHES_TOTAL - skirmishes_done
 
         # calculate remaining victory points
-        vp_remaining = remaining_skirmishes * 2 # TODO: @mika, is this correct? grabbed from bash, I don't understand it
-        # remaining_vp = total_vp - (vp_red + vp_blue + vp_green) # how I think it should be
-        max_earnable_vp = skirmishes_done * 5
         min_earnable_vp = skirmishes_done * 3
+        max_earnable_vp = skirmishes_done * 5
+        max_earnable_vp_diff = remaining_skirmishes * 2
 
         # calculate first,second,third place victory points
         sorted_vps = sorted(
@@ -36,8 +35,6 @@ def calculate_scores(matches, worlds_by_id):
         second_point_diff = second_vp - third_vp
         third_point_diff = third_vp - first_vp
 
-        # TODO: I don't understand the rest of this math, refactored from bash, @Mika pls validate correctness
-
         # calculate first place victory point ratio and difficulty
         first_vp_ratio = (
             0
@@ -46,14 +43,13 @@ def calculate_scores(matches, worlds_by_id):
             * (first_vp - min_earnable_vp)
             / (max_earnable_vp - min_earnable_vp)
         )
-        first_tie = (vp_remaining - first_point_diff) / 2
+        first_tie = (max_earnable_vp_diff - first_point_diff) / 2
         first_secure = first_tie + 1
         first_difficulty = 100 * (first_secure / max_earnable_vp)
         first_prediction = (
             first_vp
             + (remaining_skirmishes * 3)
-            + (vp_remaining * first_vp_ratio / 100)
-            + 1
+            + (max_earnable_vp_diff * first_vp_ratio / 100)
         )
         first_certitude = 2 * (50 - first_difficulty)
 
@@ -65,33 +61,31 @@ def calculate_scores(matches, worlds_by_id):
             * (second_vp - min_earnable_vp)
             / (max_earnable_vp - min_earnable_vp)
         )
-        second_tie = (vp_remaining - second_point_diff) / 2
+        second_tie = (max_earnable_vp_diff - second_point_diff) / 2
         second_secure = second_tie + 1
         second_difficulty = 100 * (second_secure / max_earnable_vp)
         second_prediction = (
             second_vp
             + (remaining_skirmishes * 3)
-            + (vp_remaining * second_vp_ratio / 100)
-            + 1
+            + (max_earnable_vp_diff * second_vp_ratio / 100)
         )
         second_certitude = 2 * (50 - second_difficulty)
 
         # calculate third place victory point ratio and difficulty
         third_vp_ratio = (
             0
-            if max_earnable_vp == min_earnable_vp
+            if max_earnable_vp == min_earnable_vp # first skirmish has 0 vp (maximum and minimum)
             else 100
             * (third_vp - min_earnable_vp)
             / (max_earnable_vp - min_earnable_vp)
         )
-        third_tie = (vp_remaining - third_point_diff) / 2
+        third_tie = (max_earnable_vp_diff - third_point_diff) / 2
         third_secure = third_tie + 1
         third_difficulty = 100 * (third_secure / max_earnable_vp)
         third_prediction = (
             third_vp
             + (remaining_skirmishes * 3)
-            + (vp_remaining * third_vp_ratio / 100)
-            + 1
+            + (max_earnable_vp_diff * third_vp_ratio / 100)
         )
         third_certitude = 2 * (third_difficulty - 50)
 

@@ -2,9 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>gw2skirmish</title>
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/main.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static',filename='css/simple.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
   </head>
   <body class="main">
     <header>
@@ -106,9 +107,9 @@
         <article class="match">
           <h3 id="{{match.id}}">{{match.id}}</h3>
           <p>
-            Skirmishes completed: {{match.skirmishes|length}}/84<br />
-            Skirmishes left: {{84 - match.skirmishes|length}}<br />
-            Max earnable VP difference: {{match['results']['max_earnable_vp']}}
+            Skirmishes completed: {{match.skirmishes|length - 1}}/84<br />
+            Skirmishes left: {{84 - match.skirmishes|length + 1}}<br />
+            Max earnable VP difference: {{ (84 - match.skirmishes|length + 1) * 2 }}
           </p>
           <div
             class="rbg"
@@ -121,28 +122,27 @@
 
           {% for result in match['results'] %}
             <p>
-              <b class="{{result['colour']}}" id="{{match['all_worlds'][result['colour']][0]}}"
-                >{{world_title(worlds_by_id[match['all_worlds'][result['colour']][0]])}}</b
-              ><br />
-              <b class="{{result['colour']}}" id="{{match['all_worlds'][result['colour']][1]}}"
-                >{{world_title(worlds_by_id[match['all_worlds'][result['colour']][1]]|default("N/A"))}}</b
-              ><br />
+              <b class="{{result['colour']}}" id="{{match['all_worlds'][result['colour']][0]}}">
+                {{world_title(worlds_by_id[match['all_worlds'][result['colour']][0]])}}
+              </b><br />
+              <b class="{{result['colour']}}" id="{{match['all_worlds'][result['colour']][1]}}">
+                {{world_title(worlds_by_id[match['all_worlds'][result['colour']][1]]|default("N/A"))}}
+              </b><br />
               Victory Points: {{result['victory_points']}}<br />
               Victory Ratio: {{result['vp_ratio']}}<br />
-              Prediction: {{result['prediction']}}<br /><br />
-
+              Prediction: {{result['prediction']}}<br />
+              <br />
               {% if result['colour'] == 'green' %}🟢{% endif %}
               {% if result['colour'] == 'red' %}🔴{% endif %}
               {% if result['colour'] == 'blue' %}🔵{% endif %}
-              🥇 vs 
+              vs
               {% if result['vs_team'] == 'green' %}🟢{% endif %}
               {% if result['vs_team'] == 'red' %}🔴{% endif %}
               {% if result['vs_team'] == 'blue' %}🔵{% endif %}
-              🥈:
+              :
               {{ result['point_diff'] }}<br />
               Homestretch: {{result['tie']}}<br />
-              Difficulty: {{result['difficulty']}}% -
-              {{result['point_diff']}}%<br />
+              Difficulty: {{result['difficulty']}}%<br />
               Certitude: {{result['certitude']}}%<br />
             </p>
             {% endfor %}
