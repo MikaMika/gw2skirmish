@@ -64,70 +64,14 @@
 }
 
 /* hidden menu */
-.match {
+.hidden {
   display: none;
   visibility: hidden;
   opacity: 0;
   pointer-events: none;
   transition: all 0.3s;
 }
-.match:has(*:target) {
-  display: block;
-  visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
-}
-
-#matches {
-  display: none;
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s;
-}
-#matches:target {
-  display: block;
-  visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
-}
-
-#worlds {
-  display: none;
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s;
-}
-#worlds:target, #worlds:has(*:target) {
-  display: block;
-  visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
-}
-
-#europe {
-  display: none;
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s;
-}
-#europe:target {
-  display: block;
-  visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
-}
-
-#north-america {
-  display: none;
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s;
-}
-#north-america:target {
+.hidden:target, .hidden:has(*:target) {
   display: block;
   visibility: visible;
   opacity: 1;

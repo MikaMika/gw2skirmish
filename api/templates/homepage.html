@@ -31,7 +31,7 @@
     </header>
     <nav>
       <a href="#matches"><h2>matches</h2></a>
-      <div id="matches">
+      <div class="hidden" id="matches">
         <ul>
           {% for match in matches %}
           <li><a href="#{{ match.id }}">{{ match.id }}</a></li>
@@ -39,9 +39,9 @@
         </ul>
       </div>
       <a href="#worlds"><h2>worlds</h2></a>
-      <div id="worlds">
+      <div class="hidden" id="worlds">
         <a href="#north-america"><h3>north america 🇺🇸</h3></a>
-        <div class="region" id="north-america">
+        <div class="region hidden id="north-america">
           <ul>
             {% for world in worlds %} {% if world.id < 2000 %}
             <li>
@@ -51,7 +51,7 @@
           </ul>
         </div>
         <a href="#europe"><h3>europe 🇪🇺</h3></a>
-        <div class="region" id="europe">
+        <div class="region hidden" id="europe">
           <ul>
             <li>
               english 🇬🇧
@@ -105,10 +105,10 @@
       </div>
     </nav>
     <main>
-      <div id="results">
+      <div class="hidden" id="results">
         <h2>results</h2>
         {% for match in matches %}
-        <article class="match">
+        <article class="match hidden">
           <h3 id="{{match.id}}">{{match.id}}</h3>
           <p>
             Skirmishes completed: {{match.skirmishes|length - 1}}/84<br />

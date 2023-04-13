@@ -16,7 +16,7 @@ dl_worlds() {
 
 make_list_matches() {
     echo "<a href="#matches"><h2>matches</h2></a>"
-    echo "<div id='matches'>"
+    echo "<div class='hidden' id='matches'>"
     echo "<ul>"
     MATCHES=$(jq ".|keys[]" matches.json)
     for match in $MATCHES; do
@@ -29,14 +29,14 @@ make_list_matches() {
 
 make_list_worlds() {
     echo "<a href="#worlds"><h2>worlds</h2></a>"
-    echo "<div id='worlds'>"
+    echo "<div class='hidden' id='worlds'>"
     echo "<a href="#north-america"><h3>north america 🇺🇸</h3></a>"
-    echo "<div class='region' id='north-america'>"
+    echo "<div class='hidden' id='north-america'>"
     NA=$(jq ".[]|select(.id<2000).id" worlds.json)
     li_world "$NA"
     echo "</div>"
     echo "<a href="#europe"><h3>europe 🇪🇺</h3></a>"
-    echo "<div class='region' id='europe'>"
+    echo "<div class='hidden' id='europe'>"
     echo "<ul>"
     echo "<li>english 🇬🇧"
     EN=$(jq ".[]|select(.id>2000 and .id<2100).id" worlds.json)
@@ -68,7 +68,7 @@ li_world() {
 }
 
 make_match() {
-  echo "<div id='results'>"
+  echo "<div class='hidden' id='results'>"
   echo "<h2>results</h2>"
   MATCHES=$(jq ".|keys[]" matches.json)
   for match in $MATCHES
@@ -82,7 +82,7 @@ match_info() {
     match_id=$(jq -r ".[$match].id" matches.json)
     match_id_previous=$(jq -r ".[$match-1].id" matches.json)
     match_id_next=$(jq -r ".[$match-8].id" matches.json) # TODO: - (total amount of matches) + 1 for next
-    echo "<article class='match'>"
+    echo "<article class='hidden' class='match'>"
     echo "<h3 id='$match_id'>$match_id</h3>"
 
     vp_red=$(jq ".[$match].victory_points.red" matches.json)
