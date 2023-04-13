@@ -115,21 +115,13 @@
             Skirmishes left: {{84 - match.skirmishes|length + 1}}<br />
             Max earnable VP difference: {{ (84 - match.skirmishes|length + 1) * 2 }}
           </p>
-          <div
-            class="rbg"
-            style="
-              display: flex;
-              justify-content: space-between;
-              align-items: flex-end;
-            "
-          >
-
-          {% for result in match['results'] %}
+          <div class="rbg">
+            {% for result in match['results'] %}
             <p>
-              <b class="{{result['colour']}}" id="{{match['all_worlds'][result['colour']][0]}}">
+              <b class="team{{result['colour']}}" id="{{match['all_worlds'][result['colour']][0]}}">
                 {{world_title(worlds_by_id[match['all_worlds'][result['colour']][0]])}}
               </b><br />
-              <b class="{{result['colour']}}" id="{{match['all_worlds'][result['colour']][1]}}">
+              <b class="team{{result['colour']}}" id="{{match['all_worlds'][result['colour']][1]}}">
                 {{world_title(worlds_by_id[match['all_worlds'][result['colour']][1]]|default("N/A"))}}
               </b><br />
               Victory Points: {{result['victory_points']}}<br />

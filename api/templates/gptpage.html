@@ -111,28 +111,22 @@
             Max earnable VP difference: {{ match['max_earnable_vp'] }} <br/>
             Prediction Certainty: {{ match['certainty'] }}%<br />
           </p>
-          <div
-            class="rbg"
-            style="
-              display: flex;
-              justify-content: space-between;
-              align-items: flex-end;
-            "
-          >
-              {% for result in match['results'] %}
-                  <p>
-              <b class="{{result['colour']}}" id="{{match['all_worlds'][result['colour']][0]}}"
-                >{{world_title(worlds_by_id[match['all_worlds'][result['colour']][0]])}}</b
-              ><br />
-              <b class="{{result['colour']}}" id="{{match['all_worlds'][result['colour']][1]}}"
-                >{{world_title(worlds_by_id[match['all_worlds'][result['colour']][1]]|default("N/A"))}}</b
-              ><br />
+          <div class="rbg">
+            {% for result in match['results'] %}
+            <p>
+              <b class="team{{result['colour']}}" id="{{match['all_worlds'][result['colour']][0]}}">
+                {{world_title(worlds_by_id[match['all_worlds'][result['colour']][0]])}}
+              </b><br />
+              <b class="team{{result['colour']}}" id="{{match['all_worlds'][result['colour']][1]}}">
+                {{world_title(worlds_by_id[match['all_worlds'][result['colour']][1]]|default("N/A"))}}
+              </b><br />
               Victory Points: {{ result['victory_points'] }}<br />
               Victory Ratio: {{ result['victory_point_ratio'] }}<br />
-              <b>Prediction: {{ result['predicted_final_points'] }}</b><br /><br />
+              <b>Prediction: {{ result['predicted_final_points'] }}</b><br />
+              <br />
               Points for First: {{ result['points_needed_first'] }}<br />
               Points for Second: {{ result['points_needed_second'] }}<br />
-                      <br />
+              <br />
               {% if result['colour'] == 'green' %}🟢{% endif %}
               {% if result['colour'] == 'red' %}🔴{% endif %}
               {% if result['colour'] == 'blue' %}🔵{% endif %}
@@ -142,10 +136,9 @@
               {% if result['point_diff_compared_against'] == 'blue' %}🔵{% endif %}
               🥈:
               {{ result['vs_point_diff'] }}<br />
-
               Difficulty: {{ result['difficulty_to_win'] }}<br />
             </p>
-              {% endfor %}
+            {% endfor %}
           </div>
           <p><a href="#">⬆️Return to top</a></p>
         </article>

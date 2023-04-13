@@ -1,29 +1,44 @@
-.red {
-    color: #ee0000;
+/* Team Colors */
+:root,
+::backdrop {
+  /* Default (light) theme */
+    --teamred: #EE0000;
+    --teamblue: #6161FF;
+    --teamgreen: #008A00;
 }
 
-.blue {
-    color: #6161ff;
-}
-
-.green {
-    color: #008a00;
-}
-
+/* Dark theme */
 @media (prefers-color-scheme: dark) {
-    .red {
-        color: #ff7878;
-    }
-
-    .blue {
-        color: #7878ff;
-    }
-
-    .green {
-        color: #78ff78;
-    }
+  :root,
+  ::backdrop {
+    --teamred: #FF7878;
+    --teamblue: #7878FF;
+    --teamgreen: #78FF78;
+  }
 }
 
+.teamred{
+  color: var(--teamred);
+}
+
+.teamblue {
+  color: var(--teamblue)
+}
+
+.teamgreen {
+  color: var(--teamgreen);
+}
+
+.rbg {
+  display: flex; 
+  justify-content: space-between; 
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.rbg > p {
+  min-width: fit-content;
+}
 
 .menu-bar {
     display: flex;

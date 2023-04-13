@@ -93,7 +93,7 @@ match_info() {
     echo "<p>Skirmishes completed: $skirmish_done/$SKIRMISH_TOTAL<br>"
     echo "Skirmishes left: $skirmish_remaining<br>"
     echo "Max earnable VP difference: $vp_remaining</p>"
-    echo "<div class='rbg' style='display: flex; justify-content: space-between; align-items: flex-end;'>"
+    echo "<div class='rbg'>"
     vp_max=$((skirmish_done * 5))
     vp_min=$((skirmish_done * 3))
 
@@ -159,7 +159,7 @@ match_info() {
       world_json=$(jq ".[] | select(.id == $world_id)" worlds.json)
       world_name=$(echo "$world_json" | jq -r ".name")
       world_pop=$(echo "$world_json" | jq -r ".population")
-      echo "<b class='$frst_color' id='$world_id'>:$world_pop: $world_name</b><br>"
+      echo "<b class='team$frst_color' id='$world_id'>:$world_pop: $world_name</b><br>"
     done
     echo "Victory Points: $frst<br>"
     echo "Victory Ratio: $frst_victory_ratio%<br>"
@@ -184,7 +184,7 @@ match_info() {
       world_json=$(jq ".[] | select(.id == $world_id)" worlds.json)
       world_name=$(echo "$world_json" | jq -r ".name")
       world_pop=$(echo "$world_json" | jq -r ".population")
-      echo "<b class='$scnd_color' id='$world_id'>:$world_pop: $world_name</b><br>"
+      echo "<b class='team$scnd_color' id='$world_id'>:$world_pop: $world_name</b><br>"
     done
     echo "Victory Points: $scnd<br>"
     echo "Victory Ratio: $scnd_victory_ratio%<br>"
@@ -209,7 +209,7 @@ match_info() {
       world_json=$(jq ".[] | select(.id == $world_id)" worlds.json)
       world_name=$(echo "$world_json" | jq -r ".name")
       world_pop=$(echo "$world_json" | jq -r ".population")
-      echo "<b class='$thrd_color' id='$world_id'>:$world_pop: $world_name</b><br>"
+      echo "<b class='team$thrd_color' id='$world_id'>:$world_pop: $world_name</b><br>"
     done
     echo "Victory Points: $thrd<br>"
     echo "Victory Ratio: $thrd_victory_ratio%<br>"
@@ -269,29 +269,8 @@ make_index() {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="gw2skirmish displays information about Guild Wars 2 World vs. World matches with unique Homestretch feature.">
 <title>gw2skirmish</title>
-<link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
-<style>
-.red {
-  color: #EE0000;
-}
-.blue {
-  color: #6161FF;
-}
-.green {
-  color: #008A00;
-}
-@media (prefers-color-scheme: dark) {
-  .red {
-    color: #FF7878;
-  }
-  .blue {
-    color: #7878FF;
-  }
-  .green {
-    color: #78FF78;
-  }
-}
-</style>
+<link rel="stylesheet" href="api/static/css/simple.css">
+<link rel="stylesheet" href="api/static/css/main.css">
 </head>
 <body class="main">
 <header>
