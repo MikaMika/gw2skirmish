@@ -267,6 +267,7 @@ make_index() {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="gw2skirmish displays information about Guild Wars 2 World vs. World matches with unique Homestretch feature.">
 <title>gw2skirmish</title>
 <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
 <style>
