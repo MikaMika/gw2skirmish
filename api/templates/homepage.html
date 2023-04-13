@@ -30,18 +30,18 @@
       </nav>
     </header>
     <nav>
+      <a href="#matches"><h2>matches</h2></a>
       <div id="matches">
-        <h2>matches</h2>
         <ul>
           {% for match in matches %}
           <li><a href="#{{ match.id }}">{{ match.id }}</a></li>
           {% endfor %}
         </ul>
       </div>
+      <a href="#worlds"><h2>worlds</h2></a>
       <div id="worlds">
-        <h2>worlds</h2>
+        <a href="#north-america"><h3>north america 🇺🇸</h3></a>
         <div class="region" id="north-america">
-          <h3>north america 🇺🇸</h3>
           <ul>
             {% for world in worlds %} {% if world.id < 2000 %}
             <li>
@@ -50,8 +50,8 @@
             {% endif %} {% endfor %}
           </ul>
         </div>
+        <a href="#europe"><h3>europe 🇪🇺</h3></a>
         <div class="region" id="europe">
-          <h3>europe 🇪🇺</h3>
           <ul>
             <li>
               english 🇬🇧
@@ -145,19 +145,24 @@
               {{ result['point_diff'] }}<br />
               Homestretch: {{result['tie']}}<br />
               Difficulty: 
-                {% if (result['difficulty'] | int) <= 0 %}
-                    afk
-                {% elif (result['difficulty']  | int ) >= 100 %}
-                    impossible
+                {% if (result['difficulty']|int) <= 0 %}
+                  afk
+                {% elif (result['difficulty']|int) >= 100 %}
+                  impossible
                 {% else %}
-                    {{result['difficulty']}}%
+                  {{result['difficulty']}}%
                 {% endif %}<br />
-              Certitude: {{result['certitude']}}%<br />
+              Certitude: 
+                {% if (result['certitude']|int) > 100 %}
+                  100%
+                {% else %}
+                  {{result['certitude']}}%
+                {% endif %}<br />
             </p>
             {% endfor %}
 
           </div>
-          <p><a href="#">⬆️Return to top</a></p>
+          <p><a href='#{{ matches[ loop.index - 2 ].id }}'>⬅️Previous</a> <a href='#'>⬆️Top</a> <a href='#{{ matches[ loop.index - (matches|length) ].id }}'>➡️Next</a></p>
         </article>
         {% endfor %}
       </div>

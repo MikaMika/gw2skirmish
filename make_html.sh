@@ -15,8 +15,8 @@ dl_worlds() {
 }
 
 make_list_matches() {
+    echo "<a href="#matches"><h2>matches</h2></a>"
     echo "<div id='matches'>"
-    echo "<h2>matches</h2>"
     echo "<ul>"
     MATCHES=$(jq ".|keys[]" matches.json)
     for match in $MATCHES; do
@@ -28,15 +28,15 @@ make_list_matches() {
 }
 
 make_list_worlds() {
+    echo "<a href="#worlds"><h2>worlds</h2></a>"
     echo "<div id='worlds'>"
-    echo "<h2>worlds</h2>"
+    echo "<a href="#north-america"><h3>north america 🇺🇸</h3></a>"
     echo "<div class='region' id='north-america'>"
-    echo "<h3>north america 🇺🇸</h3>"
     NA=$(jq ".[]|select(.id<2000).id" worlds.json)
     li_world "$NA"
     echo "</div>"
+    echo "<a href="#europe"><h3>europe 🇪🇺</h3></a>"
     echo "<div class='region' id='europe'>"
-    echo "<h3>europe 🇪🇺</h3>"
     echo "<ul>"
     echo "<li>english 🇬🇧"
     EN=$(jq ".[]|select(.id>2000 and .id<2100).id" worlds.json)
@@ -79,8 +79,10 @@ make_match() {
 }
 
 match_info() {
-    echo "<article class='match'>"
     match_id=$(jq -r ".[$match].id" matches.json)
+    match_id_previous=$(jq -r ".[$match-1].id" matches.json)
+    match_id_next=$(jq -r ".[$match-8].id" matches.json) # TODO: - (total amount of matches) + 1 for next
+    echo "<article class='match'>"
     echo "<h3 id='$match_id'>$match_id</h3>"
 
     vp_red=$(jq ".[$match].victory_points.red" matches.json)
@@ -152,7 +154,7 @@ match_info() {
     first_tie=$(( (vp_diff_remaining - first_vp_diff) / 2 ))
     first_secure=$((first_tie + 1))
     first_difficulty=$((100 * first_secure / vp_diff_remaining))
-#    kdr_bar "$first_color"
+  #  kdr_bar "$first_color"
     echo "<p>"
     for world_id in $(jq ".[$match].all_worlds.${first_color}[]" matches.json)
     do
@@ -177,7 +179,7 @@ match_info() {
     second_tie=$(( (vp_diff_remaining - second_vp_diff) / 2 ))
     second_secure=$((second_tie + 1))
     second_difficulty=$((100 * second_secure / vp_diff_remaining))
-#    kdr_bar "$second_color"
+  #  kdr_bar "$second_color"
     echo "<p>"
     for world_id in $(jq ".[$match].all_worlds.${second_color}[]" matches.json)
     do
@@ -202,7 +204,7 @@ match_info() {
     third_tie=$(( (vp_diff_remaining - third_vp_diff) / 2 ))
     third_secure=$((third_tie + 1))
     third_difficulty=$((100 * third_secure / vp_diff_remaining))
-#    kdr_bar "$third_color"
+  #  kdr_bar "$third_color"
     echo "<p>"
     for world_id in $(jq ".[$match].all_worlds.${third_color}[]" matches.json)
     do
@@ -222,7 +224,7 @@ match_info() {
     echo "</p>"
 
     echo "</div>"
-    echo "<p><a href='#'>⬆️Return to top</a></p>"
+    echo "<p><a href='#$match_id_previous'>⬅️Previous</a> <a href='#'>⬆️Top</a> <a href='#$match_id_next'>➡️Next</a></p>"
     echo "</article>"
 
 }
