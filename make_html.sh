@@ -56,12 +56,12 @@ make_list_worlds() {
     echo "<div class=\"hidden\" id=\"worlds\">"
     echo "<a href=\"#na\">🇺🇸 North America</a>"
     echo "<a href=\"#eu\">🇪🇺 Europe</a>"
+    echo "</div>"
     echo "<div class=\"hidden\" id=\"na\">"
     li_world "$worlds_id_na"
     echo "</div>"
     echo "<div class=\"hidden\" id=\"eu\">"
     li_world "$worlds_id_eu"
-    echo "</div>"
     echo "</div>"
 }
 
@@ -85,7 +85,7 @@ li_world() {
 }
 
 make_match() {
-  echo "<div class=\"hidden\" id=\"results\">"
+  echo "<div id=\"results\">"
   match=0
   for match_id in $matches_id
   do
@@ -97,21 +97,15 @@ make_match() {
 
 match_info() {
     matches_count=$(i=-1;for j in $matches_id; do i=$((i+1)); done; echo $i)
+    match_id_previous=$(for j in $matches_id; do echo "$j"; done | head -n$match | tail -n1)
+    match_id_next=$(for j in $matches_id; do echo "$j"; done | head -n$((match+2)) | tail -n1)
     if [ "$match" = "0" ]
-    then
+    then # if match is first; then previous is last
       match_id_previous=$(for j in $matches_id; do echo "$j"; done | tail -n1)
-      match_id_next=$(for j in $matches_id; do echo "$j"; done | head -n$((match+2)) | tail -n1)
     elif [ "$match" = "$matches_count" ]
-    then
-      match_id_previous=$(for j in $matches_id; do echo "$j"; done | head -n$match | tail -n1)
+    then # if match is last; then next is first
       match_id_next=$(for j in $matches_id; do echo "$j"; done | head -n1)
-    else
-      match_id_previous=$(for j in $matches_id; do echo "$j"; done | head -n$match | tail -n1)
-      match_id_next=$(for j in $matches_id; do echo "$j"; done | head -n$((match+2)) | tail -n1)
     fi
-    
-    echo "<article class=\"hidden match\">"
-    echo "<h2 id=\"m$match_id\">$match_id</h2>"
 
     i=0
     for match_victory_points in $matches_victory_points
@@ -141,10 +135,6 @@ match_info() {
     skirmish_done=$(( (vp_red+vp_blue+vp_green) / (3+4+5) ))
     skirmish_remaining=$((SKIRMISH_TOTAL - skirmish_done))
     vp_diff_remaining=$((skirmish_remaining * 2))
-    echo "<p>Skirmishes completed: $skirmish_done/$SKIRMISH_TOTAL<br>"
-    echo "Skirmishes left: $skirmish_remaining<br>"
-    echo "Max earnable VP difference: $vp_diff_remaining</p>"
-    echo "<div class=\"rbg\">"
     vp_max=$((skirmish_done * 5))
     vp_min=$((skirmish_done * 3))
 
@@ -174,7 +164,8 @@ match_info() {
       fi
       i=$((i+1))
     done
-    
+    match_all_worlds="$red_all_worlds $blue_all_worlds $green_all_worlds"
+
     if [ "$vp_red" -gt "$vp_blue" ] && [ "$vp_red" -gt "$vp_green" ]
     then
       first=$vp_red
@@ -245,8 +236,20 @@ match_info() {
     first_tie=$(( (vp_diff_remaining - first_vp_diff) / 2 ))
     first_secure=$((first_tie + 1))
     first_difficulty=$((100 * first_secure / vp_diff_remaining))
+
+    for world_id in $match_all_worlds
+    do
+      echo "<div class=\"world\" id=\"w$world_id\">"
+    done
+
+    echo "<article class=\"hidden match\" id=\"m$match_id\">"
+    echo "<h2>$match_id</h2>"
+    echo "<p>Skirmishes completed: $skirmish_done/$SKIRMISH_TOTAL<br>"
+    echo "Skirmishes left: $skirmish_remaining<br>"
+    echo "Max earnable VP difference: $vp_diff_remaining</p>"
+    echo "<div class=\"rbg\">"
     echo "<p>"
-    
+
     for world_id in $first_all_worlds
     do
       world_name=$(
@@ -260,8 +263,9 @@ match_info() {
         | grep "$world_id" \
         | cut -d\" -f10
       )
-      echo "<b class=\"team$first_color\" id=\"w$world_id\">:$world_pop: $world_name</b><br>"
+      echo "<b class=\"team$first_color\">:$world_pop: $world_name</b><br>"
     done
+
     echo "Victory Points: $first<br>"
     echo "Victory Ratio: $first_victory_ratio%<br>"
     first_prediction=$(( first+(skirmish_remaining*3)+(vp_diff_remaining*first_victory_ratio/100)+1 ))
@@ -294,7 +298,7 @@ match_info() {
         | grep "$world_id" \
         | cut -d\" -f10
       )
-      echo "<b class=\"team$second_color\" id=\"w$world_id\">:$world_pop: $world_name</b><br>"
+      echo "<b class=\"team$second_color\">:$world_pop: $world_name</b><br>"
     done
     echo "Victory Points: $second<br>"
     echo "Victory Ratio: $second_victory_ratio%<br>"
@@ -326,7 +330,7 @@ match_info() {
         | grep "$world_id" \
         | cut -d\" -f10
       )
-      echo "<b class=\"team$third_color\" id=\"w$world_id\">:$world_pop: $world_name</b><br>"
+      echo "<b class=\"team$third_color\">:$world_pop: $world_name</b><br>"
     done
     echo "Victory Points: $third<br>"
     echo "Victory Ratio: $third_victory_ratio%<br>"
@@ -341,6 +345,11 @@ match_info() {
     echo "</div>"
     echo "<p><a href=\"#m$match_id_previous\">⬅️Previous</a> <a href=\"#\">⬆️Top</a> <a href=\"#m$match_id_next\">➡️Next</a></p>"
     echo "</article>"
+
+    for world_id in $match_all_worlds
+    do
+      echo "</div>"
+    done
 
 }
 

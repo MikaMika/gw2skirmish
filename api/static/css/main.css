@@ -66,14 +66,7 @@
 /* hidden menu */
 .hidden {
   display: none;
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.3s;
 }
-.hidden:target, .hidden:has(*:target) {
+.hidden:target, .world:target .hidden {
   display: block;
-  visibility: visible;
-  opacity: 1;
-  pointer-events: auto;
 }
