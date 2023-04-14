@@ -67,6 +67,6 @@
 .hidden {
   display: none;
 }
-.hidden:target, .world:target .hidden {
+.hidden:target, *:target .hidden {
   display: block;
 }

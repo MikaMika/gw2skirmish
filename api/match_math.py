@@ -39,7 +39,7 @@ def calculate_scores(matches, worlds_by_id):
 
         # calculate first place victory point ratio and difficulty
         first_vp_ratio = (
-            0
+            0 # protection against division by zero at reset
             if max_earnable_vp == min_earnable_vp
             else 100
             * (first_vp - min_earnable_vp)
@@ -47,7 +47,12 @@ def calculate_scores(matches, worlds_by_id):
         )
         first_tie = (max_earnable_vp_diff - first_point_diff) / 2
         first_secure = first_tie + 1
-        first_difficulty = 100 * (first_secure / max_earnable_vp_diff)
+        first_difficulty = (
+            0 # protection against division by zero at reset
+            if max_earnable_vp_diff == 0
+            else 100
+            * (first_secure / max_earnable_vp_diff)
+        )
         first_prediction = (
             first_vp
             + (remaining_skirmishes * 3)
@@ -57,7 +62,7 @@ def calculate_scores(matches, worlds_by_id):
 
         # calculate second place victory point ratio and difficulty
         second_vp_ratio = (
-            0
+            0 # protection against division by zero at reset
             if max_earnable_vp == min_earnable_vp
             else 100
             * (second_vp - min_earnable_vp)
@@ -65,7 +70,12 @@ def calculate_scores(matches, worlds_by_id):
         )
         second_tie = (max_earnable_vp_diff - second_point_diff) / 2
         second_secure = second_tie + 1
-        second_difficulty = 100 * (second_secure / max_earnable_vp_diff)
+        second_difficulty = (
+            0 # protection against division by zero at reset
+            if max_earnable_vp_diff == 0
+            else 100
+            * (first_secure / max_earnable_vp_diff)
+        )
         second_prediction = (
             second_vp
             + (remaining_skirmishes * 3)
@@ -75,7 +85,7 @@ def calculate_scores(matches, worlds_by_id):
 
         # calculate third place victory point ratio and difficulty
         third_vp_ratio = (
-            0
+            0 # protection against division by zero at reset
             if max_earnable_vp == min_earnable_vp # first skirmish has 0 vp (maximum and minimum)
             else 100
             * (third_vp - min_earnable_vp)
@@ -83,7 +93,12 @@ def calculate_scores(matches, worlds_by_id):
         )
         third_tie = (max_earnable_vp_diff - third_point_diff) / 2
         third_secure = third_tie + 1
-        third_difficulty = 100 * (third_secure / max_earnable_vp_diff)
+        third_difficulty = (
+            0 # protection against division by zero at reset
+            if max_earnable_vp_diff == 0
+            else 100
+            * (first_secure / max_earnable_vp_diff)
+        )
         third_prediction = (
             third_vp
             + (remaining_skirmishes * 3)
@@ -134,3 +149,7 @@ def calculate_scores(matches, worlds_by_id):
         match['first'] = first
         match['second'] = second
         match['third'] = third
+        match['all_worlds_id'] = []
+        for color in match['all_worlds']:
+            for world_id in match['all_worlds'][color]:
+                match['all_worlds_id'].append(world_id)
