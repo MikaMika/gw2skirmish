@@ -148,52 +148,94 @@ match_info() {
     vp_max=$((skirmish_done * 5))
     vp_min=$((skirmish_done * 3))
 
+    i=0
+    for match_all_worlds in $matches_all_worlds
+    do
+      if [ "$i" = "$match" ]
+      then
+        red_all_worlds=$(
+          echo "$match_all_worlds" \
+          | cut -d\[ -f2 \
+          | cut -d\] -f1 \
+          | tr "," " "
+        )
+        blue_all_worlds=$(
+          echo "$match_all_worlds" \
+          | cut -d\[ -f3 \
+          | cut -d\] -f1 \
+          | tr "," " "
+        )
+        green_all_worlds=$(
+          echo "$match_all_worlds" \
+          | cut -d\[ -f4 \
+          | cut -d\] -f1 \
+          | tr "," " "
+        )
+      fi
+      i=$((i+1))
+    done
+    
     if [ "$vp_red" -gt "$vp_blue" ] && [ "$vp_red" -gt "$vp_green" ]
     then
       first=$vp_red
       first_color="red"
+      first_all_worlds=$red_all_worlds
       if [ "$vp_blue" -gt "$vp_green" ]
       then
         second=$vp_blue
         second_color="blue"
+        second_all_worlds=$blue_all_worlds
         third=$vp_green
         third_color="green"
+        third_all_worlds=$green_all_worlds
       else
         second=$vp_green
         second_color="green"
+        second_all_worlds=$green_all_worlds
         third=$vp_blue
         third_color="blue"
+        third_all_worlds=$blue_all_worlds
       fi
     elif [ "$vp_blue" -gt "$vp_red" ] && [ "$vp_blue" -gt "$vp_green" ]
     then
       first=$vp_blue
       first_color="blue"
+      first_all_worlds=$blue_all_worlds
       if [ "$vp_red" -gt "$vp_green" ]
       then
         second=$vp_red
         second_color="red"
+        second_all_worlds=$red_all_worlds
         third=$vp_green
         third_color="green"
+        third_all_worlds=$green_all_worlds
       else
         second=$vp_green
         second_color="green"
+        second_all_worlds=$green_all_worlds
         third=$vp_red
         third_color="red"
+        third_all_worlds=$red_all_worlds
       fi
     else
       first=$vp_green
       first_color="green"
+      first_all_worlds=$green_all_worlds
       if [ "$vp_red" -gt "$vp_blue" ]
       then
         second=$vp_red
         second_color="red"
+        second_all_worlds=$red_all_worlds
         third=$vp_blue
         third_color="blue"
+        third_all_worlds=$blue_all_worlds
       else
         second=$vp_blue
         second_color="blue"
+        second_all_worlds=$blue_all_worlds
         third=$vp_red
         third_color="red"
+        third_all_worlds=$red_all_worlds
       fi
     fi
 
@@ -205,33 +247,6 @@ match_info() {
     first_difficulty=$((100 * first_secure / vp_diff_remaining))
     echo "<p>"
     
-    i=0
-    for match_all_worlds in $matches_all_worlds
-    do
-      if [ "$i" = "$match" ]
-      then
-        first_all_worlds=$(
-          echo "$match_all_worlds" \
-          | cut -d\[ -f2 \
-          | cut -d\] -f1 \
-          | tr "," " "
-        )
-        second_all_worlds=$(
-          echo "$match_all_worlds" \
-          | cut -d\[ -f3 \
-          | cut -d\] -f1 \
-          | tr "," " "
-        )
-        third_all_worlds=$(
-          echo "$match_all_worlds" \
-          | cut -d\[ -f4 \
-          | cut -d\] -f1 \
-          | tr "," " "
-        )
-      fi
-      i=$((i+1))
-    done
-
     for world_id in $first_all_worlds
     do
       world_name=$(
