@@ -14,6 +14,9 @@ dl_worlds() {
     wget --quiet --output-document="worlds.json" "$GW2WORLDS?ids=all"
 }
 
+[ -f "worlds.json" ] || dl_worlds
+[ -f "matches.json" ] || dl_matches
+
 # For next level challenge: the all-in-one jq
 # matches=$(#   jq -c '.[]|.id,.all_worlds,.victory_points' matches.json)
 matches_id=$(jq -r '.[].id' matches.json)
@@ -363,8 +366,6 @@ make_index() {
 }
 
 # exec
-[ -f "worlds.json" ] || dl_worlds
-[ -f "matches.json" ] || dl_matches
 make_index \
 | sed s/'>1-'/'>🇺🇸 1-'/g \
 | sed s/'>2-'/'>🇪🇺 2-'/g \
