@@ -14,45 +14,50 @@ dl_worlds() {
     wget --quiet --output-document="worlds.json" "$GW2WORLDS?ids=all"
 }
 
+# For next level challenge: the all-in-one jq
+# matches=$(#   jq -c '.[]|.id,.all_worlds,.victory_points' matches.json)
+matches_id=$(jq -r '.[].id' matches.json)
+matches_all_worlds=$(jq -c '.[].all_worlds' matches.json)
+matches_victory_points=$(jq -c '.[].victory_points' matches.json)
+worlds=$(jq -c '.[]' worlds.json)
+
+worlds_fmt=$(echo "$worlds" | sed 's/{//g' | sed 's/} /}/g' | tr " " "_" | tr "}" " ")
+worlds_id_na=$(
+  for world in $worlds_fmt
+  do
+    world_id=$(echo "$world" | cut -d: -f2 | cut -d, -f1)
+    if [ "$world_id" -lt 2000 ]; then echo "$world_id"; fi
+  done
+)
+worlds_id_eu=$(
+  for world in $worlds_fmt
+  do
+    world_id=$(echo "$world" | cut -d: -f2 | cut -d, -f1)
+    if [ "$world_id" -gt 2000 ]; then echo "$world_id"; fi
+  done
+)
+
 make_list_matches() {
-    echo "<a href="#matches">⚔️ Matches</a>"
-    echo "<a href="#worlds">🌐 Worlds</a>"
-    echo "<div class='hidden' id='matches'>"
+    echo "<a href=\"#matches\">⚔️ Matches</a>"
+    echo "<a href=\"#worlds\">🌐 Worlds</a>"
+    echo "<div class=\"hidden\" id=\"matches\">"
     echo "<ul>"
-    MATCHES=$(jq ".|keys[]" matches.json)
-    for match in $MATCHES; do
-        match_id=$(jq -r ".[$match].id" matches.json)
-        echo "<li><a href='#$match_id'>$match_id</a>"
+    for match_id in $matches_id; do
+        echo "<li><a href=\"#m$match_id\">$match_id</a></li>"
     done
     echo "</ul>"
     echo "</div>"
 }
 
 make_list_worlds() {
-    echo "<div class='hidden' id='worlds'>"
-    echo "<a href="#na">🇺🇸 North America</a>"
-    echo "<a href="#eu">🇪🇺 Europe</a>"
-    echo "<div class='hidden' id='na'>"
-    NA=$(jq ".[]|select(.id<2000).id" worlds.json)
-    li_world "$NA"
+    echo "<div class=\"hidden\" id=\"worlds\">"
+    echo "<a href=\"#na\">🇺🇸 North America</a>"
+    echo "<a href=\"#eu\">🇪🇺 Europe</a>"
+    echo "<div class=\"hidden\" id=\"na\">"
+    li_world "$worlds_id_na"
     echo "</div>"
-    echo "<div class='hidden' id='eu'>"
-    EU=$(jq ".[]|select(.id>2000).id" worlds.json)
-    EN=$(jq ".[]|select(.id>2000 and .id<2100).id" worlds.json)
-    FR=$(jq ".[]|select(.id>2100 and .id<2200).id" worlds.json)
-    DE=$(jq ".[]|select(.id>2200 and .id<2300).id" worlds.json)
-    SP=$(jq ".[]|select(.id>2300 and .id<2400).id" worlds.json)
-    li_world "$EU"
-    # echo "<ul>"
-    # echo "<li>english 🇬🇧"
-    # li_world "$EN"
-    # echo "<li>french 🇫🇷"
-    # li_world "$FR"
-    # echo "<li>german 🇩🇪"
-    # li_world "$DE"
-    # echo "<li>spanish 🇪🇸"
-    # li_world "$SP"
-    # echo "</ul>"
+    echo "<div class=\"hidden\" id=\"eu\">"
+    li_world "$worlds_id_eu"
     echo "</div>"
     echo "</div>"
 }
@@ -60,35 +65,75 @@ make_list_worlds() {
 li_world() {
     echo "<ul>"
     for world_id in ${1}; do
-        world_json=$(jq ".[] | select(.id == $world_id)" worlds.json)
-        world_name=$(echo "$world_json" | jq -r ".name")
-        world_pop=$(echo "$world_json" | jq -r ".population")
-        echo "<li><a href='#$world_id'>$world_id :$world_pop: $world_name</a>"
-#        echo "<li><a href='#$world_id'>$world_id $world_name</a>"
+        world_name=$(
+          ( for world in $worlds_fmt; do echo "$world"; done ) \
+          | grep "$world_id" \
+          | cut -d\" -f6 \
+          | tr "_" " "
+        )
+        world_pop=$(
+          ( for world in $worlds_fmt; do echo "$world"; done ) \
+          | grep "$world_id" \
+          | cut -d\" -f10
+        )
+        echo "<li><a href=\"#w$world_id\">$world_id :$world_pop: $world_name</a></li>"
     done
     echo "</ul>"
 }
 
 make_match() {
-  echo "<div class='hidden' id='results'>"
-  MATCHES=$(jq ".|keys[]" matches.json)
-  for match in $MATCHES
+  echo "<div class=\"hidden\" id=\"results\">"
+  match=0
+  for match_id in $matches_id
   do
     match_info
+    match=$((match+1))
   done
   echo "</div>"
 }
 
 match_info() {
-    match_id=$(jq -r ".[$match].id" matches.json)
-    match_id_previous=$(jq -r ".[$match-1].id" matches.json)
-    match_id_next=$(jq -r ".[$match-8].id" matches.json) # TODO: - (total amount of matches) + 1 for next
-    echo "<article class='hidden' class='match'>"
-    echo "<h2 id='$match_id'>$match_id</h2>"
+    matches_count=$(i=-1;for j in $matches_id; do i=$((i+1)); done; echo $i)
+    if [ "$match" = "0" ]
+    then
+      match_id_previous=$(for j in $matches_id; do echo "$j"; done | tail -n1)
+      match_id_next=$(for j in $matches_id; do echo "$j"; done | head -n$((match+2)) | tail -n1)
+    elif [ "$match" = "$matches_count" ]
+    then
+      match_id_previous=$(for j in $matches_id; do echo "$j"; done | head -n$match | tail -n1)
+      match_id_next=$(for j in $matches_id; do echo "$j"; done | head -n1)
+    else
+      match_id_previous=$(for j in $matches_id; do echo "$j"; done | head -n$match | tail -n1)
+      match_id_next=$(for j in $matches_id; do echo "$j"; done | head -n$((match+2)) | tail -n1)
+    fi
+    
+    echo "<article class=\"hidden match\">"
+    echo "<h2 id=\"m$match_id\">$match_id</h2>"
 
-    vp_red=$(jq ".[$match].victory_points.red" matches.json)
-    vp_blue=$(jq ".[$match].victory_points.blue" matches.json)
-    vp_green=$(jq ".[$match].victory_points.green" matches.json)
+    i=0
+    for match_victory_points in $matches_victory_points
+    do
+      if [ "$i" = "$match" ]
+      then
+        vp_red=$(
+          echo "$match_victory_points" \
+          | cut -d: -f2 \
+          | cut -d, -f1
+        )
+        vp_blue=$(
+          echo "$match_victory_points" \
+          | cut -d: -f3 \
+          | cut -d, -f1
+        )
+        vp_green=$(
+          echo "$match_victory_points" \
+          | cut -d: -f4 \
+          | cut -d\} -f1
+        )
+      fi
+      i=$((i+1))
+    done
+
     SKIRMISH_TOTAL=84
     skirmish_done=$(( (vp_red+vp_blue+vp_green) / (3+4+5) ))
     skirmish_remaining=$((SKIRMISH_TOTAL - skirmish_done))
@@ -96,7 +141,7 @@ match_info() {
     echo "<p>Skirmishes completed: $skirmish_done/$SKIRMISH_TOTAL<br>"
     echo "Skirmishes left: $skirmish_remaining<br>"
     echo "Max earnable VP difference: $vp_diff_remaining</p>"
-    echo "<div class='rbg'>"
+    echo "<div class=\"rbg\">"
     vp_max=$((skirmish_done * 5))
     vp_min=$((skirmish_done * 3))
 
@@ -155,23 +200,60 @@ match_info() {
     first_tie=$(( (vp_diff_remaining - first_vp_diff) / 2 ))
     first_secure=$((first_tie + 1))
     first_difficulty=$((100 * first_secure / vp_diff_remaining))
-  #  kdr_bar "$first_color"
     echo "<p>"
-    for world_id in $(jq ".[$match].all_worlds.${first_color}[]" matches.json)
+    
+    i=0
+    for match_all_worlds in $matches_all_worlds
     do
-      world_json=$(jq ".[] | select(.id == $world_id)" worlds.json)
-      world_name=$(echo "$world_json" | jq -r ".name")
-      world_pop=$(echo "$world_json" | jq -r ".population")
-      echo "<b class='team$first_color' id='$world_id'>:$world_pop: $world_name</b><br>"
+      if [ "$i" = "$match" ]
+      then
+        first_all_worlds=$(
+          echo "$match_all_worlds" \
+          | cut -d\[ -f2 \
+          | cut -d\] -f1 \
+          | tr "," " "
+        )
+        second_all_worlds=$(
+          echo "$match_all_worlds" \
+          | cut -d\[ -f3 \
+          | cut -d\] -f1 \
+          | tr "," " "
+        )
+        third_all_worlds=$(
+          echo "$match_all_worlds" \
+          | cut -d\[ -f4 \
+          | cut -d\] -f1 \
+          | tr "," " "
+        )
+      fi
+      i=$((i+1))
+    done
+
+    for world_id in $first_all_worlds
+    do
+      world_name=$(
+        ( for world in $worlds_fmt; do echo "$world"; done ) \
+        | grep "$world_id" \
+        | cut -d\" -f6 \
+        | tr "_" " "
+      )
+      world_pop=$(
+        ( for world in $worlds_fmt; do echo "$world"; done ) \
+        | grep "$world_id" \
+        | cut -d\" -f10
+      )
+      echo "<b class=\"team$first_color\" id=\"w$world_id\">:$world_pop: $world_name</b><br>"
     done
     echo "Victory Points: $first<br>"
     echo "Victory Ratio: $first_victory_ratio%<br>"
-    echo "Prediction: $(( first+(skirmish_remaining*3)+(vp_diff_remaining*first_victory_ratio/100)+1 ))<br>"
+    first_prediction=$(( first+(skirmish_remaining*3)+(vp_diff_remaining*first_victory_ratio/100)+1 ))
+    echo "Prediction: $first_prediction<br>"
     echo "<br>"
     echo ":$first_color: 🥇 vs :$second_color: 🥈 : $first_vp_diff<br>"
     echo "Homestretch: $first_tie<br>"
     echo "Difficulty: $first_difficulty% - $(( 100 - first_difficulty ))%<br>"
-    echo "Certitude: $(( 2 * (50 - first_difficulty) ))%<br>"
+    first_certitude=$(( 2 * (50 - first_difficulty) ))
+    echo "Certitude: $first_certitude%<br>"
     echo "</p>"
 
     [ $vp_max = $vp_min ] && second_victory_ratio=0 \
@@ -180,14 +262,21 @@ match_info() {
     second_tie=$(( (vp_diff_remaining - second_vp_diff) / 2 ))
     second_secure=$((second_tie + 1))
     second_difficulty=$((100 * second_secure / vp_diff_remaining))
-  #  kdr_bar "$second_color"
     echo "<p>"
-    for world_id in $(jq ".[$match].all_worlds.${second_color}[]" matches.json)
+    for world_id in $second_all_worlds
     do
-      world_json=$(jq ".[] | select(.id == $world_id)" worlds.json)
-      world_name=$(echo "$world_json" | jq -r ".name")
-      world_pop=$(echo "$world_json" | jq -r ".population")
-      echo "<b class='team$second_color' id='$world_id'>:$world_pop: $world_name</b><br>"
+      world_name=$(
+        ( for world in $worlds_fmt; do echo "$world"; done ) \
+        | grep "$world_id" \
+        | cut -d\" -f6 \
+        | tr "_" " "
+      )
+      world_pop=$(
+        ( for world in $worlds_fmt; do echo "$world"; done ) \
+        | grep "$world_id" \
+        | cut -d\" -f10
+      )
+      echo "<b class=\"team$second_color\" id=\"w$world_id\">:$world_pop: $world_name</b><br>"
     done
     echo "Victory Points: $second<br>"
     echo "Victory Ratio: $second_victory_ratio%<br>"
@@ -205,14 +294,21 @@ match_info() {
     third_tie=$(( (vp_diff_remaining - third_vp_diff) / 2 ))
     third_secure=$((third_tie + 1))
     third_difficulty=$((100 * third_secure / vp_diff_remaining))
-  #  kdr_bar "$third_color"
     echo "<p>"
-    for world_id in $(jq ".[$match].all_worlds.${third_color}[]" matches.json)
+    for world_id in $third_all_worlds
     do
-      world_json=$(jq ".[] | select(.id == $world_id)" worlds.json)
-      world_name=$(echo "$world_json" | jq -r ".name")
-      world_pop=$(echo "$world_json" | jq -r ".population")
-      echo "<b class='team$third_color' id='$world_id'>:$world_pop: $world_name</b><br>"
+      world_name=$(
+        ( for world in $worlds_fmt; do echo "$world"; done ) \
+        | grep "$world_id" \
+        | cut -d\" -f6 \
+        | tr "_" " "
+      )
+      world_pop=$(
+        ( for world in $worlds_fmt; do echo "$world"; done ) \
+        | grep "$world_id" \
+        | cut -d\" -f10
+      )
+      echo "<b class=\"team$third_color\" id=\"w$world_id\">:$world_pop: $world_name</b><br>"
     done
     echo "Victory Points: $third<br>"
     echo "Victory Ratio: $third_victory_ratio%<br>"
@@ -225,42 +321,9 @@ match_info() {
     echo "</p>"
 
     echo "</div>"
-    echo "<p><a href='#$match_id_previous'>⬅️Previous</a> <a href='#'>⬆️Top</a> <a href='#$match_id_next'>➡️Next</a></p>"
+    echo "<p><a href=\"#m$match_id_previous\">⬅️Previous</a> <a href=\"#\">⬆️Top</a> <a href=\"#m$match_id_next\">➡️Next</a></p>"
     echo "</article>"
 
-}
-
-kdr_bar() {
-  kills=$(jq ".[$match].kills.${1}" matches.json)
-  deaths=$(jq ".[$match].deaths.${1}" matches.json)
-  [ "$deaths" = 0 ] && deaths=1    # to avoid zero div
-  kdr=$(( kills * 100 / deaths ))
-
-  if [ "$kdr" -le 100 ]
-  then
-    percent=$(( kdr / 2 ))
-  else
-    percent=$(( 100 - 10000/(kdr*2) ))
-  fi
-
-  if [ "$percent" -gt 50 ]
-  then
-    lime=$percent && maroon=100
-  else
-    lime=0 && maroon=$(( percent*2 ))
-  fi
-
-  echo "
-    <span> $kills kills / $deaths deaths ($(echo "scale=2; ($kdr/100)" | bc -l))</span>
-    <div class='green' style='border:solid black 2px; background-color: green; height: 10px; width: 100px;'>
-    <div class='lime' style='background-color: lime; width: ${lime}%; height: 100%;'>
-    <div class='red' style='background-color: red; width: 50px; height: 100%;'>
-    <div class='maroon' style='background-color: maroon; width: ${maroon}%; height: 100%;'>
-    </div>
-    </div>
-    </div>
-    </div>
-  "
 }
 
 make_index() {
@@ -277,7 +340,7 @@ make_index() {
 </head>
 <body class="main">
 <header>
-<a href="/"><h1 id="#">gw2skirmish</h1></a>
+<a href="/"><h1 id="gw2skirmish">gw2skirmish</h1></a>
 <p>gw2skirmish displays information about Guild Wars 2 World vs. World matches with unique Homestretch feature.</p>
 <p>Help the project on <a href="https://github.com/MikaMika/gw2skirmish">GitHub</a>.</p>'
     echo "<nav>"
@@ -290,10 +353,10 @@ make_index() {
     echo "</main>"
     echo "    <footer>
         <p>Last updated: $last_updated</p>
-        <p><a href='https://gw2skirmish-mikamika.vercel.app'>Alternative app version</a> using <a
-                href='https://flask.palletsprojects.com/en/2.2.x/'>Flask 2</a> on <a
-                href='https://vercel.com/'>Vercel</a></p>
-        <p><a href='https://github.com/MikaMika/'>MikaMika</a> © 2023</p>
+        <p><a href=\"https://gw2skirmish-mikamika.vercel.app\">Alternative app version</a> using <a
+                href=\"https://flask.palletsprojects.com/en/2.2.x/\">Flask 2</a> on <a
+                href=\"https://vercel.com/\">Vercel</a></p>
+        <p><a href=\"https://github.com/MikaMika/\">MikaMika</a> © 2023</p>
     </footer>"
     echo '</body>
 </html>'
