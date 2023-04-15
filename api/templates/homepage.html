@@ -1,107 +1,24 @@
-{% from 'macros.html' import world_title %}
-<!DOCTYPE html>
-<html lang="en">
+{% extends "partials/layout.html" %}
+{% from 'partials/macros.html' import world_title %}
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="gw2skirmish displays information about Guild Wars 2 
-              World vs. World matches with unique Homestretch feature.">
-  <title>gw2skirmish</title>
-  <link rel="stylesheet" href="{{ url_for('static',filename='css/simple.css') }}" />
-  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
-</head>
+{% block title %}gw2skirmish{% endblock %}
+{% block description %}gw2skirmish displays information about Guild Wars 2 World vs. World
+    matches with unique Homestretch feature.{% endblock %}
 
-<body class="main">
-  <header>
-    <a href="/">
-      <h1 id="gw2skirmish">gw2skirmish</h1>
-    </a>
-    <p>
-      <b>Flask Edition</b> on Vercel.
-    </p>
-    <nav class="menu-bar">
-      <ul>
-        <li class="menu-item">
-          <a href="https://gw2skirmish.github.io">HTML Edition</a>
-        </li>
-        <li class="menu-item">
+{% block heading %}
+<p>
+  <b>Flask Edition</b> on Vercel.
+</p>
+{% endblock %}
+
+{% block other_link %}
+    <li class="menu-item">
           <a href="/gpt">AI Remake Edition</a>
-        </li>
-        <li class="menu-item">
-          <a href="https://github.com/MikaMika/gw2skirmish">GitHub</a>
-        </li>
-      </ul>
-    </nav>
-    <nav>
-      <a href="#matches">⚔️ Matches</a>
-      <a href="#worlds">🌐 Worlds</a>
-      <div class="hidden" id="matches">
-        <ul>
-          {% for match in matches %}
-          <li><a href="#m{{ match.id }}">
-              {% if match.worlds.red < 2000 %} 🇺🇸{% endif %}{% if match.worlds.red> 2000 %}
-                🇪🇺{% endif %} {{ match.id }}
-            </a></li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div class="hidden" id="worlds">
-        <a href="#na">🇺🇸 North America</a>
-        <a href="#eu">🇪🇺 Europe</a>
-      </div>
-      <div class="region hidden" id="na">
-        <ul>
-          {% for world in worlds %} {% if world.id < 2000 %} <li>
-            <a href="#w{{ world.id }}">{{ world_title(world) }}</a>
-            </li>
-            {% endif %} {% endfor %}
-        </ul>
-      </div>
-      <div class="region hidden" id="eu">
-        <ul>
-          <li>
-            english 🇬🇧
-            <ul>
-              {% for world in worlds %} {% if world.id >= 2000 and world.id <= 2100 %} <li>
-                <a href="#w{{ world.id }}">{{ world_title(world) }}</a>
-          </li>
-          {% endif %} {% endfor %}
-        </ul>
-        </li>
-        <li>
-          french 🇫🇷
-          <ul>
-            {% for world in worlds %} {% if world.id >= 2100 and world.id <= 2200 %} <li>
-              <a href="#w{{ world.id }}">{{ world_title(world) }}</a>
-        </li>
-        {% endif %} {% endfor %}
-        </ul>
-        </li>
-        <li>
-          german 🇩🇪
-          <ul>
-            {% for world in worlds %} {% if world.id >= 2200 and world.id <= 2300 %} <li>
-              <a href="#w{{ world.id }}">{{ world_title(world) }}</a>
-        </li>
-        {% endif %} {% endfor %}
-        </ul>
-        </li>
-        <li>
-          spanish 🇪🇸
-          <ul>
-            {% for world in worlds %} {% if world.id >= 2300 and world.id <= 2400 %} <li>
-              <a href="#w{{ world.id }}">{{ world_title(world) }}</a>
-        </li>
-        {% endif %} {% endfor %}
-        </ul>
-        </li>
-        </ul>
-      </div>
-    </nav>
-  </header>
-  <main>
-    {% for match in matches %}
+    </li>
+{% endblock %}
+
+{% block main_content %}
+{% for match in matches %}
     <div class="match" id="m{{ match.id }}">
       {% for world in match['all_worlds_id'] %}
       <div class="world" id="w{{ world }}">
@@ -173,22 +90,4 @@
       {% endfor %}
     </div>
     {% endfor %}
-  </main>
-  <footer>
-    <p>
-      Last updated: <span class="utcToLocal">{{ now_utc }}</span>
-    </p>
-    <p>
-      <a href="https://github.com/MikaMika/">MikaMika</a> © 2023<br />
-      Enhanced by <a href="https://github.com/chief-afk">Chief II</a>.
-    </p>
-  </footer>
-  <script>
-    // convert UTC time to local time for user on browser
-    document.querySelectorAll(".utcToLocal").forEach(function (i) {
-      i.innerText = new Date(i.innerText); //.toLocaleString();
-    });
-  </script>
-</body>
-
-</html>
+{% endblock %}
