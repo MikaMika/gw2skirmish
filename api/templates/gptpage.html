@@ -1,156 +1,62 @@
-{% from 'macros.html' import world_title %}<!DOCTYPE html><!-- TODO: use template inheritance to reduce code duplication -->
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>gw2skirmish</title>
-    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css" />
-    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/main.css') }}">
-  </head>
-  <body class="main">
-    <header>
-      <h1 id="#">gw2skirmish - AI-powered Insights</h1>
-      <p>Last updated: <span class="utcToLocal">{{now_utc}}</span></p>
-      <nav class="menu-bar">
-        <ul>
-          <li class="menu-item">
-            <a href="/">Home</a>
-          </li>
-          <li class="menu-item">
-            <a href="/gpt">AI Analysis</a>
-          </li>
-          <li class="menu-item">
-            <a href="https://github.com/MikaMika/gw2skirmish">Link to GitHub</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-    <nav>
-      <div id="matches">
-        <h2>matches</h2>
-        <ul>
-          {% for match in matches %}
-          <li><a href="#{{ match.id }}">{{ match.id }}</a></li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div id="worlds">
-        <h2>worlds</h2>
-        <div class="region" id="north-america">
-          <h3>north america 🇺🇸</h3>
-          <ul>
-            {% for world in worlds %} {% if world.id < 2000 %}
-            <li>
-              <a href="#{{ world.id }}">{{world_title(world)}}</a>
-            </li>
-            {% endif %} {% endfor %}
-          </ul>
-        </div>
-        <div class="region" id="europe">
-          <h3>europe 🇪🇺</h3>
-          <ul>
-            <li>
-              english 🇬🇧
-              <ul>
-                {% for world in worlds %} {% if world.id >= 2000 and world.id <=
-                2100 %}
-                <li>
-                  <a href="#{{ world.id }}">{{world_title(world)}}</a>
-                </li>
-                {% endif %} {% endfor %}
-              </ul>
-            </li>
+{% extends "partials/layout.html" %}
+{% from 'partials/macros.html' import world_title %}
 
-            <li>
-              french 🇫🇷
-              <ul>
-                {% for world in worlds %} {% if world.id >= 2100 and world.id <=
-                2200 %}
-                <li>
-                  <a href="#{{ world.id }}">{{world_title(world)}}</a>
-                </li>
-                {% endif %} {% endfor %}
-              </ul>
-            </li>
+{% block title %}gw2skirmish - AI Remake Edition{% endblock %}
+{% block description %}AI-powered information about Guild Wars 2 World vs. World
+    matches with unique Homestretch feature.{% endblock %}
 
-            <li>
-              german 🇩🇪
-              <ul>
-                {% for world in worlds %} {% if world.id >= 2200 and world.id <=
-                2300 %}
-                <li>
-                  <a href="#{{ world.id }}">{{world_title(world)}}</a>
-                </li>
-                {% endif %} {% endfor %}
-              </ul>
-            </li>
+{% block heading %}
+<p>
+  <b>AI Edition</b> on Vercel.
+</p>
+{% endblock %}
 
-            <li>
-              spanish 🇪🇸
-              <ul>
-                {% for world in worlds %} {% if world.id >= 2300 and world.id <=
-                2400 %}
-                <li>
-                  <a href="#{{ world.id }}">{{world_title(world)}}</a>
-                </li>
-                {% endif %} {% endfor %}
-              </ul>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <main>
-      <div id="results">
-        <h2>results</h2>
-        {% for match in matches %}
-        <article class="match">
-          <h3 id="{{match.id}}">{{match.id}}</h3>
-          <p>
-            Skirmishes completed: {{match.skirmishes|length}}/84<br />
-            Skirmishes left: {{84 - match.skirmishes|length}}<br />
-            Max earnable VP difference: {{ match['max_earnable_vp'] }} <br/>
-            Prediction Certainty: {{ match['certainty'] }}%<br />
-          </p>
-          <div class="rbg">
-            {% for result in match['results'] %}
-            <p>
-              <b class="team{{result['colour']}}" id="{{match['all_worlds'][result['colour']][0]}}">
-                {{world_title(worlds_by_id[match['all_worlds'][result['colour']][0]])}}
-              </b><br />
-              <b class="team{{result['colour']}}" id="{{match['all_worlds'][result['colour']][1]}}">
-                {{world_title(worlds_by_id[match['all_worlds'][result['colour']][1]]|default("N/A"))}}
-              </b><br />
-              Victory Points: {{ result['victory_points'] }}<br />
-              Victory Ratio: {{ result['victory_point_ratio'] }}<br />
-              <b>Prediction: {{ result['predicted_final_points'] }}</b><br />
-              <br />
-              Points for First: {{ result['points_needed_first'] }}<br />
-              Points for Second: {{ result['points_needed_second'] }}<br />
-              <br />
-              {% if result['colour'] == 'green' %}🟢{% endif %}
-              {% if result['colour'] == 'red' %}🔴{% endif %}
-              {% if result['colour'] == 'blue' %}🔵{% endif %}
-              🥇 vs 
-              {% if result['point_diff_compared_against'] == 'green' %}🟢{% endif %}
-              {% if result['point_diff_compared_against'] == 'red' %}🔴{% endif %}
-              {% if result['point_diff_compared_against'] == 'blue' %}🔵{% endif %}
-              🥈:
-              {{ result['vs_point_diff'] }}<br />
-              Difficulty: {{ result['difficulty_to_win'] }}<br />
-            </p>
-            {% endfor %}
-          </div>
-          <p><a href="#">⬆️Return to top</a></p>
-        </article>
-        {% endfor %}
-      </div>
-    </main>
-    <footer></footer>
-    <script>
-      // convert UTC time to local time for user on browser
-      document.querySelectorAll(".utcToLocal").forEach(function (i) {
-        i.innerText = new Date(i.innerText); //.toLocaleString();
-      });
-    </script>
-  </body>
-</html>
+{% block other_link %}
+    <li class="menu-item">
+          <a href="/">Flask Edition</a>
+    </li>
+{% endblock %}
+
+{% block main_content %}
+{% for match in matches %}
+<article class="match" id="m{{ match.id }}">
+  <h3 id="{{match.id}}">{{match.id}}</h3>
+  <p>
+    Skirmishes completed: {{match.skirmishes|length}}/84<br />
+    Skirmishes left: {{84 - match.skirmishes|length}}<br />
+    Max earnable VP difference: {{ match['max_earnable_vp'] }} <br/>
+    Prediction Certainty: {{ match['certainty'] }}%<br />
+  </p>
+  <div class="rbg">
+    {% for result in match['results'] %}
+    <p>
+      <b class="team{{result['colour']}}" id="w{{match['all_worlds'][result['colour']][0]}}">
+        {{world_title(worlds_by_id[match['all_worlds'][result['colour']][0]])}}
+      </b><br />
+      <b class="team{{result['colour']}}" id="w{{match['all_worlds'][result['colour']][1]}}">
+        {{world_title(worlds_by_id[match['all_worlds'][result['colour']][1]]|default(""))}}
+      </b><br />
+      Victory Points: {{ result['victory_points'] }}<br />
+      Victory Ratio: {{ result['victory_point_ratio'] }}<br />
+      <b>Prediction: {{ result['predicted_final_points'] }}</b><br />
+      <br />
+      Points for First: {{ result['points_needed_first'] }}<br />
+      Points for Second: {{ result['points_needed_second'] }}<br />
+      <br />
+      {% if result['colour'] == 'green' %}🟢{% endif %}
+      {% if result['colour'] == 'red' %}🔴{% endif %}
+      {% if result['colour'] == 'blue' %}🔵{% endif %}
+      🥇 vs
+      {% if result['point_diff_compared_against'] == 'green' %}🟢{% endif %}
+      {% if result['point_diff_compared_against'] == 'red' %}🔴{% endif %}
+      {% if result['point_diff_compared_against'] == 'blue' %}🔵{% endif %}
+      🥈:
+      {{ result['vs_point_diff'] }}<br />
+      Difficulty: {{ result['difficulty_to_win'] }}<br />
+    </p>
+    {% endfor %}
+  </div>
+  <p><a href="#">⬆️Return to top</a></p>
+</article>
+{% endfor %}
+{% endblock %}
