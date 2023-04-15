@@ -385,6 +385,29 @@ make_index() {
                 href=\"https://vercel.com/\">Vercel</a></p>
         <p><a href=\"https://github.com/MikaMika/\">MikaMika</a> © 2023</p>
     </footer>"
+    
+    # add script to remember last visited fragment
+    cat << 'EOF'
+    <script>
+    /* Remember last match/world visited */
+
+    // if browser has a last visited match/world, go to it
+    const lastClickedFragment = localStorage.getItem("lastClickedFragment");
+    if (lastClickedFragment && lastClickedFragment !== 'undefined') {
+        console.log("opening last visited menu item / match / world: " + lastClickedFragment);
+        location.hash = new URL(lastClickedFragment).hash;
+    }
+
+    // add click listener to all fragment links for new clicks
+    const allFragments = document.querySelectorAll("a[href^=\"#\"]");
+    allFragments.forEach(link => {
+        link.addEventListener("click", (event) => {
+            localStorage.setItem("lastClickedFragment", event.target.href);
+        });
+    });
+    </script>
+EOF
+    
     echo '</body>
 </html>'
 }
