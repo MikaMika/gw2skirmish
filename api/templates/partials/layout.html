@@ -113,6 +113,23 @@
     document.querySelectorAll(".utcToLocal").forEach(function (i) {
       i.innerText = new Date(i.innerText); //.toLocaleString();
     });
+
+     /* Remember last match/world visited */
+
+    // if browser has a last visited match/world, got to it
+    const lastClickedFragment = localStorage.getItem('lastClickedFragment');
+    if (lastClickedFragment && lastClickedFragment !== 'undefined') {
+        console.log("opening last visited menu item / match / world: " + lastClickedFragment);
+        location.hash = new URL(lastClickedFragment).hash;
+    }
+
+    // add click listener to all fragment links for new clicks
+    const allFragments = document.querySelectorAll('a[href^="#"]');
+    allFragments.forEach(link => {
+        link.addEventListener('click', (event) => {
+            localStorage.setItem('lastClickedFragment', event.target.href);
+        });
+    });
   </script>
 </body>
 
