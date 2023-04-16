@@ -1,0 +1,126 @@
+{% extends "partials/layout.html" %}
+{% from 'partials/macros.html' import world_title %}
+
+{% block title %}gw2skirmish{% endblock %}
+{% block description %}gw2skirmish displays information about Guild Wars 2 World vs. World
+    matches with unique Homestretch feature.{% endblock %}
+{% block head_includes %}
+    <script src="https://cdn.jsdelivr.net/npm/d3@5"></script>
+    <script src="{{ url_for('static',filename='js/d3js-charts.js') }}"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="{{ url_for('static',filename='js/chartjs-charts.js') }}"></script>
+
+    <style>
+        a[href="#worlds"], a[href="#matches"] {
+            display: none;
+        }
+
+        /* chart styles */
+        .charts {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #d3js-diagram {
+            width: 600px;
+            height: 600px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            border-radius: 5px;
+            margin: 0 auto;
+        }
+    </style>
+{% endblock %}
+
+{% block heading %}
+    <p>
+        Match {{ match.id }}
+    </p>
+{% endblock %}
+
+{% block other_link %}
+    <li class="menu-item">
+        <a href="/">Flask Edition</a>
+    </li>
+
+{% endblock %}
+
+{% block main_content %}
+    <div class="match" id="m{{ match.id }}">
+        {% for world in match['all_worlds_id'] %}
+            <div class="world" id="w{{ world }}">
+        {% endfor %}
+        <article>
+            <h2>
+                {% if match.worlds.red < 2000 %}🇺🇸{% endif %}
+                {% if match.worlds.red> 2000 %}🇪🇺{% endif %} {{ match.id }}
+            </h2>
+            <p>
+                Skirmishes completed: {{ match.skirmishes|length - 1 }}/84<br/>
+                Skirmishes left: {{ 84 - match.skirmishes|length + 1 }}<br/>
+                Max earnable VP difference: {{ (84 - match.skirmishes|length + 1) * 2 }}
+            </p>
+            <div class="rbg">
+                {% for result in match['results'] %}
+                    <p>
+                        <b class="team{{ result['colour'] }}">
+                            {{ world_title(worlds_by_id[match['all_worlds'][result['colour']][0]]) }}
+                        </b><br/>
+                        <b class="team{{ result['colour'] }}">
+                            {{ world_title(worlds_by_id[match['all_worlds'][result['colour']][1]]|default("N/A")) }}
+                        </b><br/>
+                        Victory Points: {{ result['victory_points'] }}<br/>
+                        Victory Ratio: {{ result['vp_ratio'] }}%<br/>
+                        Prediction: {{ result['prediction'] }}<br/>
+                        <br/>
+                        {% if result['colour'] == 'green' %}🟢{% endif %}
+                        {% if result['colour'] == 'red' %}🔴{% endif %}
+                        {% if result['colour'] == 'blue' %}🔵{% endif %}
+                        {% if result['colour'] == match['first'] %}🥇{% endif %}
+                        {% if result['colour'] == match['second'] %}🥈{% endif %}
+                        {% if result['colour'] == match['third'] %}🥉{% endif %}
+                        vs
+                        {% if result['vs_team'] == 'green' %}🟢{% endif %}
+                        {% if result['vs_team'] == 'red' %}🔴{% endif %}
+                        {% if result['vs_team'] == 'blue' %}🔵{% endif %}
+                        {% if result['vs_team'] == match['first'] %}🥇{% endif %}
+                        {% if result['vs_team'] == match['second'] %}🥈{% endif %}
+                        {% if result['vs_team'] == match['third'] %}🥉{% endif %}
+                        :
+                        {{ result['point_diff'] }}<br/>
+                        Homestretch: {{ result['tie'] }}<br/>
+                        Difficulty:
+                        {% if (result['difficulty']|int) <= 0 %} afk {% elif (result['difficulty']|int)>= 100 %}
+                            impossible
+                        {% else %}
+                            {{ result['difficulty'] }}%
+                        {% endif %}<br/>
+                        Certitude:
+                        {% if (result['certitude']|int) > 100 %}
+                            100%
+                        {% else %}
+                            {{ result['certitude'] }}%
+                        {% endif %}<br/>
+                    </p>
+                {% endfor %}
+            </div>
+        </article>
+        {% for world in match['all_worlds_id'] %}
+            </div>
+        {% endfor %}
+    </div>
+    <div class="charts">
+        <h3>d3js diagram</h3>
+        <svg id="d3js-diagram" data-json='{{ match|tojson }}'></svg>
+
+        <br/>
+
+        <h3>Chartjs charts</h3>
+        <canvas class="victoryPointsChart" data-json='{{ match['victory_points']|tojson }}'></canvas>
+        <br/>
+        <canvas class="kdChart" data-json='{{ [match['kills'],match['deaths']]|tojson }}'></canvas>
+    </div>
+{% endblock %}

@@ -9,6 +9,7 @@
   <title>{% block title %}{{ title|default('gw2skirmish') }}{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static',filename='css/simple.css') }}" />
   <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/main.css') }}">
+  {% block head_includes %}{% endblock %}
 </head>
 
 <body class="main">

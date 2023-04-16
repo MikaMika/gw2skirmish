@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, jsonify
 from datetime import datetime, timezone
 
 from .anet import get_matches, get_worlds, get_world_by_id
@@ -36,3 +36,24 @@ def about(world_id):
         return render_template('world.html', world=worlds_by_id[world_id])
 
     return render_template('404.html'), 404
+
+@app.route('/match/<match_id>')
+def match(match_id):
+    matches = get_matches()
+    worlds = get_worlds()
+    worlds_by_id = get_world_by_id(worlds)
+    calculate_scores(matches, worlds_by_id)
+    now_utc = datetime.now(timezone.utc)
+    match = [match for match in matches if match['id'] == match_id]
+    if match:
+        return render_template('match.html', match=match[0], now_utc=now_utc, worlds=worlds, worlds_by_id=worlds_by_id)
+
+    return render_template('404.html'), 404
+
+@app.route('/api/scores')
+def api_scores():
+    matches = get_matches()
+    worlds = get_worlds()
+    worlds_by_id = get_world_by_id(worlds)
+    calculate_scores(matches, worlds_by_id)
+    return jsonify(matches)

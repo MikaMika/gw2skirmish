@@ -108,6 +108,7 @@ def calculate_scores(matches, worlds_by_id):
 
         team_results = [
             {
+                "position": 1,
                 "colour": first,
                 "victory_points": first_vp,
                 "point_diff": first_point_diff,
@@ -120,6 +121,7 @@ def calculate_scores(matches, worlds_by_id):
                 "prediction": format(first_prediction,".0f"),
             },
             {
+                "position": 2,
                 "colour": second,
                 "victory_points": second_vp,
                 "point_diff": second_point_diff,
@@ -132,6 +134,7 @@ def calculate_scores(matches, worlds_by_id):
                 "prediction": format(second_prediction,".0f"),
             },
             {
+                "position": 3,
                 "colour": third,
                 "victory_points": third_vp,
                 "point_diff": third_point_diff,

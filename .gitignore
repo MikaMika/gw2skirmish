@@ -157,3 +157,8 @@ cython_debug/
 .idea/
 
 .vercel/
+
+# Bash script ignores
+matches.json
+worlds.json
+/index.html
